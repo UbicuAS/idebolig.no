@@ -144,9 +144,21 @@ html,body{overflow-x:hidden}
 .ib-avslor{opacity:0;translate:0 22px;
   transition:opacity .6s ease,translate .6s ease}
 .ib-avslor.ib-vis{opacity:1;translate:0 0}
+/* — hero-karusell: rolig kryssfade mellom fasadebilder — */
+/* Lagene legges over elementets eget bakgrunnsbilde, men UNDER Elementors
+   mørke overlegg (::before), slik at mørkleggingen bevares som før. */
+.ib-heroslide{position:absolute;inset:0;z-index:0;overflow:hidden;
+  pointer-events:none}
+.ib-heroslide span{position:absolute;inset:0;display:block;
+  background-position:top center;background-repeat:no-repeat;background-size:cover;
+  opacity:0;transition:opacity 1.8s ease-in-out;will-change:opacity}
+.ib-heroslide span.ib-pa{opacity:1}
+.elementor-element-2cb5f4f::before{z-index:1}
 @media(prefers-reduced-motion:reduce){
  .elementor-element-3805cf9 .elementor-widget{animation:none;opacity:1}
- .ib-avslor{opacity:1;translate:0 0;transition:none}}
+ .ib-avslor{opacity:1;translate:0 0;transition:none}
+ /* Karusellen står stille — kun første bilde vises */
+ .ib-heroslide span{transition:none}}
 </style>
 </head>
 
@@ -639,6 +651,92 @@ const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(
   {threshold:.15});
  mål.forEach(function(el,i){el.classList.add('ib-avslor');
   el.style.transitionDelay=(i%5*70)+'ms';io.observe(el);});
+})();
+</script>
+<script>
+/* Hero-karusell: bytter rolig mellom fasadebilder av fem av boligene.
+   Første bilde er det samme som elementets eget bakgrunnsbilde, så det er
+   ingen omlasting eller blink ved sidelast. De øvrige hentes først etter at
+   siden er ferdig lastet, slik at forsiden ikke blir tyngre å åpne. */
+(function(){
+ var hero=document.querySelector('.elementor-element-2cb5f4f');
+ if(!hero)return;
+
+ var bilder=[
+  'wp-content/uploads/2025/04/3-post-prod-scaled.webp',   /* Edvard */
+  'wp-content/uploads/2025/05/Fasade-Vilde.webp',         /* Vilde  */
+  'wp-content/uploads/2025/04/Fasade-Alva-hero.webp',     /* Alva   */
+  'wp-content/uploads/2024/11/Fasade-Nora-hero.webp',     /* Nora   */
+  'wp-content/uploads/2024/11/Fasade-Odin-hero.webp'      /* Odin   */
+ ];
+
+ var lag=document.createElement('div');
+ lag.className='ib-heroslide';
+ lag.setAttribute('aria-hidden','true');
+
+ var flater=bilder.map(function(sti,i){
+  var s=document.createElement('span');
+  if(i===0){s.style.backgroundImage='url("'+sti+'")';s.className='ib-pa';}
+  lag.appendChild(s);
+  return s;
+ });
+ hero.insertBefore(lag,hero.firstChild);
+
+ /* Står brukeren med redusert bevegelse påslått, blir det med ett bilde. */
+ var rolig=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)');
+ if(rolig&&rolig.matches)return;
+
+ var HOLD=7000, FADE=1800, na=0, timer=null, stabel=1;
+
+ function last(i){
+  return new Promise(function(ok){
+   var b=new Image();
+   b.onload=b.onerror=function(){
+    flater[i].style.backgroundImage='url("'+bilder[i]+'")';
+    ok();
+   };
+   b.src=bilder[i];
+  });
+ }
+
+ /* Det nye bildet legges ØVERST og fades inn mens det gamle blir stående
+    ugjennomsiktig under. Fader begge samtidig, blir dekningen bare 75 % midt
+    i overgangen, og elementets eget bakgrunnsbilde skinner gjennom. Først
+    når det nye er helt inne, skjules det gamle — da er det usynlig uansett. */
+ function neste(){
+  var forrige=na;
+  na=(na+1)%bilder.length;
+  flater[na].style.zIndex=++stabel;
+  flater[na].classList.add('ib-pa');
+  setTimeout(function(){
+   flater[forrige].classList.remove('ib-pa');
+  },FADE+100);
+ }
+
+ function start(){
+  if(timer)return;
+  timer=setInterval(neste,HOLD);
+ }
+ function stopp(){
+  clearInterval(timer);
+  timer=null;
+ }
+
+ /* Ingen grunn til å bla videre når fanen ligger i bakgrunnen. */
+ document.addEventListener('visibilitychange',function(){
+  if(document.hidden){stopp();}else{start();}
+ });
+
+ function igang(){
+  var kjede=Promise.resolve();
+  for(var i=1;i<bilder.length;i++){
+   (function(n){kjede=kjede.then(function(){return last(n);});})(i);
+  }
+  kjede.then(start);
+ }
+
+ if(document.readyState==='complete'){igang();}
+ else{window.addEventListener('load',igang);}
 })();
 </script>
 <script>
