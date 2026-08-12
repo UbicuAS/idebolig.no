@@ -214,6 +214,8 @@ class="hfeed site" id="page">
 .ibk2-felt .ugyldig{border-color:#C0492F}
 .ibk2-feil{display:none;font:500 12px Inter,sans-serif;color:#C0492F;margin-top:6px}
 .ibk2-hp{position:absolute;left:-6000px;top:auto;height:1px;overflow:hidden}
+.ibk2-bot{margin:18px 0 0}
+.ibk2-bot:empty{margin:0}
 .ibk2-send{display:inline-flex;align-items:center;gap:10px;background:var(--gull);
   color:#fff;font:600 15px Poppins,sans-serif;padding:14px 26px;border:0;
   border-radius:10px;cursor:pointer;transition:filter .2s}
@@ -271,6 +273,7 @@ a.ibk2-kort:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(51,48,4
     <div class="ibk2-hp" aria-hidden="true">
       <label for="f-firma">Firma</label>
       <input id="f-firma" name="firma" type="text" tabindex="-1" autocomplete="off"></div>
+    <div class="ibk2-bot" id="ibk2-bot"></div>
     <button class="ibk2-send" type="submit">Send melding <span aria-hidden="true">→</span></button>
     <p class="ibk2-status" id="ibk2-status" role="status"></p>
    </form>
@@ -278,9 +281,9 @@ a.ibk2-kort:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(51,48,4
     <a class="ibk2-kort" href="tel:+4791926666">
       <span class="ibk2-ikon"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="1.7"/></svg></span>
       <span><b>Ring oss</b><span>+47 91 92 66 66</span></span></a>
-    <a class="ibk2-kort" href="mailto:post@idebolig.no">
+    <a class="ibk2-kort ib-epost" data-u="post" data-d="idebolig.no" href="#">
       <span class="ibk2-ikon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="m3 7 9 6 9-6" fill="none" stroke="currentColor" stroke-width="1.7"/></svg></span>
-      <span><b>Send e-post</b><span>post@idebolig.no</span></span></a>
+      <span><b>Send e-post</b><span class="ib-epost-tekst">post [at] idebolig.no</span></span></a>
     <div class="ibk2-kort">
       <span class="ibk2-ikon"><svg viewBox="0 0 24 24"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="10" r="2.6" fill="none" stroke="currentColor" stroke-width="1.7"/></svg></span>
       <span><b>Besøk oss</b><span>Jølstadbakken 14<br>2318 Hamar</span></span></div>
@@ -293,9 +296,33 @@ a.ibk2-kort:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(51,48,4
 </section>
 <script>
 (function(){
- // IB1.11: sett ENDPOINT + ACCESS_KEY (Web3Forms e.l.) + Turnstile ved aktivering.
- var ENDPOINT='';
+ // IB1.11: kontaktskjema. Backend er skjema.php i webroten — relativ sti, slik
+ // at det også treffer riktig når siden testes i en undermappe (/ny/).
+ // SITE_KEY er Turnstile-nøkkelen fra Cloudflare. Den er offentlig og skal
+ // ligge her; secret key ligger kun på serveren, utenfor webroten.
+ var ENDPOINT='../skjema.php';
+ var SITE_KEY='0x4AAAAAAEOHdIS8NSnFIPhA';   // Turnstile, offentlig nøkkel
+ // Skjemaet krever PHP og kjører derfor bare på idebolig.no. Forhåndsvisningen
+ // ligger på GitHub Pages uten PHP — der viser skjemaet en vennlig beskjed
+ // i stedet for å feile. Subdomener dekkes av samme regel.
+ var LIVE=/(^|\.)idebolig\.no$/i.test(location.hostname);
+ var AKTIV=SITE_KEY!==''&&LIVE;
+ var EPOST='post'+String.fromCharCode(64)+'idebolig.no';
+ var LASTET=Date.now();
  var form=document.getElementById('ibk2-form'),status=document.getElementById('ibk2-status');
+ var botboks=document.getElementById('ibk2-bot'),widget=null;
+
+ // Turnstile lastes bare når nøkkelen er satt. Uten nøkkel oppfører skjemaet
+ // seg som før — det viser en vennlig beskjed i stedet for å sende.
+ if(AKTIV){
+  var s=document.createElement('script');
+  s.src='https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+  s.async=true;s.defer=true;
+  s.onload=function(){
+   widget=window.turnstile.render(botboks,{sitekey:SITE_KEY,theme:'light',language:'no'});
+  };
+  document.head.appendChild(s);
+ }
  function valider(){
   var ok=true;
   [['f-navn',function(v){return v.trim().length>1;}],
@@ -312,12 +339,19 @@ a.ibk2-kort:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(51,48,4
   status.className='ibk2-status';
   if(document.getElementById('f-firma').value)return; // honeypot: stille avvisning
   if(!valider())return;
-  if(!ENDPOINT){
+  // Uten Turnstile-nøkkel er skjemaet ikke aktivert ennå (gjelder bl.a.
+  // forhåndsvisningen, som kjører på GitHub Pages og ikke har PHP).
+  if(!AKTIV){
    status.className='ibk2-status info';
    status.innerHTML='Takk, '+document.getElementById('f-navn').value.split(' ')[0]
     +'! Skjemaet aktiveres når nettsiden lanseres. Frem til da når du oss på '
-    +'<a href="mailto:post@idebolig.no">post@idebolig.no</a> eller telefon '
+    +'<a href="mailto:'+EPOST+'">'+EPOST+'</a> eller telefon '
     +'<a href="tel:+4791926666">91 92 66 66</a>.';
+   return;}
+  var token=widget!==null&&window.turnstile?window.turnstile.getResponse(widget):'';
+  if(!token){
+   status.className='ibk2-status info';
+   status.textContent='Vent et øyeblikk mens sikkerhetssjekken fullføres, og prøv igjen.';
    return;}
   var knapp=form.querySelector('.ibk2-send');knapp.disabled=true;
   fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},
@@ -325,14 +359,25 @@ a.ibk2-kort:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(51,48,4
     epost:document.getElementById('f-epost').value,
     telefon:document.getElementById('f-tlf').value,
     emne:document.getElementById('f-emne').value,
-    melding:document.getElementById('f-melding').value})})
-   .then(function(r){if(!r.ok)throw 0;
+    melding:document.getElementById('f-melding').value,
+    firma:document.getElementById('f-firma').value,
+    turnstile:token,
+    ms:Date.now()-LASTET})})
+   .then(function(r){return r.json().then(function(d){return{ok:r.ok,d:d};});})
+   .then(function(res){
+    if(!res.ok||!res.d.ok){
+     status.className='ibk2-status info';
+     status.textContent=res.d.melding||'Noe gikk galt — prøv igjen.';
+     if(window.turnstile&&widget!==null)window.turnstile.reset(widget);
+     return;}
     status.className='ibk2-status ok';
-    status.textContent='Takk for henvendelsen! Vi svarer normalt innen én virkedag.';
-    form.reset();})
+    status.textContent=res.d.melding||'Takk for henvendelsen! Vi svarer normalt innen én virkedag.';
+    form.reset();
+    if(window.turnstile&&widget!==null)window.turnstile.reset(widget);})
    .catch(function(){status.className='ibk2-status info';
-    status.innerHTML='Noe gikk galt — prøv igjen, eller send e-post til '
-     +'<a href="mailto:post@idebolig.no">post@idebolig.no</a>.';})
+    status.innerHTML='Noe gikk galt — prøv igjen, eller ring oss på '
+     +'<a href="tel:+4791926666">91 92 66 66</a>.';
+    if(window.turnstile&&widget!==null)window.turnstile.reset(widget);})
    .finally(function(){knapp.disabled=false;});
  });
  ['f-navn','f-epost','f-melding'].forEach(function(id){
@@ -413,7 +458,7 @@ a.ibk2-kort:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(51,48,4
     <p itemprop="name"><strong>Idébolig AS</strong></p>
     <p itemprop="address">Jølstadbakken 14, 2318 Hamar</p>
     <p>Telefon: <a href="tel:+4791926666" itemprop="telephone">91 92 66 66</a></p>
-    <p>E-post: <a href="mailto:post@idebolig.no" itemprop="email">post@idebolig.no</a></p>
+    <p>E-post: <a class="ib-epost" data-u="post" data-d="idebolig.no" itemprop="email" href="#">post [at] idebolig.no</a></p>
     <p>Org.nr.: 924 487 259</p>
   </div>
  </div>
@@ -545,5 +590,18 @@ const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(
 var wpforms_settings = {"val_required":"This field is required.","val_email":"Please enter a valid email address.","val_email_suggestion":"Did you mean {suggestion}?","val_email_suggestion_title":"Click to accept this suggestion.","val_email_restricted":"This email address is not allowed.","val_number":"Please enter a valid number.","val_number_positive":"Please enter a valid positive number.","val_minimum_price":"Amount entered is less than the required minimum.","val_confirm":"Field values do not match.","val_checklimit":"You have exceeded the number of allowed selections: {#}.","val_limit_characters":"{count} of {limit} max characters.","val_limit_words":"{count} of {limit} max words.","val_min":"Please enter a value greater than or equal to {0}.","val_max":"Please enter a value less than or equal to {0}.","val_recaptcha_fail_msg":"Google reCAPTCHA verification failed, please try again later.","val_turnstile_fail_msg":"Cloudflare Turnstile verification failed, please try again later.","val_inputmask_incomplete":"Please fill out the field in required format.","uuid_cookie":"1","locale":"en","country":"","country_list_label":"Country list","wpforms_plugin_url":"https:\/\/idebolig.no\/wp-content\/plugins\/wpforms\/","gdpr":"","ajaxurl":"https:\/\/idebolig.no\/wp-admin\/admin-ajax.php","mailcheck_enabled":"1","mailcheck_domains":[],"mailcheck_toplevel_domains":["dev"],"is_ssl":"1","currency_code":"USD","currency_thousands":",","currency_decimals":"2","currency_decimal":".","currency_symbol":"$","currency_symbol_pos":"left","val_requiredpayment":"Payment is required.","val_creditcard":"Please enter a valid credit card number.","val_post_max_size":"The total size of the selected files {totalSize} MB exceeds the allowed limit {maxSize} MB.","val_time12h":"Please enter time in 12-hour AM\/PM format (eg 8:45 AM).","val_time24h":"Please enter time in 24-hour format (eg 22:45).","val_time_limit":"Please enter time between {minTime} and {maxTime}.","val_url":"Please enter a valid URL.","val_fileextension":"File type is not allowed.","val_filesize":"File exceeds max size allowed. File was not uploaded.","post_max_size":"134217728","readOnlyDisallowedFields":["captcha","repeater","map","content","divider","hidden","html","entry-preview","pagebreak","layout","payment-total"],"error_updating_token":"Error updating token. Please try again or contact support if the issue persists.","network_error":"Network error or server is unreachable. Check your connection or try again later.","token_cache_lifetime":"86400","hn_data":{"11":3},"address_field":{"list_countries_without_states":["GB","DE","CH","NL"]},"val_phone":"Please enter a valid phone number.","val_password_strength":"A stronger password is required. Consider using upper and lower case letters, numbers, and symbols.","entry_preview_iframe_styles":["https:\/\/idebolig.no\/wp-includes\/js\/tinymce\/skins\/lightgray\/content.min.css?ver=7.0.2","https:\/\/idebolig.no\/wp-includes\/css\/dashicons.min.css?ver=7.0.2","https:\/\/idebolig.no\/wp-includes\/js\/tinymce\/skins\/wordpress\/wp-content.css?ver=7.0.2","https:\/\/idebolig.no\/wp-content\/plugins\/wpforms\/assets\/pro\/css\/fields\/richtext\/editor-content.min.css"]}
 /* ]]> */
 </script>
-	</body>
+	<script>
+/* IB1.25: setter sammen e-postadressen i nettleseren, så den ikke ligger
+   som en mailto:-lenke i kildekoden der høstebotter finner den. */
+(function(){
+ var a=document.querySelectorAll('a.ib-epost');
+ for(var i=0;i<a.length;i++){
+  var e=a[i].getAttribute('data-u')+String.fromCharCode(64)+a[i].getAttribute('data-d');
+  a[i].setAttribute('href','mailto:'+e);
+  var t=a[i].querySelector('.ib-epost-tekst');
+  if(t){t.textContent=e;}else{a[i].textContent=e;}
+ }
+})();
+</script>
+</body>
 </html>

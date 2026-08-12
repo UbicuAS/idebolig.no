@@ -541,7 +541,7 @@ class="post-540 page type-page status-publish ast-article-single" id="post-540" 
     <p itemprop="name"><strong>Idébolig AS</strong></p>
     <p itemprop="address">Jølstadbakken 14, 2318 Hamar</p>
     <p>Telefon: <a href="tel:+4791926666" itemprop="telephone">91 92 66 66</a></p>
-    <p>E-post: <a href="mailto:post@idebolig.no" itemprop="email">post@idebolig.no</a></p>
+    <p>E-post: <a class="ib-epost" data-u="post" data-d="idebolig.no" itemprop="email" href="#">post [at] idebolig.no</a></p>
     <p>Org.nr.: 924 487 259</p>
   </div>
  </div>
@@ -639,6 +639,19 @@ const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(
   {threshold:.15});
  mål.forEach(function(el,i){el.classList.add('ib-avslor');
   el.style.transitionDelay=(i%5*70)+'ms';io.observe(el);});
+})();
+</script>
+<script>
+/* IB1.25: setter sammen e-postadressen i nettleseren, så den ikke ligger
+   som en mailto:-lenke i kildekoden der høstebotter finner den. */
+(function(){
+ var a=document.querySelectorAll('a.ib-epost');
+ for(var i=0;i<a.length;i++){
+  var e=a[i].getAttribute('data-u')+String.fromCharCode(64)+a[i].getAttribute('data-d');
+  a[i].setAttribute('href','mailto:'+e);
+  var t=a[i].querySelector('.ib-epost-tekst');
+  if(t){t.textContent=e;}else{a[i].textContent=e;}
+ }
 })();
 </script>
 </body>

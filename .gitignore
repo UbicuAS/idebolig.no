@@ -1,2 +1,7 @@
 .DS_Store
 __pycache__/
+
+# Skjemaets konfigurasjon med ekte nøkler skal ALDRI i git.
+# Den ligger kun på serveren, utenfor webroten. Se skjema-config.eksempel.php.
+skjema-config.php
+skjema-logg/
