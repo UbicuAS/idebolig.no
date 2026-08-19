@@ -379,59 +379,25 @@ a.ibk2-kort:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(51,48,4
    if(this.classList.contains('ugyldig'))valider();});});
 })();
 </script>
-<!-- Omtaleseksjon — ekte kundeomtaler fra Google (aktivert 19. aug 2026) -->
-<section class="ibo ibo-hvit" id="omtaler" aria-label="Kundeomtaler">
+<!-- Kundeomtaler: kompakt merke — de fulle omtalene bor på /omtaler/ -->
+<section class="ibo-band" id="omtaler" aria-label="Kundeomtaler">
 <style>
-.ibo{--gull:#C99C55;--mork:#33302C;--graa:#6b6257;--krem:#F7F3EC;
-  font-family:Poppins,sans-serif;color:var(--mork);background:var(--krem);
-  padding:76px 20px 84px}
-.ibo-hvit{background:#fff}
-.ibo-hvit .ibo-kort{background:var(--krem);box-shadow:none}
-:where(.ibo *){box-sizing:border-box;margin:0}
-.ibo-indre{max-width:1200px;margin:0 auto}
-.ibo-kicker{display:flex;align-items:center;gap:14px;font:600 12px/1 Inter,sans-serif;
-  letter-spacing:.24em;text-transform:uppercase;color:var(--gull);margin-bottom:20px}
-.ibo-kicker::after{content:"";flex:0 0 46px;height:1px;background:var(--gull);opacity:.55}
-.ibo h2{font-size:clamp(26px,3vw,36px);font-weight:700;letter-spacing:-.012em;
-  margin-bottom:38px}
-.ibo-rutenett{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:26px}
-.ibo-kort{background:#fff;border-radius:18px;padding:30px 30px 26px;
-  box-shadow:0 2px 14px rgba(51,48,44,.07);display:flex;flex-direction:column}
-.ibo-stjerner{color:var(--gull);font-size:18px;letter-spacing:4px;margin-bottom:14px}
-.ibo-kort blockquote{border:0;padding:0;color:#55504a;font-size:15px;
-  line-height:1.75;margin-bottom:20px}
-.ibo-kort figcaption{margin-top:auto;font:600 13.5px Inter,sans-serif;
-  color:var(--mork)}
-.ibo-kilde{font-weight:400;color:var(--graa)}
-.ibo .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;
-  overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-@media(max-width:680px){.ibo{padding:56px 16px 60px}}
+.ibo-band{background:#fff;padding:54px 20px;text-align:center;
+  font-family:Poppins,sans-serif}
+.ib-badge{display:inline-flex;align-items:center;gap:10px;
+  background:rgba(38,35,31,.82);border:1px solid rgba(201,156,85,.45);
+  border-radius:999px;padding:10px 18px 10px 16px;text-decoration:none;
+  transition:background .2s ease,transform .2s ease,box-shadow .2s ease}
+.ib-badge:hover{background:#26231F;transform:translateY(-2px);
+  box-shadow:0 8px 22px rgba(38,35,31,.28)}
+.ib-badge-stjerner{color:#C99C55;font-size:15px;letter-spacing:2.5px;line-height:1}
+.ib-badge-tekst{color:#F1EDE4;font:600 13.5px/1 Inter,sans-serif;letter-spacing:.02em;
+  white-space:nowrap}
 </style>
-<div class="ibo-indre">
- <span class="ibo-kicker">Omtaler</span>
- <h2>Det sier kundene våre</h2>
- <div class="ibo-rutenett">
-  <figure class="ibo-kort">
-   <div class="ibo-stjerner" aria-hidden="true">★★★★★</div>
-   <span class="sr-only">5 av 5 stjerner</span>
-   <blockquote>«Vi har brukt Idebolig AS, med Sangar Saleh som kontaktperson, til alt av søknadsarbeid knyttet til byggesøknader – og kan trygt anbefale dem videre. Profesjonelle, pålitelige og svært løsningsorienterte. Sangar er alltid tilgjengelig, rask til å svare og har full kontroll på prosessene, noe som gjør samarbeidet både effektivt og trygt. Idebolig gjør en komplisert prosess enkel for oss som lager tekniske tegninger til søknader. Vi ser frem til videre samarbeid!»</blockquote>
-   <figcaption>Marius Resvold, samarbeidspartner<span class="ibo-kilde"> — Google</span></figcaption>
-  </figure>
-  <figure class="ibo-kort">
-   <div class="ibo-stjerner" aria-hidden="true">★★★★★</div>
-   <span class="sr-only">5 av 5 stjerner</span>
-   <blockquote>«Effektiv, strukturert, hyggelig. Anbefales på det sterkeste.»</blockquote>
-   <figcaption>Ole Andreassen<span class="ibo-kilde"> — Google</span></figcaption>
-  </figure>
-  <figure class="ibo-kort">
-   <div class="ibo-stjerner" aria-hidden="true">★★★★★</div>
-   <span class="sr-only">5 av 5 stjerner</span>
-   <blockquote>«Alt gjennomført som avtalt, anbefales.»</blockquote>
-   <figcaption>A B<span class="ibo-kilde"> — Google</span></figcaption>
-  </figure>
- </div>
-</div>
+<a class="ib-badge" href="../omtaler/" aria-label="Fem stjerner på Google — les kundeomtalene våre">
+ <span class="ib-badge-stjerner" aria-hidden="true">★★★★★</span>
+ <span class="ib-badge-tekst">10+ omtaler</span>
+</a>
 </section>
 
 </main><!-- #main -->
@@ -500,6 +466,7 @@ a.ibk2-kort:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(51,48,4
       <li><a href="../prosjekter/">Prosjekter</a></li>
       <li><a href="../v%C3%A5re-boliger/">Våre boliger</a></li>
       <li><a href="../guider/">Guider</a></li>
+      <li><a href="../omtaler/">Omtaler</a></li>
       <li><a href="../kontakt/">Kontakt</a></li>
     </ul>
   </nav>
