@@ -37,6 +37,7 @@ SIDER = [
     ("about/index.html",           "/about/",          0.6, "yearly"),
     ("kontakt/index.html",         "/kontakt/",        0.6, "yearly"),
     ("guider/index.html",          "/guider/",         0.8, "monthly"),
+    ("omtaler/index.html",         "/omtaler/",        0.6, "monthly"),
     ("guider/maa-jeg-soke/index.html",             "/guider/maa-jeg-soke/",             0.7, "yearly"),
     ("guider/tilbygg-uten-soknad/index.html",      "/guider/tilbygg-uten-soknad/",      0.7, "yearly"),
     ("guider/krav-til-tegninger/index.html",       "/guider/krav-til-tegninger/",       0.7, "yearly"),
