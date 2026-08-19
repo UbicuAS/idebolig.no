@@ -5,7 +5,7 @@ Siden setter ingen sporingskapsler: analyse/Site Kit ble fjernet i IB3.4, og
 det eneste som kan sette en kapsel er Cloudflare Turnstile (botvern) på
 kontaktskjemaet. Banneren sier derfor ærlig at kun nødvendige kapsler brukes,
 med en «Les mer»-tekst i selve banneren (siden har ingen personvernside).
-Ett valg («Greit») huskes i localStorage — banneren setter altså ingen kapsel
+Ett valg («Godta») huskes i localStorage — banneren setter altså ingen kapsel
 selv, og vises ikke igjen etter lukking.
 
 Utseende: kort nede til venstre på skrivebord (maks 420 px), fullbredde bånd
@@ -58,7 +58,7 @@ JS = (
     "brukes bare til \\u00e5 skille folk fra roboter n\\u00e5r du sender skjemaet. Valget ditt her lagres kun "
     "lokalt i din egen nettleser og sendes ikke til noen.<\\/p>'"
     "+'<div class=\"ib-ck-rad\">"
-    "<button type=\"button\" class=\"ib-ck-ok\">Greit<\\/button>"
+    "<button type=\"button\" class=\"ib-ck-ok\">Godta<\\/button>"
     "<button type=\"button\" class=\"ib-ck-mer\" aria-expanded=\"false\">Les mer<\\/button><\\/div>';"
     "document.body.appendChild(b);"
     "b.querySelector('.ib-ck-ok').addEventListener('click',function(){"
