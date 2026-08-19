@@ -43,11 +43,23 @@ Utlegging skjer med SSH/rsync til webhotellet (bruker `idebolig` på
 
 ## Lokal kjøring
 
+Start `idebolig` fra `.claude/launch.json` — den svarer på
+`http://localhost:8741`.
+
+**Serveren serverer fra `C:\Ubicu\preview\idebolig`, ikke fra `Z:`.** Den kopierer
+hit selv ved oppstart. Har du endret noe på `Z:` mens serveren kjører, oppdater
+kopien og last om nettleseren:
+
 ```
-python -m http.server 8741
+python C:\Ubicu\preview\preview.py idebolig --bare-kopier
 ```
 
-Registrert som `idebolig` i `.claude/launch.json`. Merk at kontaktskjemaet krever
+Ikke kjør `python -m http.server` direkte i denne mappa, og ikke pek
+`launch.json` tilbake hit — en server som lever på `Z:` henger når SMB-delingen
+ryker og ødelegger den MSIX-pakkede Claude-appen. Bakgrunnen står i
+`../.claude/preview/README.md`.
+
+Merk at kontaktskjemaet krever
 PHP og bare kjører på idebolig.no — lokalt og på forhåndsvisningen viser det en
 vennlig beskjed i stedet for å sende.
 

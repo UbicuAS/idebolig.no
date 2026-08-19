@@ -5,3 +5,6 @@ __pycache__/
 # Den ligger kun på serveren, utenfor webroten. Se skjema-config.eksempel.php.
 skjema-config.php
 skjema-logg/
+
+# SMB-delingen legger igjen ._-filer (AppleDouble). De skal aldri i repoet.
+._*
