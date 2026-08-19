@@ -379,10 +379,8 @@ a.ibk2-kort:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(51,48,4
    if(this.classList.contains('ugyldig'))valider();});});
 })();
 </script>
-<!-- Omtaleseksjon — SKJULT: AKTIVERES når ekte kundeomtaler er på plass.
-     Fjern hidden og style="display:none" fra section-taggen under, og bytt
-     plassholder-sitatene med ekte kundeomtaler. -->
-<section class="ibo ibo-hvit" id="omtaler" aria-label="Kundeomtaler" hidden style="display:none">
+<!-- Omtaleseksjon — ekte kundeomtaler fra Google (aktivert 19. aug 2026) -->
+<section class="ibo ibo-hvit" id="omtaler" aria-label="Kundeomtaler">
 <style>
 .ibo{--gull:#C99C55;--mork:#33302C;--graa:#6b6257;--krem:#F7F3EC;
   font-family:Poppins,sans-serif;color:var(--mork);background:var(--krem);
@@ -405,25 +403,32 @@ a.ibk2-kort:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(51,48,4
   line-height:1.75;margin-bottom:20px}
 .ibo-kort figcaption{margin-top:auto;font:600 13.5px Inter,sans-serif;
   color:var(--mork)}
+.ibo-kilde{font-weight:400;color:var(--graa)}
+.ibo .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 @media(max-width:680px){.ibo{padding:56px 16px 60px}}
 </style>
 <div class="ibo-indre">
  <span class="ibo-kicker">Omtaler</span>
  <h2>Det sier kundene våre</h2>
  <div class="ibo-rutenett">
-  <!-- PLASSHOLDER: erstatt med ekte kundeanmeldelse før publisering -->
   <figure class="ibo-kort">
    <div class="ibo-stjerner" aria-hidden="true">★★★★★</div>
    <span class="sr-only">5 av 5 stjerner</span>
-   <blockquote>«[Plassholder — erstattes med ekte kundeomtale før publisering]»</blockquote>
-   <figcaption>Kundenavn, Sted</figcaption>
+   <blockquote>«Vi har brukt Idebolig AS, med Sangar Saleh som kontaktperson, til alt av søknadsarbeid knyttet til byggesøknader – og kan trygt anbefale dem videre. Profesjonelle, pålitelige og svært løsningsorienterte. Sangar er alltid tilgjengelig, rask til å svare og har full kontroll på prosessene, noe som gjør samarbeidet både effektivt og trygt. Idebolig gjør en komplisert prosess enkel for oss som lager tekniske tegninger til søknader. Vi ser frem til videre samarbeid!»</blockquote>
+   <figcaption>Marius Resvold, samarbeidspartner<span class="ibo-kilde"> — Google</span></figcaption>
   </figure>
-  <!-- PLASSHOLDER: erstatt med ekte kundeanmeldelse før publisering -->
   <figure class="ibo-kort">
    <div class="ibo-stjerner" aria-hidden="true">★★★★★</div>
    <span class="sr-only">5 av 5 stjerner</span>
-   <blockquote>«[Plassholder — erstattes med ekte kundeomtale før publisering]»</blockquote>
-   <figcaption>Kundenavn, Sted</figcaption>
+   <blockquote>«Effektiv, strukturert, hyggelig. Anbefales på det sterkeste.»</blockquote>
+   <figcaption>Ole Andreassen<span class="ibo-kilde"> — Google</span></figcaption>
+  </figure>
+  <figure class="ibo-kort">
+   <div class="ibo-stjerner" aria-hidden="true">★★★★★</div>
+   <span class="sr-only">5 av 5 stjerner</span>
+   <blockquote>«Alt gjennomført som avtalt, anbefales.»</blockquote>
+   <figcaption>A B<span class="ibo-kilde"> — Google</span></figcaption>
   </figure>
  </div>
 </div>
