@@ -36,6 +36,13 @@ SIDER = [
     ("til-salgs/index.html",       "/til-salgs/",      0.6, "monthly"),
     ("about/index.html",           "/about/",          0.6, "yearly"),
     ("kontakt/index.html",         "/kontakt/",        0.6, "yearly"),
+    ("guider/index.html",          "/guider/",         0.8, "monthly"),
+    ("guider/maa-jeg-soke/index.html",             "/guider/maa-jeg-soke/",             0.7, "yearly"),
+    ("guider/tilbygg-uten-soknad/index.html",      "/guider/tilbygg-uten-soknad/",      0.7, "yearly"),
+    ("guider/krav-til-tegninger/index.html",       "/guider/krav-til-tegninger/",       0.7, "yearly"),
+    ("guider/bruksendring-kjeller-loft/index.html","/guider/bruksendring-kjeller-loft/",0.7, "yearly"),
+    ("guider/garasje-uten-soknad/index.html",      "/guider/garasje-uten-soknad/",      0.7, "yearly"),
+    ("guider/terrasse-uten-soknad/index.html",     "/guider/terrasse-uten-soknad/",     0.7, "yearly"),
 ]
 
 
