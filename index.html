@@ -143,15 +143,43 @@ html,body{overflow-x:hidden}
 .ib-heroslide{position:absolute;inset:0;z-index:0;overflow:hidden;
   pointer-events:none}
 .ib-heroslide span{position:absolute;inset:0;display:block;
-  background-position:top center;background-repeat:no-repeat;background-size:cover;
+  background-position:center;background-repeat:no-repeat;background-size:cover;
   opacity:0;transition:opacity 1.8s ease-in-out;will-change:opacity}
 .ib-heroslide span.ib-pa{opacity:1}
 .elementor-element-2cb5f4f::before{z-index:1}
+/* — hero fyller hele første skjermbilde — */
+/* Fotoene er 16:9 med boligene i midtre/nedre del. Den gamle seksjonen var
+   648px høy med topp-forankret cover-beskjæring, så på brede skjermer så man
+   bare himmel og tak. Nå: seksjonen fyller viewporten, bildet sentreres, og
+   tekstblokken (3805cf9) er flyttet INN i seksjonen i HTML-en. Før lå den
+   som etterfølgende søskenblokk med -20 %-margin, og da dro den neste (hvite)
+   seksjon med seg opp i heroen på høye skjermer. +90px på skrivebord dekker
+   at seksjonstoppen ligger 23-87px over viewport-toppen (negativ margin
+   under sidehodet). */
+.elementor-540 .elementor-element.elementor-element-2cb5f4f{--min-height:100vh;
+  --align-items:flex-end}
+@supports(min-height:100svh){
+ .elementor-540 .elementor-element.elementor-element-2cb5f4f{--min-height:100svh}}
+@media(min-width:1025px){
+ .elementor-540 .elementor-element.elementor-element-2cb5f4f{--min-height:calc(100vh + 90px);
+   --padding-bottom:120px}}
+.elementor-540 .elementor-element.elementor-element-2cb5f4f:not(.elementor-motion-effects-element-type-background){
+  background-position:center center}
+/* Tekstblokken ligger nå i seksjonen: nullstill det gamle overlapp-regnskapet
+   (-20 %/-211px på blokken, +10 %/82/81px på neste seksjon, alle brekkpunkter) */
+.elementor-540 .elementor-element.elementor-element-3805cf9{--margin-top:0px;--margin-bottom:0px;
+  --flex-grow:0;flex-grow:0}
+.elementor-540 .elementor-element.elementor-element-3514624{--margin-top:0px}
+/* Ken Burns-zoomen lå på selve seksjonen; med teksten inni ville den zoomet
+   med. Flytt zoomen til bildelaget, så står tekst og seksjonsramme i ro. */
+.imagezoom{animation:none}
+.ib-heroslide{animation:zoom-in-zoom-out 20s ease infinite}
 @media(prefers-reduced-motion:reduce){
  .elementor-element-3805cf9 .elementor-widget{animation:none;opacity:1}
  .ib-avslor{opacity:1;translate:0 0;transition:none}
- /* Karusellen står stille — kun første bilde vises */
- .ib-heroslide span{transition:none}}
+ /* Karusellen står stille — kun første bilde vises, ingen zoom */
+ .ib-heroslide span{transition:none}
+ .ib-heroslide{animation:none}}
 </style>
 </head>
 
@@ -242,8 +270,6 @@ class="post-540 page type-page status-publish ast-article-single" id="post-540" 
 			<div data-elementor-type="wp-page" data-elementor-id="540" class="elementor elementor-540" data-elementor-post-type="page">
 				<div class="elementor-element elementor-element-2cb5f4f animated-slow imagezoom e-flex e-con-boxed e-con e-parent" data-id="2cb5f4f" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;animation&quot;:&quot;none&quot;,&quot;animation_delay&quot;:0}">
 					<div class="e-con-inner">
-					</div>
-				</div>
 		<div class="elementor-element elementor-element-3805cf9 e-flex e-con-boxed e-con e-parent" data-id="3805cf9" data-element_type="container" data-e-type="container">
 					<div class="e-con-inner">
 				<div class="elementor-element elementor-element-c7345d2 elementor-widget elementor-widget-heading" data-id="c7345d2" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
@@ -264,6 +290,8 @@ class="post-540 page type-page status-publish ast-article-single" id="post-540" 
 					</a>
 				</div>
 								</div>
+				</div>
+					</div>
 				</div>
 					</div>
 				</div>
