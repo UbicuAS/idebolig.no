@@ -52,6 +52,7 @@ KANONISK = {
     "odin/index.html":            "/odin/",
     "prosjekter/index.html":      "/prosjekter/",
     "tiril/index.html":           "/tiril/",
+    "til-salgs/index.html":       "/til-salgs/",
     "tjenester/index.html":       "/tjenester/",
     "vilde/index.html":           "/vilde/",
     "våre-boliger/index.html":    "/v%C3%A5re-boliger/",

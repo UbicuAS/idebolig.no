@@ -33,6 +33,7 @@ SIDER = [
     ("odin/index.html",            "/odin/",           0.7, "yearly"),
     ("tiril/index.html",           "/tiril/",          0.7, "yearly"),
     ("vilde/index.html",           "/vilde/",          0.7, "yearly"),
+    ("til-salgs/index.html",       "/til-salgs/",      0.6, "monthly"),
     ("about/index.html",           "/about/",          0.6, "yearly"),
     ("kontakt/index.html",         "/kontakt/",        0.6, "yearly"),
 ]
