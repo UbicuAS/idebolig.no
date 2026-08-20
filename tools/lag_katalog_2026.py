@@ -1,10 +1,15 @@
 #!/usr/bin/env python3
 """Bygger den store bla-katalogen «Boligkatalog 2026» på en skjult URL
 (/katalog-2026-h7vq3kfm/) — inspirert av arkitekt-hus.no sin Heyzine-katalog,
-men selvhostet på samme flipbok-motor som /boligkatalog/.
+men selvhostet.
 
-Innhold: solo forside → velkomst + innholdsfortegnelse → to oppslag per bolig
-(fasade + fakta, interiør + plantegning) → tjenester + fri side → solo bakside.
+Bla-motoren er StPageFlip (page-flip.browser.js, MIT, vendret i katalogmappa)
+— den gir myk sidebøy, dra-fra-hjørnet, skygger og stiv perm/myke ark, altså
+den ekte katalogfølelsen. (Første utgave brukte den stive rotateY-motoren fra
+/boligkatalog/; byttet 21. aug etter tilbakemelding fra Marius.)
+
+Innhold: hard forside → velkomst + innholdsfortegnelse → to oppslag per bolig
+(fasade + fakta, interiør + plantegning) → tjenester + fri side → hard bakside.
 Plantegninger finnes bare for Vilde; de andre får tydelig merkede
 PLASSHOLDER-bokser som Marius fyller senere (send ny tegning → legg inn her).
 
@@ -195,7 +200,7 @@ def bygg() -> None:
       <h2>Boligkatalog</h2>
       <p class="fb-aar">2026</p>
       <p>Åtte boligmodeller — fra klassisk til funkis</p>
-      <span class="fb-permhint">Klikk eller bruk piltastene for å bla</span>
+      <span class="fb-permhint">Dra i hjørnet, sveip eller bruk pilene for å bla</span>
     </div>"""
     bakside = """<div class="fb-perm fb-perm--bak">
       <img src="../wp-content/uploads/2024/11/Hvit-logo-sidestilt.png" alt="Idébolig AS">
@@ -205,33 +210,40 @@ def bygg() -> None:
       <a class="fb-permlenke" href="../kontakt/">Ta kontakt →</a>
     </div>"""
 
-    # Sidetall: venstre/høyre side i hvert oppslag, fortløpende fra 2.
+    # Trykte sidetall: forsiden er unummerert, første innside er side 2, slik
+    # at venstresider får partall som i en trykt katalog.
     toc = [(b["navn"], f'{b["type"]} · {b["stil"]}', 4 + 4 * n)
            for n, b in enumerate(BOLIGER)]
     toc.append(("Tjenester", "Idébolig AS", 4 + 4 * len(BOLIGER)))
 
-    sider = [None, forside]                        # spread 0: solo forside
-    sider += [velkomstside(2), tocside(toc, 3)]    # spread 1
+    innsider = [velkomstside(2), tocside(toc, 3)]
     nr = 4
     for b in BOLIGER:
-        sider += [fotoside(b["bilde"], b["navn"], nr), infoside(b, nr + 1)]
-        sider += [duoside(MEDIA[b["slug"]], nr + 2), planside(b, nr + 3)]
+        innsider += [fotoside(b["bilde"], b["navn"], nr), infoside(b, nr + 1)]
+        innsider += [duoside(MEDIA[b["slug"]], nr + 2), planside(b, nr + 3)]
         nr += 4
-    sider += [tjenesteside(nr), friside(nr + 1)]
-    sider += [bakside, None]                       # siste spread: solo bakside
+    innsider += [tjenesteside(nr), friside(nr + 1)]
 
-    spreads = [[sider[i], sider[i + 1]] for i in range(0, len(sider), 2)]
-    spread_divs = "".join(
-        f'<template id="fb-s{i}l">{v or ""}</template>'
-        f'<template id="fb-s{i}r">{h or ""}</template>'
-        for i, (v, h) in enumerate(spreads))
-    solo = [i for i, (v, h) in enumerate(spreads) if v is None or h is None]
+    # Bokas fysiske sider: hard perm + myke ark + hard perm. Innsider med
+    # oddetallsindeks ligger til venstre i oppslaget → fals (ryggskygge) på
+    # høyre kant; partallsindeks til høyre → fals på venstre kant.
+    sider = ['<div class="side side--perm" data-density="hard">'
+             f'{forside}</div>']
+    for i, innhold in enumerate(innsider, start=1):
+        fals = "fals--v" if i % 2 == 0 else "fals--h"
+        sider.append(f'<div class="side">{innhold}'
+                     f'<div class="fals {fals}"></div></div>')
+    sider.append('<div class="side side--perm" data-density="hard">'
+                 f'{bakside}</div>')
+    sider_html = "\n".join(sider)
+    antall = len(sider)
+    oppslag = (antall - 2) // 2
 
     main = f"""
 <style>
 #fbk{{--gull:#C99C55;--mork:#33302C;--grå:#6b6257;--krem:#F7F3EC;--papir:#FDFBF7;
   font-family:Poppins,sans-serif;color:var(--mork);background:var(--krem);
-  padding:80px 20px 100px;overflow:hidden}}
+  padding:80px 20px 100px}}
 :where(#fbk *){{box-sizing:border-box;margin:0}}
 .fbk-indre{{max-width:1160px;margin:0 auto}}
 .fbk-topp{{max-width:640px;margin:0 auto 44px;text-align:center}}
@@ -243,47 +255,12 @@ def bygg() -> None:
 #fbk h1{{font-size:clamp(32px,4.5vw,48px);font-weight:700;letter-spacing:-.015em;
   margin-bottom:16px}}
 .fbk-intro{{color:var(--grå);font-size:15.5px;line-height:1.7}}
-.fb-scene{{perspective:2600px;max-width:1020px;margin:0 auto}}
-.fb-stack{{position:relative;width:100%;aspect-ratio:3/2;
-  transition:translate 1.15s cubic-bezier(.36,.04,.22,1);will-change:translate}}
-.fb-halv{{position:absolute;top:0;bottom:0;width:50%;background:var(--papir);
-  overflow:hidden;box-shadow:0 18px 50px rgba(51,48,44,.22)}}
-.fb-halv--v{{left:0;border-radius:10px 2px 2px 10px}}
-.fb-halv--h{{right:0;border-radius:2px 10px 10px 2px}}
-.fb-halv--v::after{{content:"";position:absolute;inset:0 0 0 auto;width:34px;
-  background:linear-gradient(to left,rgba(0,0,0,.09),transparent)}}
-.fb-halv--h::after{{content:"";position:absolute;inset:0 auto 0 0;width:34px;
-  background:linear-gradient(to right,rgba(0,0,0,.09),transparent)}}
-.fb-halv.fb-blank{{visibility:hidden}}
-.fb-slot{{position:absolute;inset:0;visibility:hidden;transform:translateZ(0)}}
-.fb-slot.aktiv{{visibility:visible}}
-.fb-halv::after{{z-index:3}}
-.fb-leaf{{position:absolute;top:0;bottom:0;left:50%;width:50%;
-  transform-style:preserve-3d;transform-origin:left center;z-index:5;
-  will-change:transform;--fb-ms:1150ms}}
-.fb-leaf-f,.fb-leaf-b{{position:absolute;inset:0;backface-visibility:hidden;
-  background:var(--papir);overflow:hidden;border-radius:2px 10px 10px 2px;
-  transform:translateZ(0)}}
-.fb-leaf-b{{transform:rotateY(180deg) translateZ(0);border-radius:10px 2px 2px 10px}}
-.fb-leaf{{visibility:hidden}}
-.fb-leaf.aktiv{{visibility:visible}}
-.fb-leaf-f::after,.fb-leaf-b::after{{content:"";position:absolute;inset:0;
-  pointer-events:none;opacity:0;
-  background:linear-gradient(to right,rgba(24,22,19,.30),rgba(24,22,19,.06) 55%,transparent)}}
-.fb-leaf.aktiv .fb-leaf-f::after,.fb-leaf.aktiv .fb-leaf-b::after{{
-  animation:fbSkygge var(--fb-ms) ease-in-out forwards}}
-@keyframes fbSkygge{{0%{{opacity:0}}45%{{opacity:1}}100%{{opacity:0}}}}
-@keyframes fbNeste{{0%{{transform:rotateY(0)}}100%{{transform:rotateY(-180deg)}}}}
-@keyframes fbForrige{{0%{{transform:rotateY(-180deg)}}100%{{transform:rotateY(0)}}}}
-.fb-hjorne{{position:absolute;top:0;width:74px;height:74px;pointer-events:none;
-  opacity:0;transition:opacity .3s;z-index:6}}
-.fb-hjorne--h{{right:0;clip-path:polygon(100% 0,0 0,100% 100%);
-  background:radial-gradient(circle at 100% 0,#fff 0%,#EDE6D8 55%,#D9CFBB 100%);
-  filter:drop-shadow(-3px 3px 4px rgba(0,0,0,.18))}}
-.fb-hjorne--v{{left:0;clip-path:polygon(0 0,100% 0,0 100%);
-  background:radial-gradient(circle at 0 0,#fff 0%,#EDE6D8 55%,#D9CFBB 100%);
-  filter:drop-shadow(3px 3px 4px rgba(0,0,0,.18))}}
-.fb-scene:hover .fb-hjorne.fb-kan{{opacity:.9}}
+.fbk-scene{{max-width:1020px;margin:0 auto;filter:drop-shadow(0 24px 44px rgba(51,48,44,.28))}}
+.side{{background:var(--papir);overflow:hidden;border:1px solid rgba(51,48,44,.06)}}
+.side--perm{{border:0}}
+.fals{{position:absolute;top:0;bottom:0;width:5.5%;pointer-events:none;z-index:3}}
+.fals--h{{right:0;background:linear-gradient(to left,rgba(0,0,0,.10),transparent)}}
+.fals--v{{left:0;background:linear-gradient(to right,rgba(0,0,0,.10),transparent)}}
 .fb-sidenr{{position:absolute;bottom:11px;margin:0!important;
   font:600 11px Inter,sans-serif;letter-spacing:.06em;z-index:2}}
 .fb-sidenr--v{{left:16px;color:rgba(255,255,255,.85)}}
@@ -364,25 +341,24 @@ def bygg() -> None:
 .fb-permhint{{margin-top:26px;font:500 clamp(10px,1.2vw,12.5px) Inter,sans-serif;opacity:.65}}
 .fb-permlenke{{margin-top:18px;font:600 clamp(12px,1.4vw,15px) Poppins,sans-serif;
   color:var(--gull);text-decoration:none}}
-.fbk-kontroll{{display:flex;align-items:center;justify-content:center;gap:20px;margin-top:34px}}
-.fbk-kontroll button{{width:46px;height:46px;border-radius:50%;border:1.5px solid #E3DCCF;
-  background:#fff;color:var(--mork);font-size:19px;cursor:pointer;transition:.2s}}
+.fbk-kontroll{{display:flex;align-items:center;justify-content:center;gap:20px;margin-top:38px}}
+.fbk-kontroll button{{flex:0 0 46px;width:46px;height:46px;border-radius:50%;
+  border:1.5px solid #E3DCCF;background:#fff;color:var(--mork);font-size:19px;
+  cursor:pointer;transition:.2s;padding:0;line-height:1;min-width:0}}
 .fbk-kontroll button:hover:not([disabled]){{background:var(--gull);border-color:var(--gull);color:#fff}}
 .fbk-kontroll button[disabled]{{opacity:.35;cursor:default}}
 .fbk-teller{{font:500 13.5px Inter,sans-serif;color:var(--grå);min-width:110px;text-align:center}}
-.fbk-kontroll button{{flex:0 0 46px;padding:0;line-height:1;min-width:0}}
-@media(hover:none){{.fb-hjorne{{display:none}}}}
+#fbk-full{{font-size:15px}}
+#fbk:fullscreen{{display:flex;flex-direction:column;justify-content:center;
+  overflow:auto;padding:24px 20px}}
+#fbk:fullscreen .fbk-topp{{display:none}}
+#fbk:fullscreen .fbk-scene{{max-width:min(1500px,94vw)}}
 @media(max-width:700px){{
- #fbk{{padding:56px 0 70px}}
+ #fbk{{padding:56px 12px 70px}}
  .fbk-topp{{padding:0 16px}}
- .fb-scene{{overflow:hidden;perspective:1400px}}
- .fb-stack{{width:200%;transition:translate .8s cubic-bezier(.36,.04,.22,1)}}
- .fb-halv--v{{border-radius:10px}}
- .fb-halv--h{{border-radius:10px}}
- .fb-specs{{gap:5px}}
  .fb-foto p{{font-size:19px}}
  .fb-info{{padding:7% 8%}}
- .fb-stack{{transition:translate 1.6s cubic-bezier(.33,.05,.2,1)}}
+ .fb-specs{{gap:5px}}
 }}
 </style>
 <section id="fbk">
@@ -391,180 +367,61 @@ def bygg() -> None:
     <p class="fbk-kicker">Bla i katalogen</p>
     <h1>Boligkatalog 2026</h1>
     <p class="fbk-intro">Bla deg gjennom boligene våre som i en ekte katalog —
-      klikk på sidene, bruk pilene eller sveip.</p>
+      ta tak i hjørnet og dra, sveip, eller bruk pilene.</p>
   </div>
-  <div class="fb-scene" id="fb-scene">
-    <div class="fb-stack" id="fb-stack">
-      <div class="fb-halv fb-halv--v" id="fb-venstre"></div>
-      <div class="fb-halv fb-halv--h" id="fb-hoyre"></div>
-      <div class="fb-hjorne fb-hjorne--v" id="fb-hj-v"></div>
-      <div class="fb-hjorne fb-hjorne--h" id="fb-hj-h"></div>
+  <div class="fbk-scene">
+    <div id="fbk-bok">
+{sider_html}
     </div>
   </div>
   <div class="fbk-kontroll">
     <button id="fb-forrige" aria-label="Forrige side">‹</button>
     <span class="fbk-teller" id="fb-teller"></span>
     <button id="fb-neste" aria-label="Neste side">›</button>
+    <button id="fbk-full" aria-label="Fullskjerm" title="Fullskjerm">⛶</button>
   </div>
-  {spread_divs}
  </div>
 </section>
+<script src="page-flip.browser.js"></script>
 <script>
 (function(){{
- var ANTALL={len(spreads)},SOLO={solo},i=0,side='r',laast=false,MS=1150,klargjortFor=-1;
- var vEl=document.getElementById('fb-venstre'),hEl=document.getElementById('fb-hoyre'),
-     stack=document.getElementById('fb-stack'),teller=document.getElementById('fb-teller'),
-     knappF=document.getElementById('fb-forrige'),knappN=document.getElementById('fb-neste'),
-     hjV=document.getElementById('fb-hj-v'),hjH=document.getElementById('fb-hj-h'),
-     smal=window.matchMedia('(max-width:700px)');
- function tpl(id){{var e=document.getElementById(id);
-  return (e&&e.content.firstElementChild)?e:null;}}
- function harInnhold(s,kant){{return !!tpl('fb-s'+s+kant);}}
- var SIDER=[];
- for(var s=0;s<ANTALL;s++){{['l','r'].forEach(function(kant){{
-  if(harInnhold(s,kant))SIDER.push(s+kant);}});}}
- // dobbeltbufrede halvdeler: fyll skjult slot i fred, veksle med ren visibility
- function lagHalv(el){{el.innerHTML='';
-  var a=document.createElement('div'),b=document.createElement('div');
-  a.className='fb-slot aktiv';b.className='fb-slot';
-  el.appendChild(a);el.appendChild(b);
-  return {{el:el,slots:[a,b],aktiv:0}};}}
- var HV=lagHalv(vEl),HH=lagHalv(hEl);
- function fyll(halv,id){{var slot=halv.slots[1-halv.aktiv];slot.innerHTML='';
-  var e=tpl(id);
-  if(e)slot.appendChild(e.content.firstElementChild.cloneNode(true));
-  slot.dataset.tom=e?'':'1';}}
- function veksle(halv){{halv.aktiv=1-halv.aktiv;
-  halv.slots[halv.aktiv].classList.add('aktiv');
-  halv.slots[1-halv.aktiv].classList.remove('aktiv');
-  halv.el.classList.toggle('fb-blank',halv.slots[halv.aktiv].dataset.tom==='1');}}
- function settDirekte(halv,id){{fyll(halv,id);veksle(halv);}}
- // permanent ark med varmt GPU-lag
- var leaf=document.createElement('div');leaf.className='fb-leaf';
- var ff=document.createElement('div');ff.className='fb-leaf-f';
- var fb=document.createElement('div');fb.className='fb-leaf-b';
- leaf.appendChild(ff);leaf.appendChild(fb);stack.appendChild(leaf);
- function innI(el,id){{el.innerHTML='';var e=tpl(id);
-  if(e)el.appendChild(e.content.firstElementChild.cloneNode(true));}}
- function klargjorFrem(){{
-  if(i+1>=ANTALL){{klargjortFor=-1;return;}}
-  innI(ff,'fb-s'+i+'r');innI(fb,'fb-s'+(i+1)+'l');
-  fyll(HH,'fb-s'+(i+1)+'r');fyll(HV,'fb-s'+(i+1)+'l');
-  klargjortFor=i;
+ var ANTALL={antall},OPPSLAG={oppslag};
+ var teller=document.getElementById('fb-teller'),
+     knappF=document.getElementById('fb-forrige'),
+     knappN=document.getElementById('fb-neste'),
+     full=document.getElementById('fbk-full'),
+     seksjon=document.getElementById('fbk');
+ var bok=new St.PageFlip(document.getElementById('fbk-bok'),{{
+  width:510,height:680,size:'stretch',
+  minWidth:290,maxWidth:760,minHeight:387,maxHeight:1013,
+  showCover:true,usePortrait:true,
+  maxShadowOpacity:.45,flippingTime:850,swipeDistance:24,
+  showPageCorners:true,mobileScrollSupport:false
+ }});
+ bok.loadFromHTML(document.querySelectorAll('#fbk-bok .side'));
+ function oppdater(){{
+  var i=bok.getCurrentPageIndex(),staaende=bok.getOrientation()==='portrait';
+  if(i<=0)teller.textContent='Forside';
+  else if(i>=ANTALL-1)teller.textContent='Bakside';
+  else if(staaende)teller.textContent='Side '+i+' av '+(ANTALL-2);
+  else teller.textContent='Oppslag '+Math.ceil(i/2)+' av '+OPPSLAG;
+  knappF.disabled=i<=0;
+  knappN.disabled=i>=ANTALL-1;
  }}
- function mobil(){{return smal.matches;}}
- function fiksSide(){{
-  if(!harInnhold(i,'l'))side='r';
-  else if(!harInnhold(i,'r'))side='l';
- }}
- function pan(){{
-  if(mobil())stack.style.translate=(side==='r')?'-50%':'0';
-  else stack.style.translate=(SOLO.indexOf(i)>-1)?(HV.el.classList.contains('fb-blank')?'-25%':'25%'):'0';
- }}
- function oppdaterUI(){{
-  if(mobil()){{
-   fiksSide();
-   teller.textContent='Side '+(SIDER.indexOf(i+side)+1)+' av '+SIDER.length;
-   knappF.disabled=i===0;
-   knappN.disabled=(i===ANTALL-1)&&(side==='l'?!harInnhold(ANTALL-1,'r'):true);
-  }}else{{
-   teller.textContent=i===0?'Forside':(i===ANTALL-1?'Bakside':'Oppslag '+i+' av '+(ANTALL-2));
-   knappF.disabled=i===0;knappN.disabled=i===ANTALL-1;
-  }}
-  hjH.classList.toggle('fb-kan',i<ANTALL-1);hjV.classList.toggle('fb-kan',i>0);
-  pan();
- }}
- function vis(){{
-  settDirekte(HV,'fb-s'+i+'l');settDirekte(HH,'fb-s'+i+'r');
-  oppdaterUI();
-  if('requestIdleCallback' in window)requestIdleCallback(klargjorFrem,{{timeout:800}});
-  else setTimeout(klargjorFrem,120);
- }}
- function startAnim(navn){{
-  leaf.style.animation='none';void leaf.offsetWidth;
-  leaf.classList.add('aktiv');
-  leaf.style.animation=navn+' '+MS+'ms cubic-bezier(.36,.04,.22,1) forwards';
- }}
- function etterVend(ny,retning){{
-  return function(){{
-   if(retning>0)veksle(HV);else veksle(HH);
-   leaf.classList.remove('aktiv');leaf.style.animation='none';
-   i=ny;oppdaterUI();laast=false;
-   if('requestIdleCallback' in window)requestIdleCallback(klargjorFrem,{{timeout:800}});
-   else setTimeout(klargjorFrem,120);
-  }};
- }}
- function vend(retning,etterSide){{
-  var ny=i+retning;
-  if(laast||ny<0||ny>=ANTALL)return;
-  laast=true;
-  if(mobil()){{side=etterSide;
-   if(!harInnhold(ny,side==='l'?'l':'r'))side=(side==='l')?'r':'l';}}
-  var ferdig=false,sluttfunk=etterVend(ny,retning);
-  function slutt(){{if(ferdig)return;ferdig=true;
-   leaf.removeEventListener('animationend',slutt);sluttfunk();}}
-  leaf.addEventListener('animationend',slutt);
-  setTimeout(slutt,MS+300);
-  if(retning>0&&klargjortFor===i){{
-   // forhaandsbakt: null DOM-arbeid i trykkoyeblikket
-   veksle(HH);
-   startAnim('fbNeste');
-   stackPanTil(ny);
-  }}else{{
-   if(retning>0){{
-    innI(ff,'fb-s'+i+'r');innI(fb,'fb-s'+ny+'l');
-    fyll(HH,'fb-s'+ny+'r');fyll(HV,'fb-s'+ny+'l');
-    void leaf.offsetWidth;
-    requestAnimationFrame(function(){{requestAnimationFrame(function(){{
-     veksle(HH);startAnim('fbNeste');stackPanTil(ny);}});}});
-   }}else{{
-    innI(ff,'fb-s'+ny+'r');innI(fb,'fb-s'+i+'l');
-    fyll(HV,'fb-s'+ny+'l');fyll(HH,'fb-s'+ny+'r');
-    void leaf.offsetWidth;
-    requestAnimationFrame(function(){{requestAnimationFrame(function(){{
-     veksle(HV);startAnim('fbForrige');stackPanTil(ny);}});}});
-   }}
-  }}
- }}
- function stackPanTil(ny){{
-  if(mobil())stack.style.translate=(side==='r')?'-50%':'0';
-  else stack.style.translate=(SOLO.indexOf(ny)>-1)?(ny===0?'25%':'-25%'):'0';
- }}
- function bla(retning){{
-  if(laast)return;
-  if(mobil()){{
-   if(retning>0){{
-    if(side==='l'&&harInnhold(i,'r')){{side='r';oppdaterUI();}}
-    else vend(1,'l');
-   }}else{{
-    if(side==='r'&&harInnhold(i,'l')){{side='l';oppdaterUI();}}
-    else vend(-1,'r');
-   }}
-  }}else vend(retning,retning>0?'l':'r');
- }}
- smal.addEventListener('change',function(){{fiksSide();vis();}});
- knappN.addEventListener('click',function(){{bla(1);}});
- knappF.addEventListener('click',function(){{bla(-1);}});
- hEl.addEventListener('click',function(e){{if(!e.target.closest('a'))bla(1);}});
- vEl.addEventListener('click',function(e){{if(!e.target.closest('a'))bla(-1);}});
+ bok.on('flip',oppdater);
+ bok.on('changeOrientation',oppdater);
+ knappN.addEventListener('click',function(){{bok.flipNext();}});
+ knappF.addEventListener('click',function(){{bok.flipPrev();}});
  document.addEventListener('keydown',function(e){{
-  if(e.key==='ArrowRight'||e.key==='Right')bla(1);
-  if(e.key==='ArrowLeft'||e.key==='Left')bla(-1);}});
- var sx=null;
- stack.addEventListener('touchstart',function(e){{sx=e.touches[0].clientX;}},{{passive:true}});
- stack.addEventListener('touchend',function(e){{if(sx===null)return;
-  var dx=e.changedTouches[0].clientX-sx;sx=null;
-  if(dx<-40)bla(1);if(dx>40)bla(-1);}},{{passive:true}});
- vis();
- function forhaandslast(){{
-  var sett={{}};
-  [].slice.call(document.querySelectorAll('#fbk template')).forEach(function(tp){{
-   [].slice.call(tp.content.querySelectorAll('img')).forEach(function(im){{
-    var s=im.getAttribute('src');if(s&&!sett[s]){{sett[s]=1;
-     var b=new Image();b.src=s;if(b.decode)b.decode().catch(function(){{}});}}}});}});
- }}
- if('requestIdleCallback' in window)requestIdleCallback(forhaandslast,{{timeout:2500}});
- else setTimeout(forhaandslast,1200);
+  if(e.key==='ArrowRight'||e.key==='Right')bok.flipNext();
+  if(e.key==='ArrowLeft'||e.key==='Left')bok.flipPrev();}});
+ if(seksjon.requestFullscreen){{
+  full.addEventListener('click',function(){{
+   if(document.fullscreenElement)document.exitFullscreen();
+   else seksjon.requestFullscreen();
+  }});
+ }}else{{full.style.display='none';}}
+ oppdater();
 }})();
 </script>
 """
@@ -582,7 +439,9 @@ def bygg() -> None:
         f'href="https://idebolig.no/{SLUG}/"')
     (ROOT / SLUG).mkdir(exist_ok=True)
     (ROOT / SLUG).joinpath("index.html").write_text(side, encoding="utf-8")
-    print(f"Skrev katalog med {len(spreads)} oppslag til {SLUG}/index.html")
+    if not (ROOT / SLUG / "page-flip.browser.js").exists():
+        raise SystemExit("MANGLER: page-flip.browser.js må ligge i katalogmappa")
+    print(f"Skrev katalog med {antall} sider ({oppslag} oppslag) til {SLUG}/index.html")
 
 
 if __name__ == "__main__":
