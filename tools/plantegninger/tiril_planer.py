@@ -69,21 +69,36 @@ class Enhet:
         romnavn(self.X(x), y, navn, areal, **k)
 
 
+def poly(E: Enhet, pts, fill):
+    d = "M " + " L ".join(f"{E.X(x)} {y}" for x, y in pts) + " Z"
+    alva_helpers.deler.append(f'<path d="{d}" fill="{fill}"/>')
+
+
+def polykant(E: Enhet, pts):
+    """Rekkverk langs en åpen kant (tett trerekkverk)."""
+    d = "M " + " L ".join(f"{E.X(x)} {y}" for x, y in pts)
+    alva_helpers.deler.append(
+        f'<path d="{d}" fill="none" stroke="{MORK}" stroke-width="70"/>')
+    alva_helpers.deler.append(
+        f'<path d="{d}" fill="none" stroke="#6B5B45" stroke-width="26" '
+        f'stroke-dasharray="260 90"/>')
+
+
 def enhet2(E: Enhet, balkong_foran: float):
-    # --- balkonger (tett trerekkverk)
-    E.r(600, -2600, 4400, 2600, "url(#dekke)")
-    rekkverk_h(E.X(600, 4400), -2710, E.X(600, 4400) + 4400)
-    linje(E.X(600, 0), -2600, E.X(600, 0), 0, MORK, 50)
-    linje(E.X(5000, 0), -2600, E.X(5000, 0), 0, MORK, 50)
-    E.tekst(2800, -1200, "Balkong 11,9 m²", 230, GRAA, 600)
-    bord(E.X(1400, 800), -2000, 800, 800, rx=400)
-    stol(E.X(2400, 420), -1800); stol(E.X(900, 420), -1150)
-    E.r(2000, D, 4000, 2400, "url(#dekke)")
-    rekkverk_h(E.X(2000, 4000), D + 2400, E.X(2000, 4000) + 4000)
-    linje(E.X(2000, 0), D, E.X(2000, 0), D + 2510, MORK, 50)
-    linje(E.X(6000, 0), D, E.X(6000, 0), D + 2510, MORK, 50)
-    E.tekst(4000, D + 1350, f"Balkong {balkong_foran} m²", 230, GRAA, 600)
-    stol(E.X(2700, 420), D + 700); stol(E.X(3500, 420), D + 700)
+    # --- balkong BAK (11,9): rektangel med skråkuttet ytterhjørne (CAD)
+    poly(E, [(1900, -2600), (5000, -2600), (5000, 0), (600, 0), (600, -1400)],
+         "url(#dekke)")
+    polykant(E, [(600, 0), (600, -1400), (1900, -2600), (5000, -2600), (5000, 0)])
+    E.tekst(3000, -550, "Balkong 11,9 m²", 220, GRAA, 600)
+    bord(E.X(2600, 800), -2100, 800, 800, rx=400)
+    stol(E.X(3700, 420), -1900); stol(E.X(2100, 420), -1250)
+    # --- balkong FORAN (9,8 / 7,8): trapes med skrå framkant, dypest mot midten
+    dyp_ytre, dyp_indre = (1600, 2800) if balkong_foran > 9 else (1300, 2300)
+    poly(E, [(2000, D), (6000, D), (6000, D + dyp_indre), (2000, D + dyp_ytre)],
+         "url(#dekke)")
+    polykant(E, [(2000, D), (2000, D + dyp_ytre), (6000, D + dyp_indre), (6000, D)])
+    E.tekst(4000, D + 1050, f"Balkong {balkong_foran} m²", 220, GRAA, 600)
+    stol(E.X(2900, 420), D + 500); stol(E.X(3700, 420), D + 550)
     # --- trappehus-utstikk på gavlen
     E.r(-1500, 4400, 1500 + YV, 3200, "url(#parkett)")
     E.r(-1500, 4400, 1500, YV, MORK)
