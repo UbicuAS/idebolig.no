@@ -165,25 +165,26 @@ GUIDE = [
 
 
 # Frisiden (s. 45): hva som faktisk kan endres på en modell.
+# Tekstene holdes KORTE med vilje — siden har fem punkter og er den tetteste
+# i katalogen. Ved sidebredde 400 px flyter den over hvis punktene vokser til
+# mer enn to linjer hver. Mål etter endring (se KONTROLLREGLER-tankegangen:
+# regn før du tegner) — det er lettere å kutte her enn å oppdage klipping live.
 TILPASNING = [
     ("Planløsningen",
-     "Flytt en vegg, slå sammen to soverom eller gjør om et soverom til "
-     "hjemmekontor. Bærende konstruksjon setter rammene — innenfor dem er "
-     "det mye som lar seg justere."),
-    ("Garasje, bod og uteplass",
-     "Garasje kan legges til, gjøres dobbel eller trekkes inn i boligen. "
-     "Edvard, Edvard Prakt og Vilde har dobbel garasje allerede i "
-     "grunnutgaven."),
+     "Flytt en vegg, slå sammen to soverom, eller gjør et soverom til "
+     "hjemmekontor. Bærende konstruksjon setter rammene."),
+    ("Garasje og uteplass",
+     "Garasje kan legges til, dobles eller trekkes inn i boligen. Edvard, "
+     "Edvard Prakt og Vilde har dobbel garasje i grunnutgaven."),
     ("Utleiedel",
-     "Edvard Prakt har en utleiedel på 30 m². Vurderer dere utleie i en "
-     "annen modell, ser vi på om planløsningen kan legges til rette for en "
-     "egen enhet."),
+     "Edvard Prakt har utleiedel på 30 m². I andre modeller ser vi på om "
+     "planen kan legges til rette for en egen enhet."),
     ("Uttrykk og materialer",
-     "Kledning, farger, takform og vindusinndeling avgjør om boligen leser "
-     "klassisk eller moderne. Samme planløsning kan få svært ulikt uttrykk."),
+     "Kledning, farge, takform og vinduer avgjør om boligen leser klassisk "
+     "eller moderne. Samme plan, svært ulikt uttrykk."),
     ("Speilvending og tomt",
-     "Modellen kan speilvendes slik at stue og uteplass vender mot sola og "
-     "utsikten, og tilpasses fall, adkomst og himmelretning på tomten."),
+     "Modellen kan speilvendes mot sol og utsikt, og tilpasses fall og "
+     "adkomst på tomten."),
 ]
 
 def qr_svg(url: str = "https://idebolig.no/", storrelse: int = 340) -> str:
@@ -490,8 +491,7 @@ def tilpasningside(nr: int) -> str:
         Dette er det som oftest justeres.</p>
       <ol class="fb-steg fb-steg--guide">{rader}</ol>
       <p class="fb-brod fb-brod--liten">Finner dere ikke modellen dere ser
-        etter, tegner vi en helt egen — arkitekttjenester, prosjektering og
-        byggesøknad er en del av det vi leverer.</p>
+        etter, tegner vi en helt egen.</p>
       <a class="fb-lenke" href="../kontakt/">Snakk med oss om tilpasning →</a>
       <span class="fb-sidenr fb-sidenr--h">{nr}</span>
     </div>"""
@@ -599,37 +599,37 @@ def bygg() -> None:
   padding:24px 16px 10px;color:#fff;font:600 11px Inter,sans-serif;
   letter-spacing:.1em;text-transform:uppercase;
   background:linear-gradient(to top,rgba(24,22,19,.6),transparent)}}
-.fb-info{{position:absolute;inset:0;padding:8% 9%;display:flex;flex-direction:column}}
-.fb-kicker{{font:600 10.5px Inter,sans-serif;letter-spacing:.2em;text-transform:uppercase;
+.fb-info{{position:absolute;inset:0;padding:8% 9%;display:flex;flex-direction:column;container-type:size}}
+.fb-kicker{{font:600 2.51cqw Inter,sans-serif;letter-spacing:.2em;text-transform:uppercase;
   color:var(--gull);margin-bottom:10px}}
-.fb-info h3{{font-size:clamp(20px,2.6vw,30px);font-weight:700;margin-bottom:6px}}
-.fb-tagline{{color:var(--grå);font-size:clamp(11px,1.3vw,14px);line-height:1.55;margin-bottom:14px}}
+.fb-info h3{{font-size:7.17cqw;font-weight:700;margin-bottom:6px}}
+.fb-tagline{{color:var(--grå);font-size:3.35cqw;line-height:1.55;margin-bottom:14px}}
 .fb-specs{{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:14px}}
 .fb-spec{{background:var(--krem);border-radius:8px;padding:8px 11px}}
-.fb-spec span{{display:block;font:600 9px Inter,sans-serif;letter-spacing:.12em;
+.fb-spec span{{display:block;font:600 2.15cqw Inter,sans-serif;letter-spacing:.12em;
   text-transform:uppercase;color:var(--gull)}}
-.fb-spec b{{font-size:clamp(11px,1.4vw,14.5px)}}
-.fb-tekst{{color:var(--grå);font-size:clamp(10.5px,1.25vw,13.5px);line-height:1.65;flex:1;overflow:hidden}}
+.fb-spec b{{font-size:3.47cqw}}
+.fb-tekst{{color:var(--grå);font-size:3.23cqw;line-height:1.65;flex:1;overflow:hidden}}
 .fb-tekst--kort{{flex:0 1 auto;margin-top:12px}}
-.fb-brod{{color:var(--grå);font-size:clamp(11px,1.35vw,14px);line-height:1.7;margin-bottom:12px}}
-.fb-sign{{margin-top:auto;font:600 clamp(11px,1.3vw,13.5px) Poppins,sans-serif;color:var(--gull)}}
-.fb-lenke{{font:600 clamp(11px,1.3vw,14px) Poppins,sans-serif;color:var(--gull);text-decoration:none}}
+.fb-brod{{color:var(--grå);font-size:3.35cqw;line-height:1.7;margin-bottom:12px}}
+.fb-sign{{margin-top:auto;font:600 3.23cqw Poppins,sans-serif;color:var(--gull)}}
+.fb-lenke{{font:600 3.35cqw Poppins,sans-serif;color:var(--gull);text-decoration:none}}
 .fb-toc{{list-style:none;padding:0;flex:1;display:flex;flex-direction:column;
   justify-content:center;gap:0;margin-top:6px}}
 .fb-toc li{{display:flex;align-items:baseline;gap:9px;padding:2% 0;
-  border-bottom:1px solid rgba(107,98,87,.14);font-size:clamp(11px,1.45vw,15px)}}
+  border-bottom:1px solid rgba(107,98,87,.14);font-size:3.59cqw}}
 .fb-toc li:last-child{{border-bottom:0}}
 .fb-toc b{{font-weight:600}}
-.fb-toc small{{color:var(--grå);font:500 clamp(8px,1vw,10px) Inter,sans-serif;
+.fb-toc small{{color:var(--grå);font:500 2.39cqw Inter,sans-serif;
   letter-spacing:.07em;text-transform:uppercase}}
 .fb-toc .prikker{{flex:1;border-bottom:1px dotted rgba(107,98,87,.45);
   transform:translateY(-3px)}}
-.fb-toc .nr{{font:600 clamp(10px,1.25vw,12.5px) Inter,sans-serif;color:var(--gull)}}
+.fb-toc .nr{{font:600 2.99cqw Inter,sans-serif;color:var(--gull)}}
 .fb-tjenester{{list-style:none;padding:0;margin:2px 0 14px;flex:1;display:flex;
   flex-direction:column;justify-content:center;gap:0}}
 .fb-tjenester li{{position:relative;padding:1.8% 0 1.8% 20px;
   border-bottom:1px solid rgba(107,98,87,.14);
-  font-size:clamp(11px,1.35vw,14.5px)}}
+  font-size:3.47cqw}}
 .fb-tjenester li:last-child{{border-bottom:0}}
 .fb-tjenester li::before{{content:"";position:absolute;left:2px;top:50%;
   width:7px;height:7px;border-radius:50%;background:var(--gull);translate:0 -50%}}
@@ -639,8 +639,8 @@ def bygg() -> None:
 .fb-ph-chip{{font:700 9.5px Inter,sans-serif;letter-spacing:.18em;
   text-transform:uppercase;color:#fff;background:var(--gull);
   padding:6px 12px;border-radius:99px}}
-.fb-ph b{{font:600 clamp(12.5px,1.6vw,17px) Poppins,sans-serif}}
-.fb-ph p{{color:var(--grå);font-size:clamp(10px,1.2vw,12.5px);line-height:1.55}}
+.fb-ph b{{font:600 4.07cqw Poppins,sans-serif}}
+.fb-ph p{{color:var(--grå);font-size:2.99cqw;line-height:1.55}}
 .fb-planer{{flex:1;min-height:0;display:flex;flex-direction:column;gap:6px;margin:8px 0}}
 .fb-planfig{{position:relative;flex:1;min-height:0;background:var(--krem);
   border-radius:10px;overflow:hidden}}
@@ -651,7 +651,7 @@ def bygg() -> None:
   padding:4px 9px;border-radius:99px}}
 .fb-hl{{list-style:none;padding:0;margin:0 0 10px}}
 .fb-hl li{{position:relative;padding:1.1% 0 1.1% 20px;
-  font:500 clamp(10.5px,1.25vw,13.5px) Poppins,sans-serif}}
+  font:500 3.23cqw Poppins,sans-serif}}
 .fb-hl li::before{{content:"";position:absolute;left:2px;top:50%;width:7px;height:7px;
   border-radius:50%;background:var(--gull);translate:0 -50%}}
 .fb-kortgrid{{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;
@@ -659,31 +659,31 @@ def bygg() -> None:
 .fb-kort{{display:flex;flex-direction:column;min-height:0}}
 .fb-kort img{{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:8px;
   margin-bottom:6px;min-height:0}}
-.fb-kort b{{font-size:clamp(11px,1.5vw,15px);margin-bottom:3px}}
+.fb-kort b{{font-size:3.59cqw;margin-bottom:3px}}
 .fb-ki{{display:flex;align-items:center;gap:6px;
-  font:500 clamp(8.5px,1.05vw,11px) Inter,sans-serif;color:var(--grå);
+  font:500 2.63cqw Inter,sans-serif;color:var(--grå);
   padding:1px 0}}
 .fb-ki svg{{width:1.1em;height:1.1em;color:var(--gull);flex:0 0 auto}}
 .fb-steg{{list-style:none;padding:0;margin:6px 0 0;flex:1;display:flex;
   flex-direction:column;justify-content:space-evenly}}
-.fb-steg li b{{display:block;font-size:clamp(10.5px,1.3vw,13.5px);
+.fb-steg li b{{display:block;font-size:3.23cqw;
   color:var(--mork);margin-bottom:1px}}
-.fb-steg li p{{color:var(--grå);font-size:clamp(9.5px,1.12vw,12px);line-height:1.5}}
+.fb-steg li p{{color:var(--grå);font-size:2.87cqw;line-height:1.5}}
 .fb-steg--guide li b{{color:var(--gull)}}
-.fb-brod--liten{{font-size:clamp(10px,1.2vw,12.5px);margin-bottom:6px}}
+.fb-brod--liten{{font-size:2.99cqw;margin-bottom:6px}}
 .fb-kontaktinfo{{background:var(--krem);border-radius:12px;padding:6% 8%;
   margin:4% 0;flex:0 0 auto}}
-.fb-kontaktinfo p{{font-size:clamp(11px,1.35vw,14.5px);line-height:1.8;color:var(--mork)}}
+.fb-kontaktinfo p{{font-size:3.47cqw;line-height:1.8;color:var(--mork)}}
 .fb-info--midt{{align-items:center;text-align:center}}
 .fb-qr{{width:52%;height:auto;max-width:300px;margin:5% 0 3%;
   border-radius:10px;box-shadow:0 4px 18px rgba(51,48,44,.14)}}
-.fb-qrurl{{font:600 clamp(12px,1.5vw,16px) Poppins,sans-serif;color:var(--gull)}}
+.fb-qrurl{{font:600 3.83cqw Poppins,sans-serif;color:var(--gull)}}
 .fb-sitat{{font-size:clamp(14px,1.9vw,22px)!important;font-weight:600!important;
   line-height:1.45!important;padding:44px 9% 22px!important}}
-.fb-toc-sek b{{font-size:clamp(10.5px,1.3vw,13.5px);letter-spacing:.02em}}
+.fb-toc-sek b{{font-size:3.23cqw;letter-spacing:.02em}}
 .fb-toc--modeller{{flex:0 1 auto;margin-top:2px}}
 .fb-toc--modeller li{{padding:1.1% 0 1.1% 16px}}
-.fb-toc--modeller small{{font:500 clamp(9px,1.1vw,11.5px) Inter,sans-serif;
+.fb-toc--modeller small{{font:500 2.75cqw Inter,sans-serif;
   letter-spacing:.05em;text-transform:none;color:var(--mork)}}
 .fb-perm{{position:absolute;inset:0;background:linear-gradient(150deg,#3A362F,#26231F);
   color:#D9D2C5;display:flex;flex-direction:column;align-items:center;
