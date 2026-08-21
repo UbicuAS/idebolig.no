@@ -131,12 +131,13 @@ def etg1(e: E, terr_for, kjokkenstue, d_midt):
     e.tekst(2600, 1840, "8,7 m²", 160, GRAA, 400)
     bord(e.X(1100, 700), 800, 700, 700, rx=350); stol(e.X(2150, 400), 950)
     # --- yttervegger
-    e.r(3400, A, M - 3400, YV, MORK)
-    e.r(0, A, YV, D, MORK)
+    e.r(3400, A, M - 3400, YV, MORK)                        # nordvegg (garasjen)
+    e.r(0, AB, YV, D - AB, MORK)                            # vestvegg (fra VF og ned)
     e.r(0, D - YV, HX, YV, MORK)                            # sørvegg, framskutt del
     e.r(HX, D - HD1 - YV, M - HX, YV, MORK)                 # sørvegg, inntrukket del
     e.r(HX - YV, D - HD1 - YV, YV, HD1 + YV, MORK)          # hakkets vange
-    e.r(0, A, 3400, YV, MORK)
+    # terrassen ved gavlen er ÅPEN — ingen yttervegg, kun dekke-/takkant
+    e.kant([(0, AB), (0, A), (3400, A)], sw=26)
     # --- innervegger
     e.r(3400, A, IV, 6800, MORK)
     e.r(0, AB, 3400 + IV, IV, MORK)                         # terrasse | VF
@@ -164,9 +165,9 @@ def etg1(e: E, terr_for, kjokkenstue, d_midt):
     e.tekst(5500, 2760, "22,6 m²", 180, GRAA, 400)
     e.tekst(5500, 3080, "Betonggulv", 155, GRAA, 400)
     teppe(e.X(1200, 1500), 3500, 1500, 900)
-    garderobe(e.X(2650, 550), 3100, 550, 1500)
+    garderobe(e.X(2700, 550), 4900, 550, 1400)
     toalett(e.X(250, 420), 5950, "n")
-    vask(e.X(1750), 6150, 150)
+    vask(e.X(1500), 7500, 150)
     vaskemaskin(e.X(3600, 600), 5720); vaskemaskin(e.X(4300, 600), 5720)
     hylle(e.X(6300, 1100), 5700, 1100, 420)
     hylle(e.X(150, 700), 9300, 700, 3100)                   # kjøkkenbenk
@@ -203,12 +204,12 @@ def etg2(e: E, bal_bak, bal_for, sov14, master, walkin, gang):
     bord(e.X(1500, 800), 700, 800, 800, rx=400)
     stol(e.X(2650, 400), 850); stol(e.X(650, 400), 1700)
     # --- yttervegger
-    e.r(4650, A, M - 4650, YV, MORK)
-    e.r(4650, A, YV, AB + IV, MORK)
-    e.r(0, AB, 4650 + YV, YV, MORK)
-    e.r(0, A, 4650, YV, MORK)
-    e.r(0, AB, YV, D - AB, MORK)
-    e.r(0, A, YV, AB, MORK)
+    e.r(4650, A, M - 4650, YV, MORK)                        # nordvegg (master)
+    e.r(4650, A, YV, AB + IV, MORK)                         # vegg balkong | master
+    e.r(0, AB, 4650 + YV, YV, MORK)                         # vegg balkong | walk-in
+    e.r(0, AB, YV, D - AB, MORK)                            # vestvegg (fra walk-in og ned)
+    # balkongen ved gavlen er ÅPEN — kun rekkverk/dekkekant
+    e.kant([(0, AB), (0, A), (4650, A)], sw=26)
     e.r(0, D - YV, HX, YV, MORK)                            # sørvegg, framskutt del
     e.r(HX, D - HD2 - YV, M - HX, YV, MORK)                 # sørvegg, inntrukket del
     e.r(HX - YV, D - HD2 - YV, YV, HD2 + YV, MORK)          # hakkets vange
@@ -240,19 +241,19 @@ def etg2(e: E, bal_bak, bal_for, sov14, master, walkin, gang):
     e.vindu_h(6000, D - YV, 1200)
     # --- møblering
     seng(e.X(5300, 1800), 700, 1800, 2100)                  # master
-    nattbord(e.X(4750, 420), 730); nattbord(e.X(7200, 420), 730)
+    nattbord(e.X(7200, 420), 730)
     garderobe(e.X(300, 550), AB + 350, 550, 1800)           # walk-in
     garderobe(e.X(1350, 700), AB + 350, 700, 550)
-    mobel_rect(e.X(300, 1500), 5600, 1500, 650, rx=40)      # kontor
-    stol(e.X(900, 400), 6500)
-    badekar(e.X(4700, 1700), 5450, 1700, 750)               # bad
+    mobel_rect(e.X(300, 1400), 6500, 1400, 620, rx=40)      # kontor: pult
+    stol(e.X(850, 400), 6050)
+    badekar(e.X(5600, 1700), 5400, 1700, 750)               # bad
     vask(e.X(5300), 7200, 160); vask(e.X(6200), 7200, 160)
     toalett(e.X(6900, 420), 8150, "s")
     teppe(e.X(3100, 2100), 8900, 2100, 1400)                # gang
-    seng(e.X(400, 1600), 11300, 1600, 2000)                 # sov v/gavl
-    garderobe(e.X(2200, 550), 11300, 550, 1500)
-    seng(e.X(4300, 1800), 11400, 1800, 2100)                # sov 13,1
-    nattbord(e.X(6350, 420), 11430)
+    seng(e.X(350, 1600), 12100, 1600, 2000)                 # sov v/gavl
+    garderobe(e.X(2250, 550), 12100, 550, 1500)
+    seng(e.X(5450, 1800), 11150, 1800, 2100)                # sov 13,1
+    nattbord(e.X(7100, 420), 11180)
     # --- romnavn
     e.romnavn(6000, 3300, "Master soverom", master, s1=220, s2=175)
     e.tekst(1150, 3900, "Walk in closet", 180, MORK, 600)
@@ -263,8 +264,8 @@ def etg2(e: E, bal_bak, bal_for, sov14, master, walkin, gang):
     e.tekst(5950, 8910, "12,2 m²", 182, GRAA, 400)
     e.tekst(3350, 10150, "Gang", 210, MORK, 600)
     e.tekst(3350, 10390, f"{gang} m²", 172, GRAA, 400)
-    e.romnavn(1450, 13400, "Soverom", sov14, s1=230, s2=185)
-    e.romnavn(5300, 13400, "Soverom", 13.1, s1=230, s2=185)
+    e.romnavn(2350, 11400, "Soverom", sov14, s1=225, s2=180)
+    e.romnavn(4300, 12600, "Soverom", 13.1, s1=225, s2=180)
 
 
 def bygg(navn, viewbox, tittel, sone_tekst):
