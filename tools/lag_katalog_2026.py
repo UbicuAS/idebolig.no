@@ -63,6 +63,8 @@ PLANER = {
                ("2. etasje", "planer/edvard-2etasje.svg")],
     "alva": [("1. etasje", "planer/alva-1etasje.svg"),
              ("2. etasje", "planer/alva-2etasje.svg")],
+    "embla": [("1. etasje — to leiligheter", "planer/embla-1etasje.svg"),
+              ("2. etasje — to leiligheter", "planer/embla-2etasje.svg")],
 }
 
 
