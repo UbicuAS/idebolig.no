@@ -29,6 +29,8 @@ B = 15100       # bygningsbredde
 D = 14550       # bygningsdybde
 UT = 1100       # trappehusenes utstikk på gavlene
 A, AB, AD = 0, 2550, 7850     # akser i dybderetning
+HX = 3400       # hakk i sørveggen: kjøkken/soverom stikker ut hit
+HD1, HD2 = 1250, 1100   # hakkets dybde i 1. og 2. etasje
 
 
 def skriv(navn, viewbox, tittel):
@@ -101,20 +103,24 @@ class E:
         self.r(0, AD + 800, YV, 1400, "url(#parkett)")
 
 
-def front_uterom(e: E, dyp_gavl, dyp_midt, etikett, tekst_y):
-    """Terrasse/balkong foran: skrå framkant, spiss mot midtaksen."""
-    e.poly([(0, D), (M, D), (M, D + dyp_midt), (0, D + dyp_gavl)], "url(#dekke)")
-    e.kant([(0, D), (0, D + dyp_gavl), (M, D + dyp_midt)])
-    e.tekst(M - 2100, D + tekst_y, etikett, 205, GRAA, 600)
+def front_uterom(e: E, hd, d_gavl, d_midt, etikett, tekst_y):
+    """Terrasse/balkong foran (jf. arkitekt-PDF): overkanten følger den
+    HAKKETE sørveggen — kjøkken-/soveromsdelen stikker ut til D, resten er
+    trukket inn til D-hd — og ytterkanten er én rett SKRÅ linje som gir
+    spissen der de to enhetene møtes ved midtaksen."""
+    e.poly([(0, D), (HX, D), (HX, D - hd), (M, D - hd),
+            (M, D + d_midt), (0, D + d_gavl)], "url(#dekke)")
+    e.kant([(0, D + d_gavl), (M, D + d_midt)])
+    e.tekst(M - 5100, D + tekst_y, etikett, 200, GRAA, 600)
 
 
 # ================================================================ 1. ETASJE
-def etg1(e: E, terr_for, kjokkenstue):
+def etg1(e: E, terr_for, kjokkenstue, d_midt):
     # terrasse FORAN: (1000+5500)/2 x 7550 = 24,5 m²
-    front_uterom(e, 1000, 5500, f"Terrasse {terr_for} m²", 1300)
-    bord(e.X(4300, 1700), D + 3100, 1700, 950, rx=120)
-    for sx in (4500, 5400):
-        stol(e.X(sx, 400), D + 2600); stol(e.X(sx, 400), D + 4150)
+    front_uterom(e, HD1, 1500, d_midt, f"Terrasse {terr_for} m²", 1150)
+    bord(e.X(5100, 1700), D + 1500, 1700, 950, rx=120)
+    for sx in (5300, 6200):
+        stol(e.X(sx, 400), D + 1000); stol(e.X(sx, 400), D + 2550)
     # --- gulv
     e.r(0, A, M, D, "url(#parkett)")
     e.r(3400, A, M - 3400, 5450, "url(#betong)")            # garasje
@@ -127,7 +133,9 @@ def etg1(e: E, terr_for, kjokkenstue):
     # --- yttervegger
     e.r(3400, A, M - 3400, YV, MORK)
     e.r(0, A, YV, D, MORK)
-    e.r(0, D - YV, M, YV, MORK)
+    e.r(0, D - YV, HX, YV, MORK)                            # sørvegg, framskutt del
+    e.r(HX, D - HD1 - YV, M - HX, YV, MORK)                 # sørvegg, inntrukket del
+    e.r(HX - YV, D - HD1 - YV, YV, HD1 + YV, MORK)          # hakkets vange
     e.r(0, A, 3400, YV, MORK)
     # --- innervegger
     e.r(3400, A, IV, 6800, MORK)
@@ -184,8 +192,8 @@ def etg1(e: E, terr_for, kjokkenstue):
 
 # ================================================================ 2. ETASJE
 def etg2(e: E, bal_bak, bal_for, sov14, master, walkin, gang):
-    dyp_gavl, dyp_midt = (700, 1900) if not e.s else (200, 1900)
-    front_uterom(e, dyp_gavl, dyp_midt, f"Balkong {bal_for} m²", 1450)
+    d_gavl, d_midt = (260, 1127) if not e.s else (100, 757)
+    front_uterom(e, HD2, d_gavl, d_midt, f"Balkong {bal_for} m²", -450)
     # --- gulv
     e.r(0, A, M, D, "url(#parkett)")
     e.r(4400, 5150, M - 4400, 3850, "url(#flis)")           # bad
@@ -201,7 +209,9 @@ def etg2(e: E, bal_bak, bal_for, sov14, master, walkin, gang):
     e.r(0, A, 4650, YV, MORK)
     e.r(0, AB, YV, D - AB, MORK)
     e.r(0, A, YV, AB, MORK)
-    e.r(0, D - YV, M, YV, MORK)
+    e.r(0, D - YV, HX, YV, MORK)                            # sørvegg, framskutt del
+    e.r(HX, D - HD2 - YV, M - HX, YV, MORK)                 # sørvegg, inntrukket del
+    e.r(HX - YV, D - HD2 - YV, YV, HD2 + YV, MORK)          # hakkets vange
     # --- innervegger
     e.r(4400, A, IV, 5150, MORK)
     e.r(2200, AB, IV, 5100 - AB, MORK)                      # walk-in øst
@@ -262,8 +272,8 @@ def bygg(navn, viewbox, tittel, sone_tekst):
     alva_helpers.deler.append(
         f'<path d="M 0 0 H {B} V {D} H 0 Z" fill="#FDFBF7" filter="url(#skygge)"/>')
     if navn == "1. etasje":
-        etg1(E(False), 24.6, 42.3)
-        etg1(E(True), 24.5, 42.2)
+        etg1(E(False), 24.6, 42.3, 3642)
+        etg1(E(True), 24.5, 42.2, 3616)
     else:
         etg2(E(False), 11.9, 9.8, 11.6, 16.2, 5.6, 15.4)
         etg2(E(True), 11.8, 7.8, 11.9, 16.3, 5.4, 15.3)
