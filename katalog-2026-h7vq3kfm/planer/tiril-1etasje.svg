@@ -1,0 +1,302 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-2500 -1700 20300 24800"
+     font-family="Poppins, Segoe UI, sans-serif">
+<defs>
+  <pattern id="parkett" width="1200" height="360" patternUnits="userSpaceOnUse">
+    <rect width="1200" height="360" fill="#EAD9BC"/>
+    <line x1="0" y1="120" x2="1200" y2="120" stroke="#D9C4A3" stroke-width="16"/>
+    <line x1="0" y1="240" x2="1200" y2="240" stroke="#D9C4A3" stroke-width="16"/>
+    <line x1="0" y1="360" x2="1200" y2="360" stroke="#D9C4A3" stroke-width="16"/>
+    <line x1="300" y1="0" x2="300" y2="120" stroke="#D9C4A3" stroke-width="16"/>
+    <line x1="900" y1="120" x2="900" y2="240" stroke="#D9C4A3" stroke-width="16"/>
+    <line x1="600" y1="240" x2="600" y2="360" stroke="#D9C4A3" stroke-width="16"/>
+  </pattern>
+  <pattern id="flis" width="300" height="300" patternUnits="userSpaceOnUse">
+    <rect width="300" height="300" fill="#E9EAE7"/>
+    <path d="M 300 0 L 0 0 0 300" fill="none" stroke="#D2D6D2" stroke-width="14"/>
+  </pattern>
+  <pattern id="dekke" width="1600" height="290" patternUnits="userSpaceOnUse">
+    <rect width="1600" height="290" fill="#D4C9B8"/>
+    <line x1="0" y1="145" x2="1600" y2="145" stroke="#C2B5A0" stroke-width="18"/>
+    <line x1="0" y1="290" x2="1600" y2="290" stroke="#C2B5A0" stroke-width="18"/>
+    <line x1="500" y1="0" x2="500" y2="145" stroke="#C2B5A0" stroke-width="18"/>
+    <line x1="1100" y1="145" x2="1100" y2="290" stroke="#C2B5A0" stroke-width="18"/>
+  </pattern>
+  <pattern id="betong" width="900" height="900" patternUnits="userSpaceOnUse">
+    <rect width="900" height="900" fill="#DDDAD3"/>
+    <circle cx="200" cy="260" r="26" fill="#CBC7BD"/>
+    <circle cx="640" cy="150" r="20" fill="#CBC7BD"/>
+    <circle cx="470" cy="560" r="30" fill="#CBC7BD"/>
+    <circle cx="760" cy="740" r="22" fill="#CBC7BD"/>
+    <circle cx="130" cy="760" r="18" fill="#CBC7BD"/>
+  </pattern>
+  <filter id="skygge" x="-8%" y="-8%" width="116%" height="116%">
+    <feDropShadow dx="0" dy="90" stdDeviation="140" flood-color="#33302C" flood-opacity="0.22"/>
+  </filter>
+</defs>
+<path d="M 0 0 H 15100 V 14550 H 0 Z" fill="#FDFBF7" filter="url(#skygge)"/>
+<path d="M 0 14550 L 7550 14550 L 7550 20050 L 0 15550 Z" fill="url(#dekke)"/>
+<path d="M 0 14550 L 0 15550 L 7550 20050" fill="none" stroke="#33302C" stroke-width="70"/>
+<text x="5450" y="15850" font-size="205" fill="#6b6257" font-weight="600" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">Terrasse 24.6 m²</text>
+<rect x="4300" y="17650" width="1700" height="950" fill="#F3EAD9" stroke="#8C8378" stroke-width="22" rx="120" opacity="1"/>
+<rect x="4500" y="17150" width="420" height="420" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="110" opacity="1"/>
+<rect x="4500" y="18700" width="420" height="420" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="110" opacity="1"/>
+<rect x="5400" y="17150" width="420" height="420" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="110" opacity="1"/>
+<rect x="5400" y="18700" width="420" height="420" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="110" opacity="1"/>
+<rect x="0" y="0" width="7550" height="14550" fill="url(#parkett)" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<rect x="3400" y="0" width="4150" height="5450" fill="url(#betong)" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<rect x="0" y="5650" width="2150" height="2200" fill="url(#flis)" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<rect x="3400" y="5450" width="4150" height="1350" fill="url(#flis)" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<rect x="0" y="0" width="3400" height="2550" fill="url(#dekke)" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<text x="2600" y="1600" font-size="195" fill="#6b6257" font-weight="600" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">Terrasse</text>
+<text x="2600" y="1840" font-size="160" fill="#6b6257" font-weight="400" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">8,7 m²</text>
+<rect x="1100" y="800" width="700" height="700" fill="#F3EAD9" stroke="#8C8378" stroke-width="22" rx="350" opacity="1"/>
+<rect x="2150" y="950" width="420" height="420" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="110" opacity="1"/>
+<rect x="3400" y="0" width="4150" height="250" fill="#33302C" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<rect x="0" y="0" width="250" height="14550" fill="#33302C" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<rect x="0" y="14300" width="7550" height="250" fill="#33302C" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<rect x="0" y="0" width="3400" height="250" fill="#33302C" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<rect x="3400" y="0" width="100" height="6800" fill="#33302C" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<rect x="0" y="2550" width="3500" height="100" fill="#33302C" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<rect x="0" y="5650" width="2250" height="100" fill="#33302C" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<rect x="2150" y="5650" width="100" height="2200" fill="#33302C" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<rect x="3400" y="5450" width="4150" height="100" fill="#33302C" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<rect x="0" y="7850" width="7550" height="100" fill="#33302C" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<rect x="4100" y="0" width="2800" height="250" fill="#FDFBF7" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<line x1="4100" y1="40" x2="6900" y2="40" stroke="#33302C" stroke-width="34"/>
+<line x1="4100" y1="210" x2="6900" y2="210" stroke="#33302C" stroke-width="34" stroke-dasharray="200 120"/>
+<rect x="700" y="2550" width="900" height="100" fill="#EAD9BC" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<path d="M 700 2650 L 700 3550" stroke="#33302C" stroke-width="30" fill="none"/>
+<path d="M 1600 2650 A 900 900 0 0 1 700 3550" stroke="#8C8378" stroke-width="16" fill="none" stroke-dasharray="70 70"/>
+<rect x="3400" y="3100" width="100" height="1100" fill="url(#betong)" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<rect x="2150" y="6050" width="100" height="800" fill="#E9EAE7" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<path d="M 2250 6050 L 3050 6050" stroke="#33302C" stroke-width="30" fill="none"/>
+<path d="M 2250 6850 A 800 800 0 0 0 3050 6050" stroke="#8C8378" stroke-width="16" fill="none" stroke-dasharray="70 70"/>
+<rect x="5300" y="5450" width="800" height="100" fill="#E9EAE7" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<path d="M 5300 5450 L 5300 4650" stroke="#33302C" stroke-width="30" fill="none"/>
+<path d="M 6100 5450 A 800 800 0 0 0 5300 4650" stroke="#8C8378" stroke-width="16" fill="none" stroke-dasharray="70 70"/>
+<rect x="800" y="7850" width="1900" height="100" fill="url(#parkett)" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<rect x="4800" y="7850" width="900" height="100" fill="#EAD9BC" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<path d="M 4800 7850 L 4800 6950" stroke="#33302C" stroke-width="30" fill="none"/>
+<path d="M 5700 7850 A 900 900 0 0 0 4800 6950" stroke="#8C8378" stroke-width="16" fill="none" stroke-dasharray="70 70"/>
+<rect x="-1100" y="7850" width="1350" height="2900" fill="url(#parkett)" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<rect x="-1100" y="7850" width="1100" height="250" fill="#33302C" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<rect x="-1100" y="10500" width="1100" height="250" fill="#33302C" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<rect x="-1100" y="7850" width="250" height="2900" fill="#33302C" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<rect x="-950" y="8200" width="800" height="2200" fill="#F6F2EA" stroke="#8C8378" stroke-width="22" rx="0" opacity="1"/>
+<line x1="-950" y1="8444.444444444445" x2="-150" y2="8444.444444444445" stroke="#8C8378" stroke-width="16"/>
+<line x1="-950" y1="8688.888888888889" x2="-150" y2="8688.888888888889" stroke="#8C8378" stroke-width="16"/>
+<line x1="-950" y1="8933.333333333334" x2="-150" y2="8933.333333333334" stroke="#8C8378" stroke-width="16"/>
+<line x1="-950" y1="9177.777777777777" x2="-150" y2="9177.777777777777" stroke="#8C8378" stroke-width="16"/>
+<line x1="-950" y1="9422.222222222223" x2="-150" y2="9422.222222222223" stroke="#8C8378" stroke-width="16"/>
+<line x1="-950" y1="9666.666666666666" x2="-150" y2="9666.666666666666" stroke="#8C8378" stroke-width="16"/>
+<line x1="-950" y1="9911.111111111111" x2="-150" y2="9911.111111111111" stroke="#8C8378" stroke-width="16"/>
+<line x1="-950" y1="10155.555555555555" x2="-150" y2="10155.555555555555" stroke="#8C8378" stroke-width="16"/>
+<line x1="-550.0" y1="10200" x2="-550.0" y2="8460" stroke="#6b6257" stroke-width="34"/>
+<path d="M -680.0 8660 L -550.0 8460 L -420.0 8660" fill="none" stroke="#6b6257" stroke-width="34"/>
+<text x="-600" y="7600" font-size="170" fill="#6b6257" font-weight="500" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">OPP</text>
+<rect x="0" y="8650" width="250" height="1400" fill="url(#parkett)" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<rect x="1500" y="14300" width="2200" height="250" fill="url(#parkett)" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<line x1="1500" y1="14425.0" x2="3700" y2="14425.0" stroke="#33302C" stroke-width="30"/>
+<line x1="1500" y1="14520" x2="3700" y2="14520" stroke="#33302C" stroke-width="22"/>
+<rect x="4700" y="14300" width="2200" height="250" fill="url(#parkett)" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<line x1="4700" y1="14425.0" x2="6900" y2="14425.0" stroke="#33302C" stroke-width="30"/>
+<line x1="4700" y1="14520" x2="6900" y2="14520" stroke="#33302C" stroke-width="22"/>
+<rect x="0" y="3300" width="250" height="1400" fill="#FDFBF7" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<line x1="34" y1="3300" x2="34" y2="4700" stroke="#33302C" stroke-width="28"/>
+<line x1="216" y1="3300" x2="216" y2="4700" stroke="#33302C" stroke-width="28"/>
+<line x1="125.0" y1="3300" x2="125.0" y2="4700" stroke="#33302C" stroke-width="20"/>
+<line x1="0" y1="3300" x2="250" y2="3300" stroke="#33302C" stroke-width="28"/>
+<line x1="0" y1="4700" x2="250" y2="4700" stroke="#33302C" stroke-width="28"/>
+<rect x="0" y="11200" width="250" height="1600" fill="#FDFBF7" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<line x1="34" y1="11200" x2="34" y2="12800" stroke="#33302C" stroke-width="28"/>
+<line x1="216" y1="11200" x2="216" y2="12800" stroke="#33302C" stroke-width="28"/>
+<line x1="125.0" y1="11200" x2="125.0" y2="12800" stroke="#33302C" stroke-width="20"/>
+<line x1="0" y1="11200" x2="250" y2="11200" stroke="#33302C" stroke-width="28"/>
+<line x1="0" y1="12800" x2="250" y2="12800" stroke="#33302C" stroke-width="28"/>
+<text x="5500" y="2500" font-size="230" fill="#33302C" font-weight="600" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">Garasje</text>
+<text x="5500" y="2760" font-size="180" fill="#6b6257" font-weight="400" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">22,6 m²</text>
+<text x="5500" y="3080" font-size="155" fill="#6b6257" font-weight="400" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">Betonggulv</text>
+<rect x="1200" y="3500" width="1500" height="900" fill="#E4D2AE" stroke="#CDB588" stroke-width="22" rx="120" opacity="0.85"/>
+<rect x="2650" y="3100" width="550" height="1500" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="20" opacity="1"/>
+<line x1="2925.0" y1="3160" x2="2925.0" y2="4540" stroke="#8C8378" stroke-width="16" stroke-dasharray="180 90"/>
+<line x1="2650" y1="3850.0" x2="3200" y2="3850.0" stroke="#8C8378" stroke-width="16"/>
+<rect x="250" y="5950" width="420" height="200" fill="#FBF8F2" stroke="#8C8378" stroke-width="20" rx="40" opacity="1"/>
+<ellipse cx="460" cy="6420" rx="185" ry="255" fill="#FBF8F2" stroke="#8C8378" stroke-width="20"/>
+<circle cx="1750" cy="6150" r="150" fill="#F6F3EC" stroke="#8C8378" stroke-width="20"/>
+<circle cx="1750" cy="6150" r="67" fill="none" stroke="#8C8378" stroke-width="14"/>
+<rect x="3600" y="5720" width="600" height="600" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="30" opacity="1"/>
+<circle cx="3900.0" cy="6020.0" r="180.0" fill="none" stroke="#8C8378" stroke-width="18"/>
+<rect x="4300" y="5720" width="600" height="600" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="30" opacity="1"/>
+<circle cx="4600.0" cy="6020.0" r="180.0" fill="none" stroke="#8C8378" stroke-width="18"/>
+<rect x="6300" y="5700" width="1100" height="420" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="20" opacity="1"/>
+<line x1="6340" y1="5910.0" x2="7360" y2="5910.0" stroke="#8C8378" stroke-width="14"/>
+<rect x="150" y="9300" width="700" height="3100" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="20" opacity="1"/>
+<line x1="500.0" y1="9340" x2="500.0" y2="12360" stroke="#8C8378" stroke-width="14"/>
+<rect x="200" y="9700" width="500" height="500" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="30" opacity="1"/>
+<circle cx="350.0" cy="9850.0" r="65.0" fill="none" stroke="#8C8378" stroke-width="18"/>
+<circle cx="550.0" cy="9850.0" r="65.0" fill="none" stroke="#8C8378" stroke-width="18"/>
+<circle cx="350.0" cy="10050.0" r="65.0" fill="none" stroke="#8C8378" stroke-width="18"/>
+<circle cx="550.0" cy="10050.0" r="65.0" fill="none" stroke="#8C8378" stroke-width="18"/>
+<circle cx="500" cy="11500" r="160" fill="#F6F3EC" stroke="#8C8378" stroke-width="20"/>
+<circle cx="500" cy="11500" r="72" fill="none" stroke="#8C8378" stroke-width="14"/>
+<rect x="1600" y="9300" width="2400" height="700" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="20" opacity="1"/>
+<line x1="1640" y1="9650.0" x2="3960" y2="9650.0" stroke="#8C8378" stroke-width="14"/>
+<rect x="3800" y="9700" width="2400" height="1100" fill="#F3EAD9" stroke="#8C8378" stroke-width="22" rx="130" opacity="1"/>
+<rect x="4000" y="9220" width="420" height="420" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="110" opacity="1"/>
+<rect x="4000" y="10900" width="420" height="420" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="110" opacity="1"/>
+<rect x="4900" y="9220" width="420" height="420" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="110" opacity="1"/>
+<rect x="4900" y="10900" width="420" height="420" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="110" opacity="1"/>
+<rect x="5800" y="9220" width="420" height="420" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="110" opacity="1"/>
+<rect x="5800" y="10900" width="420" height="420" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="110" opacity="1"/>
+<rect x="1400" y="12800" width="3000" height="1000" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="90" opacity="1"/>
+<rect x="1440" y="13540" width="2920" height="220" fill="#F3EDE2" stroke="#8C8378" stroke-width="16" rx="90" opacity="1"/>
+<rect x="1440" y="12840" width="220" height="920" fill="#F3EDE2" stroke="#8C8378" stroke-width="16" rx="90" opacity="1"/>
+<rect x="4140" y="12840" width="220" height="920" fill="#F3EDE2" stroke="#8C8378" stroke-width="16" rx="90" opacity="1"/>
+<line x1="2900.0" y1="12860" x2="2900.0" y2="13520" stroke="#8C8378" stroke-width="14"/>
+<rect x="2400" y="11700" width="1200" height="700" fill="#F3EAD9" stroke="#8C8378" stroke-width="22" rx="200" opacity="1"/>
+<rect x="1700" y="11500" width="3100" height="1250" fill="#E4D2AE" stroke="#CDB588" stroke-width="22" rx="120" opacity="0.85"/>
+<rect x="5700" y="12200" width="450" height="1900" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="20" opacity="1"/>
+<line x1="5925.0" y1="12240" x2="5925.0" y2="14060" stroke="#8C8378" stroke-width="14"/>
+<text x="1700" y="4500" font-size="220" fill="#33302C" font-weight="600" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">VF</text>
+<text x="1700" y="4750" font-size="170" fill="#6b6257" font-weight="400" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">10,6 m²</text>
+<text x="1050" y="7150" font-size="195" fill="#33302C" font-weight="600" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">WC</text>
+<text x="1050" y="7380" font-size="158" fill="#6b6257" font-weight="400" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">4,7 m²</text>
+<text x="5450" y="6050" font-size="180" fill="#33302C" font-weight="600" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">Teknisk/Sportsbod</text>
+<text x="5450" y="6290" font-size="155" fill="#6b6257" font-weight="400" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">5,6 m²</text>
+<text x="3600" y="11400" font-size="285" fill="#33302C" font-weight="600" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">Kjøkken/stue</text>
+<text x="3600" y="11725" font-size="215" fill="#6b6257" font-weight="400" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">42.3 m²</text>
+<path d="M 15100 14550 L 7550 14550 L 7550 20050 L 15100 15550 Z" fill="url(#dekke)"/>
+<path d="M 15100 14550 L 15100 15550 L 7550 20050" fill="none" stroke="#33302C" stroke-width="70"/>
+<text x="9650" y="15850" font-size="205" fill="#6b6257" font-weight="600" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">Terrasse 24.5 m²</text>
+<rect x="9100" y="17650" width="1700" height="950" fill="#F3EAD9" stroke="#8C8378" stroke-width="22" rx="120" opacity="1"/>
+<rect x="10200" y="17150" width="420" height="420" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="110" opacity="1"/>
+<rect x="10200" y="18700" width="420" height="420" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="110" opacity="1"/>
+<rect x="9300" y="17150" width="420" height="420" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="110" opacity="1"/>
+<rect x="9300" y="18700" width="420" height="420" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="110" opacity="1"/>
+<rect x="7550" y="0" width="7550" height="14550" fill="url(#parkett)" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<rect x="7550" y="0" width="4150" height="5450" fill="url(#betong)" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<rect x="12950" y="5650" width="2150" height="2200" fill="url(#flis)" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<rect x="7550" y="5450" width="4150" height="1350" fill="url(#flis)" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<rect x="11700" y="0" width="3400" height="2550" fill="url(#dekke)" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<text x="12500" y="1600" font-size="195" fill="#6b6257" font-weight="600" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">Terrasse</text>
+<text x="12500" y="1840" font-size="160" fill="#6b6257" font-weight="400" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">8,7 m²</text>
+<rect x="13300" y="800" width="700" height="700" fill="#F3EAD9" stroke="#8C8378" stroke-width="22" rx="350" opacity="1"/>
+<rect x="12550" y="950" width="420" height="420" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="110" opacity="1"/>
+<rect x="7550" y="0" width="4150" height="250" fill="#33302C" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<rect x="14850" y="0" width="250" height="14550" fill="#33302C" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<rect x="7550" y="14300" width="7550" height="250" fill="#33302C" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<rect x="11700" y="0" width="3400" height="250" fill="#33302C" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<rect x="11600" y="0" width="100" height="6800" fill="#33302C" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<rect x="11600" y="2550" width="3500" height="100" fill="#33302C" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<rect x="12850" y="5650" width="2250" height="100" fill="#33302C" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<rect x="12850" y="5650" width="100" height="2200" fill="#33302C" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<rect x="7550" y="5450" width="4150" height="100" fill="#33302C" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<rect x="7550" y="7850" width="7550" height="100" fill="#33302C" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<rect x="8200" y="0" width="2800" height="250" fill="#FDFBF7" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<line x1="8200" y1="40" x2="11000" y2="40" stroke="#33302C" stroke-width="34"/>
+<line x1="8200" y1="210" x2="11000" y2="210" stroke="#33302C" stroke-width="34" stroke-dasharray="200 120"/>
+<rect x="13500" y="2550" width="900" height="100" fill="#EAD9BC" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<path d="M 14400 2650 L 14400 3550" stroke="#33302C" stroke-width="30" fill="none"/>
+<path d="M 13500 2650 A 900 900 0 0 0 14400 3550" stroke="#8C8378" stroke-width="16" fill="none" stroke-dasharray="70 70"/>
+<rect x="11600" y="3100" width="100" height="1100" fill="url(#betong)" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<rect x="12850" y="6050" width="100" height="800" fill="#E9EAE7" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<path d="M 12850 6050 L 12050 6050" stroke="#33302C" stroke-width="30" fill="none"/>
+<path d="M 12850 6850 A 800 800 0 0 1 12050 6050" stroke="#8C8378" stroke-width="16" fill="none" stroke-dasharray="70 70"/>
+<rect x="9000" y="5450" width="800" height="100" fill="#E9EAE7" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<path d="M 9800 5450 L 9800 4650" stroke="#33302C" stroke-width="30" fill="none"/>
+<path d="M 9000 5450 A 800 800 0 0 1 9800 4650" stroke="#8C8378" stroke-width="16" fill="none" stroke-dasharray="70 70"/>
+<rect x="12400" y="7850" width="1900" height="100" fill="url(#parkett)" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<rect x="9400" y="7850" width="900" height="100" fill="#EAD9BC" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<path d="M 10300 7850 L 10300 6950" stroke="#33302C" stroke-width="30" fill="none"/>
+<path d="M 9400 7850 A 900 900 0 0 1 10300 6950" stroke="#8C8378" stroke-width="16" fill="none" stroke-dasharray="70 70"/>
+<rect x="14850" y="7850" width="1350" height="2900" fill="url(#parkett)" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<rect x="15100" y="7850" width="1100" height="250" fill="#33302C" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<rect x="15100" y="10500" width="1100" height="250" fill="#33302C" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<rect x="15950" y="7850" width="250" height="2900" fill="#33302C" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<rect x="15250" y="8200" width="800" height="2200" fill="#F6F2EA" stroke="#8C8378" stroke-width="22" rx="0" opacity="1"/>
+<line x1="15250" y1="8444.444444444445" x2="16050" y2="8444.444444444445" stroke="#8C8378" stroke-width="16"/>
+<line x1="15250" y1="8688.888888888889" x2="16050" y2="8688.888888888889" stroke="#8C8378" stroke-width="16"/>
+<line x1="15250" y1="8933.333333333334" x2="16050" y2="8933.333333333334" stroke="#8C8378" stroke-width="16"/>
+<line x1="15250" y1="9177.777777777777" x2="16050" y2="9177.777777777777" stroke="#8C8378" stroke-width="16"/>
+<line x1="15250" y1="9422.222222222223" x2="16050" y2="9422.222222222223" stroke="#8C8378" stroke-width="16"/>
+<line x1="15250" y1="9666.666666666666" x2="16050" y2="9666.666666666666" stroke="#8C8378" stroke-width="16"/>
+<line x1="15250" y1="9911.111111111111" x2="16050" y2="9911.111111111111" stroke="#8C8378" stroke-width="16"/>
+<line x1="15250" y1="10155.555555555555" x2="16050" y2="10155.555555555555" stroke="#8C8378" stroke-width="16"/>
+<line x1="15650.0" y1="10200" x2="15650.0" y2="8460" stroke="#6b6257" stroke-width="34"/>
+<path d="M 15520.0 8660 L 15650.0 8460 L 15780.0 8660" fill="none" stroke="#6b6257" stroke-width="34"/>
+<text x="15700" y="7600" font-size="170" fill="#6b6257" font-weight="500" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">OPP</text>
+<rect x="14850" y="8650" width="250" height="1400" fill="url(#parkett)" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<rect x="11400" y="14300" width="2200" height="250" fill="url(#parkett)" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<line x1="11400" y1="14425.0" x2="13600" y2="14425.0" stroke="#33302C" stroke-width="30"/>
+<line x1="11400" y1="14520" x2="13600" y2="14520" stroke="#33302C" stroke-width="22"/>
+<rect x="8200" y="14300" width="2200" height="250" fill="url(#parkett)" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<line x1="8200" y1="14425.0" x2="10400" y2="14425.0" stroke="#33302C" stroke-width="30"/>
+<line x1="8200" y1="14520" x2="10400" y2="14520" stroke="#33302C" stroke-width="22"/>
+<rect x="14850" y="3300" width="250" height="1400" fill="#FDFBF7" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<line x1="14884" y1="3300" x2="14884" y2="4700" stroke="#33302C" stroke-width="28"/>
+<line x1="15066" y1="3300" x2="15066" y2="4700" stroke="#33302C" stroke-width="28"/>
+<line x1="14975.0" y1="3300" x2="14975.0" y2="4700" stroke="#33302C" stroke-width="20"/>
+<line x1="14850" y1="3300" x2="15100" y2="3300" stroke="#33302C" stroke-width="28"/>
+<line x1="14850" y1="4700" x2="15100" y2="4700" stroke="#33302C" stroke-width="28"/>
+<rect x="14850" y="11200" width="250" height="1600" fill="#FDFBF7" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<line x1="14884" y1="11200" x2="14884" y2="12800" stroke="#33302C" stroke-width="28"/>
+<line x1="15066" y1="11200" x2="15066" y2="12800" stroke="#33302C" stroke-width="28"/>
+<line x1="14975.0" y1="11200" x2="14975.0" y2="12800" stroke="#33302C" stroke-width="20"/>
+<line x1="14850" y1="11200" x2="15100" y2="11200" stroke="#33302C" stroke-width="28"/>
+<line x1="14850" y1="12800" x2="15100" y2="12800" stroke="#33302C" stroke-width="28"/>
+<text x="9600" y="2500" font-size="230" fill="#33302C" font-weight="600" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">Garasje</text>
+<text x="9600" y="2760" font-size="180" fill="#6b6257" font-weight="400" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">22,6 m²</text>
+<text x="9600" y="3080" font-size="155" fill="#6b6257" font-weight="400" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">Betonggulv</text>
+<rect x="12400" y="3500" width="1500" height="900" fill="#E4D2AE" stroke="#CDB588" stroke-width="22" rx="120" opacity="0.85"/>
+<rect x="11900" y="3100" width="550" height="1500" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="20" opacity="1"/>
+<line x1="12175.0" y1="3160" x2="12175.0" y2="4540" stroke="#8C8378" stroke-width="16" stroke-dasharray="180 90"/>
+<line x1="11900" y1="3850.0" x2="12450" y2="3850.0" stroke="#8C8378" stroke-width="16"/>
+<rect x="14430" y="5950" width="420" height="200" fill="#FBF8F2" stroke="#8C8378" stroke-width="20" rx="40" opacity="1"/>
+<ellipse cx="14640" cy="6420" rx="185" ry="255" fill="#FBF8F2" stroke="#8C8378" stroke-width="20"/>
+<circle cx="13350" cy="6150" r="150" fill="#F6F3EC" stroke="#8C8378" stroke-width="20"/>
+<circle cx="13350" cy="6150" r="67" fill="none" stroke="#8C8378" stroke-width="14"/>
+<rect x="10900" y="5720" width="600" height="600" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="30" opacity="1"/>
+<circle cx="11200.0" cy="6020.0" r="180.0" fill="none" stroke="#8C8378" stroke-width="18"/>
+<rect x="10200" y="5720" width="600" height="600" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="30" opacity="1"/>
+<circle cx="10500.0" cy="6020.0" r="180.0" fill="none" stroke="#8C8378" stroke-width="18"/>
+<rect x="7700" y="5700" width="1100" height="420" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="20" opacity="1"/>
+<line x1="7740" y1="5910.0" x2="8760" y2="5910.0" stroke="#8C8378" stroke-width="14"/>
+<rect x="14250" y="9300" width="700" height="3100" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="20" opacity="1"/>
+<line x1="14600.0" y1="9340" x2="14600.0" y2="12360" stroke="#8C8378" stroke-width="14"/>
+<rect x="14400" y="9700" width="500" height="500" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="30" opacity="1"/>
+<circle cx="14550.0" cy="9850.0" r="65.0" fill="none" stroke="#8C8378" stroke-width="18"/>
+<circle cx="14750.0" cy="9850.0" r="65.0" fill="none" stroke="#8C8378" stroke-width="18"/>
+<circle cx="14550.0" cy="10050.0" r="65.0" fill="none" stroke="#8C8378" stroke-width="18"/>
+<circle cx="14750.0" cy="10050.0" r="65.0" fill="none" stroke="#8C8378" stroke-width="18"/>
+<circle cx="14600" cy="11500" r="160" fill="#F6F3EC" stroke="#8C8378" stroke-width="20"/>
+<circle cx="14600" cy="11500" r="72" fill="none" stroke="#8C8378" stroke-width="14"/>
+<rect x="11100" y="9300" width="2400" height="700" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="20" opacity="1"/>
+<line x1="11140" y1="9650.0" x2="13460" y2="9650.0" stroke="#8C8378" stroke-width="14"/>
+<rect x="8900" y="9700" width="2400" height="1100" fill="#F3EAD9" stroke="#8C8378" stroke-width="22" rx="130" opacity="1"/>
+<rect x="10700" y="9220" width="420" height="420" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="110" opacity="1"/>
+<rect x="10700" y="10900" width="420" height="420" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="110" opacity="1"/>
+<rect x="9800" y="9220" width="420" height="420" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="110" opacity="1"/>
+<rect x="9800" y="10900" width="420" height="420" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="110" opacity="1"/>
+<rect x="8900" y="9220" width="420" height="420" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="110" opacity="1"/>
+<rect x="8900" y="10900" width="420" height="420" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="110" opacity="1"/>
+<rect x="10700" y="12800" width="3000" height="1000" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="90" opacity="1"/>
+<rect x="10740" y="13540" width="2920" height="220" fill="#F3EDE2" stroke="#8C8378" stroke-width="16" rx="90" opacity="1"/>
+<rect x="10740" y="12840" width="220" height="920" fill="#F3EDE2" stroke="#8C8378" stroke-width="16" rx="90" opacity="1"/>
+<rect x="13440" y="12840" width="220" height="920" fill="#F3EDE2" stroke="#8C8378" stroke-width="16" rx="90" opacity="1"/>
+<line x1="12200.0" y1="12860" x2="12200.0" y2="13520" stroke="#8C8378" stroke-width="14"/>
+<rect x="11500" y="11700" width="1200" height="700" fill="#F3EAD9" stroke="#8C8378" stroke-width="22" rx="200" opacity="1"/>
+<rect x="10300" y="11500" width="3100" height="1250" fill="#E4D2AE" stroke="#CDB588" stroke-width="22" rx="120" opacity="0.85"/>
+<rect x="8950" y="12200" width="450" height="1900" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="20" opacity="1"/>
+<line x1="9175.0" y1="12240" x2="9175.0" y2="14060" stroke="#8C8378" stroke-width="14"/>
+<text x="13400" y="4500" font-size="220" fill="#33302C" font-weight="600" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">VF</text>
+<text x="13400" y="4750" font-size="170" fill="#6b6257" font-weight="400" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">10,6 m²</text>
+<text x="14050" y="7150" font-size="195" fill="#33302C" font-weight="600" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">WC</text>
+<text x="14050" y="7380" font-size="158" fill="#6b6257" font-weight="400" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">4,7 m²</text>
+<text x="9650" y="6050" font-size="180" fill="#33302C" font-weight="600" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">Teknisk/Sportsbod</text>
+<text x="9650" y="6290" font-size="155" fill="#6b6257" font-weight="400" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">5,6 m²</text>
+<text x="11500" y="11400" font-size="285" fill="#33302C" font-weight="600" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">Kjøkken/stue</text>
+<text x="11500" y="11725" font-size="215" fill="#6b6257" font-weight="400" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">42.2 m²</text>
+<rect x="7450" y="0" width="200" height="14550" fill="#33302C" stroke="none" stroke-width="0" rx="0" opacity="1"/>
+<text x="1500" y="-900" font-size="230" fill="#C99C55" font-weight="600" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">1. ETASJE · TO ENHETER</text>
+<text x="-2300" y="21600" font-size="380" fill="#33302C" font-weight="600" text-anchor="start" font-family="Poppins, Segoe UI, sans-serif">Tiril — 1. etasje</text>
+</svg>

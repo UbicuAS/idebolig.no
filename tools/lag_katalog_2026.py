@@ -69,8 +69,9 @@ PLANER = {
              ("2. etasje", "planer/odin-2etasje.svg")],
     "nora": [("1. etasje", "planer/nora-1etasje.svg"),
              ("2. etasje", "planer/nora-2etasje.svg")],
-    # Tiril: 1. etasje ettersendes av Marius og legges til her når den kommer.
-    "tiril": [("2. etasje — begge enhetene", "planer/tiril-2etasje.svg")],
+    # Tiril er tegnet fra målsatt PDF (begge etasjer, begge enheter).
+    "tiril": [("1. etasje — begge enhetene", "planer/tiril-1etasje.svg"),
+              ("2. etasje — begge enhetene", "planer/tiril-2etasje.svg")],
 }
 
 

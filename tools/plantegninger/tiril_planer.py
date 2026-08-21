@@ -1,25 +1,34 @@
 # -*- coding: utf-8 -*-
-"""Tiril (tomannsbolig) — 2. etasje, fra CAD-skjermbildet 21.08.2026 +
-fasadebildet Fasade-fremside.webp (2025/06). To speilvendte enheter om
-midtaksen; per enhet: master soverom m/ walk-in og stort bad (12,2),
-kontor/soverom, to soverom, gang m/ trappehus i utstikk på gavlen, balkong
-bak (11,9) og foran (9,8 / 7,8) med tett trerekkverk (fasadefasit).
-1. etasje tegnes når grunnlaget kommer. Front tegnes nederst (sør)."""
+"""Tiril (tomannsbolig, moderne) — begge etasjer, tegnet fra
+«Tiril - 2mannsbolig moderne.pdf» (målsatt arkitekttegning).
+
+Rutenett fra PDF: akse 1 = x 0, akse 2 = x 7550 (midtvegg/leilighetsskille),
+akse 3 = x 15100. Trappehusene stikker 1100 ut på hver gavl.
+Akse A = y 0 (bakside: garasjer og innganger), E = y 14550 (hagesiden).
+
+Uterommene (feilkilden i tre tidligere forsøk):
+- BAK: terrasse 8,7 (1. etg) og balkong 11,9/11,8 (2. etg) er INNTRUKKET i
+  byggets fotavtrykk ved gavlene — de stikker ikke ut.
+- FORAN: terrasse 24,6/24,5 (1. etg) og balkong 9,8/7,8 (2. etg) stikker ut
+  med SKRÅ framkant som møtes i en spiss ved midtaksen.
+Front (hagesiden) tegnes nederst."""
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from alva_helpers import (MAPPE, MORK, GRAA, GULL, PARKETT, PARKETT_L, FLIS,
-                          FLIS_L, DEKKE, DEKKE_L, MOEBEL, MOEBEL_K, YV, IV,
-                          r, linje, tekst, romnavn, sone, vindu, door,
-                          mobel_rect, seng, nattbord, garderobe, sofa, bord,
-                          stol, vask, komfyr, toalett, dusj, badekar,
-                          vaskemaskin, teppe, trapp, hylle, HODE)
+                          FLIS_L, DEKKE, DEKKE_L, BETONG, BETONG_L, MOEBEL,
+                          MOEBEL_K, YV, IV, r, linje, tekst, romnavn, sone,
+                          vindu, door, mobel_rect, seng, nattbord, garderobe,
+                          sofa, bord, stol, vask, komfyr, toalett, dusj,
+                          badekar, vaskemaskin, teppe, trapp, hylle, HODE)
 import alva_helpers
 
-B = 16000    # total bredde (to enheter à 8000)
-D = 10600
-M = 8000     # midtakse
+M = 7550        # midtakse (leilighetsskille)
+B = 15100       # bygningsbredde
+D = 14550       # bygningsdybde
+UT = 1100       # trappehusenes utstikk på gavlene
+A, AB, AD = 0, 2550, 7850     # akser i dybderetning
 
 
 def skriv(navn, viewbox, tittel):
@@ -32,13 +41,9 @@ def skriv(navn, viewbox, tittel):
     alva_helpers.deler.clear()
 
 
-def rekkverk_h(x1, y, x2):
-    """Tett trerekkverk (fasadefasit): kraftig dobbel strek."""
-    linje(x1, y, x2, y, MORK, 70)
-    linje(x1, y + 110, x2, y + 110, "#6B5B45", 40)
+class E:
+    """Én enhet; speil=True speiler om midtaksen."""
 
-
-class Enhet:
     def __init__(self, speil):
         self.s = speil
 
@@ -68,132 +73,206 @@ class Enhet:
     def romnavn(self, x, y, navn, areal=None, **k):
         romnavn(self.X(x), y, navn, areal, **k)
 
+    def poly(self, pts, fill):
+        d = "M " + " L ".join(f"{self.X(x)} {y}" for x, y in pts) + " Z"
+        alva_helpers.deler.append(f'<path d="{d}" fill="{fill}"/>')
 
-def poly(E: Enhet, pts, fill):
-    d = "M " + " L ".join(f"{E.X(x)} {y}" for x, y in pts) + " Z"
-    alva_helpers.deler.append(f'<path d="{d}" fill="{fill}"/>')
+    def kant(self, pts, sw=70):
+        d = "M " + " L ".join(f"{self.X(x)} {y}" for x, y in pts)
+        alva_helpers.deler.append(
+            f'<path d="{d}" fill="none" stroke="{MORK}" stroke-width="{sw}"/>')
+
+    def skyvedor_s(self, x, lengde):
+        self.r(x, D - YV, lengde, YV, "url(#parkett)")
+        x0 = self.X(x, lengde)
+        linje(x0, D - YV / 2, x0 + lengde, D - YV / 2, MORK, 30)
+        linje(x0, D - 30, x0 + lengde, D - 30, MORK, 22)
+
+    def trappehus(self, opp):
+        """Trappehus i utstikket på gavlen (1100 mm ut)."""
+        self.r(-UT, AD, UT + YV, 2900, "url(#parkett)")
+        self.r(-UT, AD, UT, YV, MORK)
+        self.r(-UT, AD + 2900 - YV, UT, YV, MORK)
+        self.r(-UT, AD, YV, 2900, MORK)
+        trapp(self.X(-UT + 150, 800), AD + 350, 800, 2200, opp=opp,
+              trinn=9, tekst_under=False)
+        self.tekst(-UT + 500, AD - 250, "OPP" if opp == "n" else "NED",
+                   170, GRAA, 500)
+        self.r(0, AD + 800, YV, 1400, "url(#parkett)")
 
 
-def polykant(E: Enhet, pts):
-    """Rekkverk langs en åpen kant (tett trerekkverk)."""
-    d = "M " + " L ".join(f"{E.X(x)} {y}" for x, y in pts)
-    alva_helpers.deler.append(
-        f'<path d="{d}" fill="none" stroke="{MORK}" stroke-width="70"/>')
-    alva_helpers.deler.append(
-        f'<path d="{d}" fill="none" stroke="#6B5B45" stroke-width="26" '
-        f'stroke-dasharray="260 90"/>')
+def front_uterom(e: E, dyp_gavl, dyp_midt, etikett, tekst_y):
+    """Terrasse/balkong foran: skrå framkant, spiss mot midtaksen."""
+    e.poly([(0, D), (M, D), (M, D + dyp_midt), (0, D + dyp_gavl)], "url(#dekke)")
+    e.kant([(0, D), (0, D + dyp_gavl), (M, D + dyp_midt)])
+    e.tekst(M - 2100, D + tekst_y, etikett, 205, GRAA, 600)
 
 
-def enhet2(E: Enhet, balkong_foran: float):
-    # --- balkong BAK (11,9 m²): L-FORM som svinger rundt gavlhjoernet
-    #     (3D-bildet av baksiden: brystningen gaar langs bakfasaden og
-    #     fortsetter rundt hjoernet). Dybde 1400.
-    #     6400x1400 + 1400x2100 = 11,90 m² = CAD.
-    poly(E, [(-1400, 2100), (-1400, -1400), (5000, -1400), (5000, 0),
-             (0, 0), (0, 2100)], "url(#dekke)")
-    polykant(E, [(0, 2100), (-1400, 2100), (-1400, -1400), (5000, -1400), (5000, 0)])
-    E.tekst(1500, -1750, "Balkong 11,9 m²", 210, GRAA, 600)
-    bord(E.X(3300, 700), -1100, 700, 700, rx=350)
-    stol(E.X(4200, 400), -950); stol(E.X(-1150, 400), 900)
-    # --- balkong FORAN: skraa framkant, DYPEST MOT MIDTEN og grunnest ved
-    #     gavlen (jf. Marius' utsnitt m/ blaa kantlinje + 3D av fremsiden).
-    #     Verifisert mot CAD-arealene: venstre 1500->3400 = 9,8 m²,
-    #     hoyre 900->3000 = 7,8 m² (bredde 4000).
-    d_gavl, d_midt = (1500, 3400) if not E.s else (900, 3000)
-    poly(E, [(2000, D), (6000, D), (6000, D + d_midt), (2000, D + d_gavl)],
-         "url(#dekke)")
-    polykant(E, [(2000, D), (2000, D + d_gavl), (6000, D + d_midt), (6000, D)])
-    E.tekst(3300, D + 700, f"Balkong {balkong_foran} m²", 210, GRAA, 600)
-    bord(E.X(4700, 700), D + 1500, 700, 700, rx=350)
-    stol(E.X(5600, 400), D + 1600)
-    # --- trappehus-utstikk på gavlen
-    E.r(-1500, 4400, 1500 + YV, 3200, "url(#parkett)")
-    E.r(-1500, 4400, 1500, YV, MORK)
-    E.r(-1500, 7600 - YV, 1500, YV, MORK)
-    E.r(-1500, 4400, YV, 3200, MORK)
-    tr_x = E.X(-1400, 1300)
-    trapp(tr_x, 4750, 1300, 2500, opp="s", trinn=9, tekst_under=False)
-    E.tekst(-700, 4200, "NED", 160, GRAA, 500)
-    # --- gulvsoner
-    E.r(4600, 3800, 3400, 3600, "url(#flis)")               # bad 12,2
+# ================================================================ 1. ETASJE
+def etg1(e: E, terr_for, kjokkenstue):
+    # terrasse FORAN: (1000+5500)/2 x 7550 = 24,5 m²
+    front_uterom(e, 1000, 5500, f"Terrasse {terr_for} m²", 1300)
+    bord(e.X(4300, 1700), D + 3100, 1700, 950, rx=120)
+    for sx in (4500, 5400):
+        stol(e.X(sx, 400), D + 2600); stol(e.X(sx, 400), D + 4150)
+    # --- gulv
+    e.r(0, A, M, D, "url(#parkett)")
+    e.r(3400, A, M - 3400, 5450, "url(#betong)")            # garasje
+    e.r(0, 5650, 2150, AD - 5650, "url(#flis)")             # WC
+    e.r(3400, 5450, M - 3400, 1350, "url(#flis)")           # teknisk
+    e.r(0, A, 3400, AB, "url(#dekke)")                      # terrasse bak (inntrukket)
+    e.tekst(2600, 1600, "Terrasse", 195, GRAA, 600)
+    e.tekst(2600, 1840, "8,7 m²", 160, GRAA, 400)
+    bord(e.X(1100, 700), 800, 700, 700, rx=350); stol(e.X(2150, 400), 950)
+    # --- yttervegger
+    e.r(3400, A, M - 3400, YV, MORK)
+    e.r(0, A, YV, D, MORK)
+    e.r(0, D - YV, M, YV, MORK)
+    e.r(0, A, 3400, YV, MORK)
     # --- innervegger
-    E.r(2400, 0, IV, 2400, MORK)                            # walk-in | master-sone
-    E.r(0, 2400, 2400 + IV, IV, MORK)                       # walk-in | kontor
-    E.r(2400, 2400, IV, 3200, MORK)                         # kontor | gang
-    E.r(0, 5600, 2400 + IV, IV, MORK)                       # kontor sør
-    E.r(4000, 0, IV, 3800, MORK)                            # gang/walk-in | master
-    E.r(4000, 3800 - IV, 4000, IV, MORK)                    # master | bad
-    E.r(4600, 3800, IV, 3600, MORK)                         # gang | bad
-    E.r(0, 7400, 8000, IV, MORK)                            # midtbånd | soverom (m/ åpninger)
-    E.r(3300, 7400, IV, 3200, MORK)                         # sov 11,8 | korridor
-    E.r(4400, 7400, IV, 3200, MORK)                         # korridor | sov 13,1
-    # --- vinduer og dører i yttervegg
-    E.door_h(4300, 0, 900, YV, "start", "inn", gulv=DEKKE)  # master -> balkong bak
-    E.vindu_h(1000, 0, 1300)                                # walk-in bak
-    E.vindu_v(0, 3300, 1300)                                # kontor gavl
-    E.vindu_v(0, 8400, 1400)                                # sov 11,8 gavl
-    E.vindu_h(700, D - YV, 1400)                            # sov 11,8 front
-    E.door_h(4800, D - YV, 900, YV, "start", "inn", gulv=DEKKE)  # sov 13,1 -> balkong foran
-    E.vindu_h(6300, D - YV, 1300)                           # sov 13,1 front
-    # --- dører innvendig
-    E.door_h(600, 2400, 800, IV, "start", "ut", gulv=PARKETT)      # walk-in (fra kontor? nei gang)
-    E.door_v(2400, 900, 800, IV, "start", "ut", gulv=PARKETT)      # walk-in <- gangsonen
-    E.door_v(2400, 3400, 890, IV, "start", "ut", gulv=PARKETT)     # kontor <- gang
-    E.door_v(4000, 1400, 890, IV, "end", "inn", gulv=PARKETT)      # master <- gang
-    E.door_v(4600, 4600, 800, IV, "start", "inn", gulv=FLIS)       # bad <- gang
-    E.r(2500, 7400, 700, IV, "url(#parkett)")                      # åpning gang -> korridor? nei:
-    E.r(3400, 7400, 900, IV, "url(#parkett)")                      # åpning gang -> sovekorridor
-    E.door_h(700, 7400, 890, IV, "start", "ut", gulv=PARKETT)      # sov 11,8
-    E.door_h(4700, 7400, 890, IV, "start", "ut", gulv=PARKETT)     # sov 13,1
-    r(E.X(0, YV) if E.s else -0, 0, 0, 0, "none")
-    # --- åpning gang -> trappehus
-    E.r(0, 4900, YV, 2200, "url(#parkett)")
+    e.r(3400, A, IV, 6800, MORK)
+    e.r(0, AB, 3400 + IV, IV, MORK)                         # terrasse | VF
+    e.r(0, 5650, 2150 + IV, IV, MORK)                       # VF | WC
+    e.r(2150, 5650, IV, AD - 5650, MORK)
+    e.r(3400, 5450, M - 3400, IV, MORK)                     # garasje | teknisk
+    e.r(0, AD, M, IV, MORK)                                 # øvre sone | kjøkken/stue
+    # --- porter, dører, åpninger
+    e.r(4100, A, 2800, YV, "#FDFBF7")                       # garasjeport
+    x0 = e.X(4100, 2800)
+    linje(x0, A + 40, x0 + 2800, A + 40, MORK, 34)
+    linje(x0, A + YV - 40, x0 + 2800, A + YV - 40, MORK, 34, dash="200 120")
+    e.door_h(700, AB, 900, IV, "start", "inn", gulv=PARKETT)    # terrasse -> VF
+    e.r(3400, 3100, IV, 1100, "url(#betong)")                   # VF <-> garasje
+    e.door_v(2150, 6050, 800, IV, "start", "inn", gulv=FLIS)    # WC
+    e.door_h(5300, 5450, 800, IV, "start", "ut", gulv=FLIS)     # teknisk
+    e.r(800, AD, 1900, IV, "url(#parkett)")                     # VF -> kjøkken/stue
+    e.door_h(4800, AD, 900, IV, "start", "ut", gulv=PARKETT)    # teknisk -> stue
+    e.trappehus("n")
+    e.skyvedor_s(1500, 2200); e.skyvedor_s(4700, 2200)
+    e.vindu_v(0, 3300, 1400)                                # VF gavl
+    e.vindu_v(0, 11200, 1600)                               # stue gavl
     # --- møblering
-    garderobe(E.X(300, 550), 300, 550, 1700)                       # walk-in
-    garderobe(E.X(1600, 700), 300, 700, 550)
-    mobel_rect(E.X(300, 1400), 3000, 1400, 600, rx=40)             # kontor: pult
-    stol(E.X(800, 420), 3700)
-    hylle(E.X(300, 450), 4600, 450, 800)
-    seng(E.X(5300, 1800), 700, 1800, 2100)                         # master (mot midtveggen)
-    nattbord(E.X(4800, 420), 730)
-    badekar(E.X(5600, 1700), 4100, 1700, 750)                      # bad
-    vask(E.X(5200), 6300, 160); vask(E.X(6000), 6300, 160)
-    toalett(E.X(7300, 420), 6700, "s")
-    teppe(E.X(2700, 1600), 5300, 1600, 1600)                       # gang
-    seng(E.X(700, 1600), 8100, 1600, 2000)                         # sov 11,8
-    garderobe(E.X(2600, 550), 8000, 550, 1500)
-    seng(E.X(5500, 1600), 7700, 1600, 2000)                        # sov 13,1 (mot midten)
-    garderobe(E.X(4600, 550), 9000, 550, 1400)
+    e.tekst(5500, 2500, "Garasje", 230, MORK, 600)
+    e.tekst(5500, 2760, "22,6 m²", 180, GRAA, 400)
+    e.tekst(5500, 3080, "Betonggulv", 155, GRAA, 400)
+    teppe(e.X(1200, 1500), 3500, 1500, 900)
+    garderobe(e.X(2650, 550), 3100, 550, 1500)
+    toalett(e.X(250, 420), 5950, "n")
+    vask(e.X(1750), 6150, 150)
+    vaskemaskin(e.X(3600, 600), 5720); vaskemaskin(e.X(4300, 600), 5720)
+    hylle(e.X(6300, 1100), 5700, 1100, 420)
+    hylle(e.X(150, 700), 9300, 700, 3100)                   # kjøkkenbenk
+    komfyr(e.X(200, 500), 9700, 500)
+    vask(e.X(500), 11500, 160)
+    hylle(e.X(1600, 2400), 9300, 2400, 700)                 # kjøkkenøy
+    bord(e.X(3800, 2400), 9700, 2400, 1100, rx=130)
+    for sx in (4000, 4900, 5800):
+        stol(e.X(sx, 400), 9220); stol(e.X(sx, 400), 10900)
+    sofa(e.X(1400, 3000), 12800, 3000, 1000)
+    bord(e.X(2400, 1200), 11700, 1200, 700, rx=200)
+    teppe(e.X(1700, 3100), 11500, 3100, 1250)
+    hylle(e.X(5700, 450), 12200, 450, 1900)
     # --- romnavn
-    E.tekst(1200, 1500, "Walk-in", 200, MORK, 600)
-    E.tekst(1200, 1730, "5,6 m²", 160, GRAA, 400)
-    E.tekst(1200, 4400, "Kontor/Sov", 200, MORK, 600)
-    E.tekst(1200, 4630, "7,6 m²", 160, GRAA, 400)
-    E.romnavn(6000, 2600, "Master soverom", 15.2, s1=240, s2=190)
-    E.tekst(6300, 5000, "Bad", 240, MORK, 600)
-    E.tekst(6300, 5270, "12,2 m²", 190, GRAA, 400)
-    E.tekst(3400, 6600, "Gang", 220, MORK, 600)
-    E.tekst(3400, 6840, "15,4 m²", 170, GRAA, 400)
-    E.romnavn(1650, 9600, "Soverom", 11.8, s1=250, s2=200)
-    E.romnavn(6100, 9300, "Soverom", 13.1, s1=250, s2=200)
+    e.tekst(1700, 4500, "VF", 220, MORK, 600)
+    e.tekst(1700, 4750, "10,6 m²", 170, GRAA, 400)
+    e.tekst(1050, 7150, "WC", 195, MORK, 600)
+    e.tekst(1050, 7380, "4,7 m²", 158, GRAA, 400)
+    e.tekst(5450, 6050, "Teknisk/Sportsbod", 180, MORK, 600)
+    e.tekst(5450, 6290, "5,6 m²", 155, GRAA, 400)
+    e.romnavn(3600, 11400, "Kjøkken/stue", kjokkenstue, s1=285, s2=215)
 
 
-# Enklere: tegn alt i riktig rekkefølge i én omgang i stedet.
-def bygg():
+# ================================================================ 2. ETASJE
+def etg2(e: E, bal_bak, bal_for, sov14, master, walkin, gang):
+    dyp_gavl, dyp_midt = (700, 1900) if not e.s else (200, 1900)
+    front_uterom(e, dyp_gavl, dyp_midt, f"Balkong {bal_for} m²", 1450)
+    # --- gulv
+    e.r(0, A, M, D, "url(#parkett)")
+    e.r(4400, 5150, M - 4400, 3850, "url(#flis)")           # bad
+    e.r(0, A, 4650, AB, "url(#dekke)")                      # balkong bak (inntrukket)
+    e.tekst(3600, 1500, "Balkong", 200, GRAA, 600)
+    e.tekst(3600, 1740, f"{bal_bak} m²", 165, GRAA, 400)
+    bord(e.X(1500, 800), 700, 800, 800, rx=400)
+    stol(e.X(2650, 400), 850); stol(e.X(650, 400), 1700)
+    # --- yttervegger
+    e.r(4650, A, M - 4650, YV, MORK)
+    e.r(4650, A, YV, AB + IV, MORK)
+    e.r(0, AB, 4650 + YV, YV, MORK)
+    e.r(0, A, 4650, YV, MORK)
+    e.r(0, AB, YV, D - AB, MORK)
+    e.r(0, A, YV, AB, MORK)
+    e.r(0, D - YV, M, YV, MORK)
+    # --- innervegger
+    e.r(4400, A, IV, 5150, MORK)
+    e.r(2200, AB, IV, 5100 - AB, MORK)                      # walk-in øst
+    e.r(0, 5100, 2900 + IV, IV, MORK)                       # walk-in | kontor
+    e.r(2900, 5100, IV, 2650, MORK)
+    e.r(0, 7750, 2900 + IV, IV, MORK)                       # kontor sør
+    e.r(4400, 5150, M - 4400, IV, MORK)                     # master | bad
+    e.r(4400, 5150, IV, 3850, MORK)                         # gang | bad
+    e.r(4400, 9000, M - 4400, IV, MORK)                     # bad | sov 13,1
+    e.r(0, 10550, M, IV, MORK)                              # gang | soveromsrad
+    e.r(2900, 10550, IV, D - 10550, MORK)
+    # --- dører og vinduer
+    e.door_h(3400, AB, 900, YV, "start", "ut", gulv=DEKKE)      # gang -> balkong bak
+    e.door_v(4400, 800, 900, IV, "end", "inn", gulv=PARKETT)    # master
+    e.door_v(2200, 3100, 800, IV, "start", "ut", gulv=PARKETT)  # walk-in
+    e.door_h(800, 5100, 890, IV, "start", "ut", gulv=PARKETT)   # kontor
+    e.door_v(4400, 6100, 800, IV, "start", "inn", gulv=FLIS)    # bad
+    e.door_h(1000, 10550, 890, IV, "start", "inn", gulv=PARKETT)
+    e.door_h(4400, 10550, 890, IV, "start", "inn", gulv=PARKETT)
+    e.door_h(4200, D - YV, 900, YV, "start", "inn", gulv=DEKKE)  # sov -> balkong
+    e.trappehus("s")
+    e.vindu_v(0, 3100, 1300)                                # walk-in gavl
+    e.vindu_v(0, 6200, 1200)                                # kontor gavl
+    e.vindu_v(0, 11900, 1400)                               # sov gavl
+    e.vindu_h(1000, D - YV, 1500)
+    e.vindu_h(6000, D - YV, 1200)
+    # --- møblering
+    seng(e.X(5300, 1800), 700, 1800, 2100)                  # master
+    nattbord(e.X(4750, 420), 730); nattbord(e.X(7200, 420), 730)
+    garderobe(e.X(300, 550), AB + 350, 550, 1800)           # walk-in
+    garderobe(e.X(1350, 700), AB + 350, 700, 550)
+    mobel_rect(e.X(300, 1500), 5600, 1500, 650, rx=40)      # kontor
+    stol(e.X(900, 400), 6500)
+    badekar(e.X(4700, 1700), 5450, 1700, 750)               # bad
+    vask(e.X(5300), 7200, 160); vask(e.X(6200), 7200, 160)
+    toalett(e.X(6900, 420), 8150, "s")
+    teppe(e.X(3100, 2100), 8900, 2100, 1400)                # gang
+    seng(e.X(400, 1600), 11300, 1600, 2000)                 # sov v/gavl
+    garderobe(e.X(2200, 550), 11300, 550, 1500)
+    seng(e.X(4300, 1800), 11400, 1800, 2100)                # sov 13,1
+    nattbord(e.X(6350, 420), 11430)
+    # --- romnavn
+    e.romnavn(6000, 3300, "Master soverom", master, s1=220, s2=175)
+    e.tekst(1150, 3900, "Walk in closet", 180, MORK, 600)
+    e.tekst(1150, 4130, f"{walkin} m²", 152, GRAA, 400)
+    e.tekst(1550, 7250, "Kontor/Sov", 190, MORK, 600)
+    e.tekst(1550, 7490, "7,6 m²", 158, GRAA, 400)
+    e.tekst(5950, 8650, "Bad", 230, MORK, 600)
+    e.tekst(5950, 8910, "12,2 m²", 182, GRAA, 400)
+    e.tekst(3350, 10150, "Gang", 210, MORK, 600)
+    e.tekst(3350, 10390, f"{gang} m²", 172, GRAA, 400)
+    e.romnavn(1450, 13400, "Soverom", sov14, s1=230, s2=185)
+    e.romnavn(5300, 13400, "Soverom", 13.1, s1=230, s2=185)
+
+
+def bygg(navn, viewbox, tittel, sone_tekst):
     alva_helpers.deler.clear()
     alva_helpers.deler.append(
         f'<path d="M 0 0 H {B} V {D} H 0 Z" fill="#FDFBF7" filter="url(#skygge)"/>')
-    alva_helpers.deler.append(
-        f'<rect x="0" y="0" width="{B}" height="{D}" fill="url(#parkett)"/>')
-    r(0, 0, B, YV, MORK)
-    r(0, 0, YV, D, MORK)
-    r(B - YV, 0, YV, D, MORK)
-    r(0, D - YV, B, YV, MORK)
-    for speil in (False, True):
-        enhet2(Enhet(speil), 9.8 if not speil else 7.8)
-    r(M - IV, 0, IV + IV, D, MORK)
-    sone(1500, -3100, "2. ETASJE · TO ENHETER")
-    skriv("2. etasje", "-2600 -3800 21400 18100", (-2400, 13900))
+    if navn == "1. etasje":
+        etg1(E(False), 24.6, 42.3)
+        etg1(E(True), 24.5, 42.2)
+    else:
+        etg2(E(False), 11.9, 9.8, 11.6, 16.2, 5.6, 15.4)
+        etg2(E(True), 11.8, 7.8, 11.9, 16.3, 5.4, 15.3)
+    r(M - IV, 0, IV + IV, D, MORK)                          # leilighetsskille
+    sone(1500, -900, sone_tekst)
+    skriv(navn, viewbox, tittel)
 
 
-bygg()
+bygg("1. etasje", "-2500 -1700 20300 24800", (-2300, 21600),
+     "1. ETASJE · TO ENHETER")
+bygg("2. etasje", "-2500 -1700 20300 21200", (-2300, 18400),
+     "2. ETASJE · TO ENHETER")
