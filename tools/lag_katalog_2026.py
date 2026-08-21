@@ -61,6 +61,8 @@ PLANER = {
     # Edvard = samme hus uten sokkel (beskjed fra Marius 21.08.2026)
     "edvard": [("1. etasje", "planer/edvard-1etasje.svg"),
                ("2. etasje", "planer/edvard-2etasje.svg")],
+    "alva": [("1. etasje", "planer/alva-1etasje.svg"),
+             ("2. etasje", "planer/alva-2etasje.svg")],
 }
 
 
