@@ -58,6 +58,9 @@ PLANER = {
     "edvard-prakt": [("U. etasje — utleiedel 47 m² + kjeller", "planer/edvard-prakt-uetasje.svg"),
                      ("1. etasje", "planer/edvard-prakt-1etasje.svg"),
                      ("2. etasje", "planer/edvard-prakt-2etasje.svg")],
+    # Edvard = samme hus uten sokkel (beskjed fra Marius 21.08.2026)
+    "edvard": [("1. etasje", "planer/edvard-1etasje.svg"),
+               ("2. etasje", "planer/edvard-2etasje.svg")],
 }
 
 
