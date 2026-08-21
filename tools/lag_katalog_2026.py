@@ -9,9 +9,9 @@ den ekte katalogfølelsen. (Første utgave brukte den stive rotateY-motoren fra
 /boligkatalog/; byttet 21. aug etter tilbakemelding fra Marius.)
 
 Innhold: hard forside → velkomst + innholdsfortegnelse → to oppslag per bolig
-(fasade + fakta, interiør + plantegning) → tjenester + fri side → hard bakside.
-Plantegninger finnes bare for Vilde; de andre får tydelig merkede
-PLASSHOLDER-bokser som Marius fyller senere (send ny tegning → legg inn her).
+(fasade + fakta, interiør + plantegning) → prosess, guide, tjenester,
+tilpasning, kontakt og QR → hard bakside. Alle åtte modellene har ekte
+plantegninger; plassholder() står igjen som reserve for nytt innhold.
 
 Siden er med vilje utenfor sitemap.xml og menyen, og har noindex/nofollow.
 Sideskall (header/footer) hentes fra våre-boliger/index.html. Idempotent.
@@ -163,6 +163,28 @@ GUIDE = [
      "attraktiv — også den dagen dere eventuelt skal selge."),
 ]
 
+
+# Frisiden (s. 45): hva som faktisk kan endres på en modell.
+TILPASNING = [
+    ("Planløsningen",
+     "Flytt en vegg, slå sammen to soverom eller gjør om et soverom til "
+     "hjemmekontor. Bærende konstruksjon setter rammene — innenfor dem er "
+     "det mye som lar seg justere."),
+    ("Garasje, bod og uteplass",
+     "Garasje kan legges til, gjøres dobbel eller trekkes inn i boligen. "
+     "Edvard, Edvard Prakt og Vilde har dobbel garasje allerede i "
+     "grunnutgaven."),
+    ("Utleiedel",
+     "Edvard Prakt har en utleiedel på 30 m². Vurderer dere utleie i en "
+     "annen modell, ser vi på om planløsningen kan legges til rette for en "
+     "egen enhet."),
+    ("Uttrykk og materialer",
+     "Kledning, farger, takform og vindusinndeling avgjør om boligen leser "
+     "klassisk eller moderne. Samme planløsning kan få svært ulikt uttrykk."),
+    ("Speilvending og tomt",
+     "Modellen kan speilvendes slik at stue og uteplass vender mot sola og "
+     "utsikten, og tilpasses fall, adkomst og himmelretning på tomten."),
+]
 
 def qr_svg(url: str = "https://idebolig.no/", storrelse: int = 340) -> str:
     """QR-kode som inline-SVG (genereres med segno ved bygging)."""
@@ -458,13 +480,19 @@ def tjenesteside(nr: int) -> str:
     </div>"""
 
 
-def friside(nr: int) -> str:
+def tilpasningside(nr: int) -> str:
+    """Frisiden (s. 45): modellene som utgangspunkt, ikke fasit."""
+    rader = "".join(f'<li><b>{t}</b><p>{tekst}</p></li>' for t, tekst in TILPASNING)
     return f"""<div class="fb-info">
-      <p class="fb-kicker">Egen side</p>
-      <h3>Plass til mer</h3>
-      {plassholder("Fritt innhold",
-                   "Denne siden kan fylles med det dere ønsker — "
-                   "leveransebeskrivelse, priser, omtaler eller en hilsen.")}
+      <p class="fb-kicker">Tilpasning</p>
+      <h3>Modellene er et utgangspunkt</h3>
+      <p class="fb-brod fb-brod--liten">Ingen tomt og ingen familie er lik.
+        Dette er det som oftest justeres.</p>
+      <ol class="fb-steg fb-steg--guide">{rader}</ol>
+      <p class="fb-brod fb-brod--liten">Finner dere ikke modellen dere ser
+        etter, tegner vi en helt egen — arkitekttjenester, prosjektering og
+        byggesøknad er en del av det vi leverer.</p>
+      <a class="fb-lenke" href="../kontakt/">Snakk med oss om tilpasning →</a>
       <span class="fb-sidenr fb-sidenr--h">{nr}</span>
     </div>"""
 
@@ -495,7 +523,7 @@ def bygg() -> None:
                  (3, "Boligmodellene", 6),
                  (4, "Byggeprosessen", base),
                  (5, "Slik velger du boligmodell", base + 2),
-                 (6, "Tjenester og kontakt", base + 4)]
+                 (6, "Tjenester, tilpasning og kontakt", base + 4)]
     modeller = [(b["navn"], BOLIG_START + 4 * n) for n, b in enumerate(BOLIGER)]
 
     innsider = [velkomstside(2), tocside(seksjoner, modeller, 3),
@@ -514,7 +542,7 @@ def bygg() -> None:
                  prosesside(PROSESS[5:], 6, nr + 1, False),
                  guideside(GUIDE[:3], nr + 2, True),
                  guideside(GUIDE[3:], nr + 3, False),
-                 tjenesteside(nr + 4), friside(nr + 5),
+                 tjenesteside(nr + 4), tilpasningside(nr + 5),
                  kontaktside(nr + 6), qrside(nr + 7)]
 
     # Bokas fysiske sider: hard perm + myke ark + hard perm. Innsider med
