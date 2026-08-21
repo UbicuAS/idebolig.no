@@ -266,6 +266,42 @@ class="hfeed site" id="page">
   font:600 9.5px Inter,sans-serif;letter-spacing:.09em;text-transform:uppercase;
   color:var(--mork);background:rgba(253,251,247,.85);
   padding:4px 9px;border-radius:99px}
+.fb-hl{list-style:none;padding:0;margin:0 0 10px}
+.fb-hl li{position:relative;padding:1.1% 0 1.1% 20px;
+  font:500 clamp(10.5px,1.25vw,13.5px) Poppins,sans-serif}
+.fb-hl li::before{content:"";position:absolute;left:2px;top:50%;width:7px;height:7px;
+  border-radius:50%;background:var(--gull);translate:0 -50%}
+.fb-kortgrid{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;
+  grid-template-rows:1fr 1fr;gap:4% 6%;margin-top:8px}
+.fb-kort{display:flex;flex-direction:column;min-height:0}
+.fb-kort img{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:8px;
+  margin-bottom:6px;min-height:0}
+.fb-kort b{font-size:clamp(11px,1.5vw,15px);margin-bottom:3px}
+.fb-ki{display:flex;align-items:center;gap:6px;
+  font:500 clamp(8.5px,1.05vw,11px) Inter,sans-serif;color:var(--grå);
+  padding:1px 0}
+.fb-ki svg{width:1.1em;height:1.1em;color:var(--gull);flex:0 0 auto}
+.fb-steg{list-style:none;padding:0;margin:6px 0 0;flex:1;display:flex;
+  flex-direction:column;justify-content:space-evenly}
+.fb-steg li b{display:block;font-size:clamp(10.5px,1.3vw,13.5px);
+  color:var(--mork);margin-bottom:1px}
+.fb-steg li p{color:var(--grå);font-size:clamp(9.5px,1.12vw,12px);line-height:1.5}
+.fb-steg--guide li b{color:var(--gull)}
+.fb-brod--liten{font-size:clamp(10px,1.2vw,12.5px);margin-bottom:6px}
+.fb-kontaktinfo{background:var(--krem);border-radius:12px;padding:6% 8%;
+  margin:4% 0;flex:0 0 auto}
+.fb-kontaktinfo p{font-size:clamp(11px,1.35vw,14.5px);line-height:1.8;color:var(--mork)}
+.fb-info--midt{align-items:center;text-align:center}
+.fb-qr{width:52%;height:auto;max-width:300px;margin:5% 0 3%;
+  border-radius:10px;box-shadow:0 4px 18px rgba(51,48,44,.14)}
+.fb-qrurl{font:600 clamp(12px,1.5vw,16px) Poppins,sans-serif;color:var(--gull)}
+.fb-sitat{font-size:clamp(14px,1.9vw,22px)!important;font-weight:600!important;
+  line-height:1.45!important;padding:44px 9% 22px!important}
+.fb-toc-sek b{font-size:clamp(10.5px,1.3vw,13.5px);letter-spacing:.02em}
+.fb-toc--modeller{flex:0 1 auto;margin-top:2px}
+.fb-toc--modeller li{padding:1.1% 0 1.1% 16px}
+.fb-toc--modeller small{font:500 clamp(9px,1.1vw,11.5px) Inter,sans-serif;
+  letter-spacing:.05em;text-transform:none;color:var(--mork)}
 .fb-perm{position:absolute;inset:0;background:linear-gradient(150deg,#3A362F,#26231F);
   color:#D9D2C5;display:flex;flex-direction:column;align-items:center;
   justify-content:center;text-align:center;padding:10%}
@@ -319,110 +355,197 @@ class="hfeed site" id="page">
     </div></div>
 <div class="side"><div class="fb-info">
       <p class="fb-kicker">Velkommen</p>
-      <h3>La oss gjøre din drømmebolig til virkelighet</h3>
-      <p class="fb-brod">I denne katalogen finner du våre åtte boligmodeller —
-        fra kompakte klassikere til moderne funkis. Hver modell kan tilpasses
-        din tomt og dine behov.</p>
-      <p class="fb-brod">Idébolig hjelper deg hele veien: tegninger,
-        byggesøknad, prosjektering og utførelse. Bla videre, og ta kontakt når
-        du finner en bolig du vil se nærmere på.</p>
+      <h3>Skap drømmeboligen sammen med Idébolig</h3>
+      <p class="fb-brod">Å bygge bolig er en av de største beslutningene du
+        tar. I denne katalogen finner du våre åtte boligmodeller — fra
+        kompakte klassikere til moderne funkis — sammen med det du trenger å
+        vite om veien fra idé til innflytting.</p>
+      <p class="fb-brod">Hver modell er tegnet med omtanke for norske forhold
+        og norsk byggeskikk, og kan tilpasses din tomt, dine behov og ditt
+        budsjett. Du får ett kontaktpunkt hele veien: tegninger, byggesøknad,
+        prosjektering, grunnarbeid og utførelse.</p>
+      <p class="fb-brod">Bla deg gjennom, la deg inspirere — og ta kontakt
+        når du finner boligen du vil se nærmere på.</p>
       <p class="fb-sign">Idébolig AS · Hamar</p>
       <span class="fb-sidenr fb-sidenr--h fb-sidenr--vs">2</span>
     </div><div class="fals fals--h"></div></div>
 <div class="side"><div class="fb-info">
       <p class="fb-kicker">Katalog 2026</p>
       <h3>Innhold</h3>
-      <ul class="fb-toc"><li><b>Alva</b><small>Enebolig · Moderne</small><span class="prikker"></span><span class="nr">4</span></li><li><b>Edvard</b><small>Enebolig · Klassisk</small><span class="prikker"></span><span class="nr">8</span></li><li><b>Edvard Prakt</b><small>Enebolig · Klassisk</small><span class="prikker"></span><span class="nr">12</span></li><li><b>Embla</b><small>4-mannsbolig · Klassisk</small><span class="prikker"></span><span class="nr">16</span></li><li><b>Nora</b><small>Enebolig · Klassisk</small><span class="prikker"></span><span class="nr">20</span></li><li><b>Odin</b><small>Enebolig · Klassisk</small><span class="prikker"></span><span class="nr">24</span></li><li><b>Tiril</b><small>Tomannsbolig · Moderne</small><span class="prikker"></span><span class="nr">28</span></li><li><b>Vilde</b><small>Enebolig · Funkis</small><span class="prikker"></span><span class="nr">32</span></li><li><b>Tjenester</b><small>Idébolig AS</small><span class="prikker"></span><span class="nr">36</span></li></ul>
+      <ul class="fb-toc"><li class="fb-toc-sek"><b>1 — Velkommen</b><span class="prikker"></span><span class="nr">2</span></li><li class="fb-toc-sek"><b>2 — Om Idébolig</b><span class="prikker"></span><span class="nr">4</span></li><li class="fb-toc-sek"><b>3 — Boligmodellene</b><span class="prikker"></span><span class="nr">6</span></li><li class="fb-toc-sek"><b>4 — Byggeprosessen</b><span class="prikker"></span><span class="nr">40</span></li><li class="fb-toc-sek"><b>5 — Slik velger du boligmodell</b><span class="prikker"></span><span class="nr">42</span></li><li class="fb-toc-sek"><b>6 — Tjenester og kontakt</b><span class="prikker"></span><span class="nr">44</span></li></ul>
+      <ul class="fb-toc fb-toc--modeller"><li class="fb-toc-mod"><small>Alva</small><span class="prikker"></span><span class="nr">8</span></li><li class="fb-toc-mod"><small>Edvard</small><span class="prikker"></span><span class="nr">12</span></li><li class="fb-toc-mod"><small>Edvard Prakt</small><span class="prikker"></span><span class="nr">16</span></li><li class="fb-toc-mod"><small>Embla</small><span class="prikker"></span><span class="nr">20</span></li><li class="fb-toc-mod"><small>Nora</small><span class="prikker"></span><span class="nr">24</span></li><li class="fb-toc-mod"><small>Odin</small><span class="prikker"></span><span class="nr">28</span></li><li class="fb-toc-mod"><small>Tiril</small><span class="prikker"></span><span class="nr">32</span></li><li class="fb-toc-mod"><small>Vilde</small><span class="prikker"></span><span class="nr">36</span></li></ul>
       <span class="fb-sidenr fb-sidenr--h">3</span>
     </div><div class="fals fals--v"></div></div>
-<div class="side"><div class="fb-foto"><img src="../wp-content/uploads/2025/04/Fasade-4-1024x576.png" alt="Alva"><p>Alva</p><span class="fb-sidenr fb-sidenr--v">4</span></div><div class="fals fals--h"></div></div>
+<div class="side"><div class="fb-info">
+      <p class="fb-kicker">Om Idébolig</p>
+      <h3>Unike hjem, bygget for å vare</h3>
+      <p class="fb-brod">Idébolig er en boligbygger med base på Hamar. Vi
+        kombinerer tidløs design med praktiske planløsninger, og legger vekt
+        på at hjemmene vi bygger skal være både vakre å se på og gode å leve
+        i — år etter år.</p>
+      <p class="fb-brod">Bak hver modell ligger et grundig arbeid med
+        arkitektur, arealbruk og materialvalg. Og fordi ingen tomter og ingen
+        familier er like, tilpasser vi gjerne: flytt en vegg, legg til en
+        garasje, eller la oss tegne noe helt eget for deg.</p>
+      <p class="fb-brod">Vi bistår hele veien — fra byggteknisk rådgivning og
+        byggesøknad til prosjektering, grunnarbeid og montasje. Det gir deg
+        én partner å forholde deg til, og full oversikt fra første strek til
+        ferdig bolig.</p>
+      <span class="fb-sidenr fb-sidenr--h fb-sidenr--vs">4</span>
+    </div><div class="fals fals--h"></div></div>
+<div class="side"><div class="fb-foto"><img src="../wp-content/uploads/2024/11/Fasade-Nora-1024x576.png" alt="Nora — fasade"><p class="fb-sitat">«Hjemmene vi bygger skal være like gode å leve i som de er å se på.»</p><span class="fb-sidenr fb-sidenr--v">5</span></div><div class="fals fals--v"></div></div>
+<div class="side"><div class="fb-info">
+      <p class="fb-kicker">Boligmodellene</p>
+      <h3>Utforsk våre boliger</h3>
+      <div class="fb-kortgrid"><div class="fb-kort">
+          <img src="../wp-content/uploads/2025/04/Fasade-4-1024x576.png" alt="Alva">
+          <b>Alva</b>
+          <span class="fb-ki"><svg viewBox="0 0 24 24"><path d="M3 3h18v18H3zM3 9h18M9 9v12" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>214 m²</span>
+          <span class="fb-ki"><svg viewBox="0 0 24 24"><path d="M3 18v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6M3 18h18M6 10V7h12v3" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>5 soverom</span>
+          <span class="fb-ki"><svg viewBox="0 0 24 24"><path d="M4 12h16v2a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5v-2zM7 12V5a2 2 0 0 1 4 0" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>3 bad</span>
+        </div><div class="fb-kort">
+          <img src="../wp-content/uploads/2025/04/3-post-prod-1024x576.webp" alt="Edvard">
+          <b>Edvard</b>
+          <span class="fb-ki"><svg viewBox="0 0 24 24"><path d="M3 3h18v18H3zM3 9h18M9 9v12" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>168 m²</span>
+          <span class="fb-ki"><svg viewBox="0 0 24 24"><path d="M3 18v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6M3 18h18M6 10V7h12v3" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>5 soverom</span>
+          <span class="fb-ki"><svg viewBox="0 0 24 24"><path d="M4 12h16v2a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5v-2zM7 12V5a2 2 0 0 1 4 0" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>2 bad</span>
+        </div><div class="fb-kort">
+          <img src="../wp-content/uploads/2025/03/Fasade-fremside-1024x576.png" alt="Edvard Prakt">
+          <b>Edvard Prakt</b>
+          <span class="fb-ki"><svg viewBox="0 0 24 24"><path d="M3 3h18v18H3zM3 9h18M9 9v12" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>337 m²</span>
+          <span class="fb-ki"><svg viewBox="0 0 24 24"><path d="M3 18v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6M3 18h18M6 10V7h12v3" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>5 soverom</span>
+          <span class="fb-ki"><svg viewBox="0 0 24 24"><path d="M4 12h16v2a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5v-2zM7 12V5a2 2 0 0 1 4 0" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>4 bad</span>
+        </div><div class="fb-kort">
+          <img src="../wp-content/uploads/2025/04/Fasade-bakside-1024x576.webp" alt="Embla">
+          <b>Embla</b>
+          <span class="fb-ki"><svg viewBox="0 0 24 24"><path d="M3 3h18v18H3zM3 9h18M9 9v12" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>84 m² pr enhet</span>
+          <span class="fb-ki"><svg viewBox="0 0 24 24"><path d="M3 18v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6M3 18h18M6 10V7h12v3" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>2 soverom</span>
+          <span class="fb-ki"><svg viewBox="0 0 24 24"><path d="M4 12h16v2a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5v-2zM7 12V5a2 2 0 0 1 4 0" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>2 bad</span>
+        </div></div>
+      <span class="fb-sidenr fb-sidenr--h fb-sidenr--vs">6</span>
+    </div><div class="fals fals--h"></div></div>
+<div class="side"><div class="fb-info">
+      <p class="fb-kicker">Boligmodellene</p><h3>&nbsp;</h3>
+      <div class="fb-kortgrid"><div class="fb-kort">
+          <img src="../wp-content/uploads/2024/11/Fasade-Nora-1024x576.png" alt="Nora">
+          <b>Nora</b>
+          <span class="fb-ki"><svg viewBox="0 0 24 24"><path d="M3 3h18v18H3zM3 9h18M9 9v12" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>310 m²</span>
+          <span class="fb-ki"><svg viewBox="0 0 24 24"><path d="M3 18v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6M3 18h18M6 10V7h12v3" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>4 soverom</span>
+          <span class="fb-ki"><svg viewBox="0 0 24 24"><path d="M4 12h16v2a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5v-2zM7 12V5a2 2 0 0 1 4 0" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>2 bad</span>
+        </div><div class="fb-kort">
+          <img src="../wp-content/uploads/2024/11/Fasade-fremside-post-prod-1024x576.png" alt="Odin">
+          <b>Odin</b>
+          <span class="fb-ki"><svg viewBox="0 0 24 24"><path d="M3 3h18v18H3zM3 9h18M9 9v12" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>222 m²</span>
+          <span class="fb-ki"><svg viewBox="0 0 24 24"><path d="M3 18v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6M3 18h18M6 10V7h12v3" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>4 soverom</span>
+          <span class="fb-ki"><svg viewBox="0 0 24 24"><path d="M4 12h16v2a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5v-2zM7 12V5a2 2 0 0 1 4 0" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>2 bad</span>
+        </div><div class="fb-kort">
+          <img src="../wp-content/uploads/2025/06/Fasade-fremside-1024x576.webp" alt="Tiril">
+          <b>Tiril</b>
+          <span class="fb-ki"><svg viewBox="0 0 24 24"><path d="M3 3h18v18H3zM3 9h18M9 9v12" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>176 m² pr enhet</span>
+          <span class="fb-ki"><svg viewBox="0 0 24 24"><path d="M3 18v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6M3 18h18M6 10V7h12v3" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>4 soverom</span>
+          <span class="fb-ki"><svg viewBox="0 0 24 24"><path d="M4 12h16v2a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5v-2zM7 12V5a2 2 0 0 1 4 0" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>2 bad</span>
+        </div><div class="fb-kort">
+          <img src="../wp-content/uploads/2025/05/Fasade-Vilde-1024x576.webp" alt="Vilde">
+          <b>Vilde</b>
+          <span class="fb-ki"><svg viewBox="0 0 24 24"><path d="M3 3h18v18H3zM3 9h18M9 9v12" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>288 m²</span>
+          <span class="fb-ki"><svg viewBox="0 0 24 24"><path d="M3 18v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6M3 18h18M6 10V7h12v3" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>5 soverom</span>
+          <span class="fb-ki"><svg viewBox="0 0 24 24"><path d="M4 12h16v2a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5v-2zM7 12V5a2 2 0 0 1 4 0" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>2 bad</span>
+        </div></div>
+      <span class="fb-sidenr fb-sidenr--h">7</span>
+    </div><div class="fals fals--v"></div></div>
+<div class="side"><div class="fb-foto"><img src="../wp-content/uploads/2025/04/Fasade-4-1024x576.png" alt="Alva"><p>Alva</p><span class="fb-sidenr fb-sidenr--v">8</span></div><div class="fals fals--h"></div></div>
 <div class="side"><div class="fb-info">
       <p class="fb-kicker">Enebolig · Moderne</p>
       <h3>Alva</h3>
       <p class="fb-tagline">En moderne familiebolig med rom for livet</p>
       <div class="fb-specs"><div class="fb-spec"><span>BRA</span><b>214 m²</b></div><div class="fb-spec"><span>Soverom</span><b>5</b></div><div class="fb-spec"><span>Bad</span><b>3</b></div></div>
-      <p class="fb-tekst">Velkommen til Alva , en moderne og stilren enebolig hvor gjennomtenkte løsninger møter tidløs arkitektur. Med fem soverom, tre bad og to stuer er dette en bolig skapt for familier som verdsetter både funksjonalitet og estetikk.</p>
+      <ul class="fb-hl"><li>Terrasse og balkong langs hele hovedfasaden</li><li>Åpen stue- og kjøkkenløsning mot terrassen</li><li>Fem soverom og tre bad</li></ul>
+      <p class="fb-tekst">Velkommen til Alva , en moderne og stilren enebolig hvor gjennomtenkte løsninger møter tidløs arkitektur. Med fem soverom, tre bad og to stuer er dette en bolig skapt for familier som verdsetter både funksjonalitet og estetikk. Husets pulttak gir det et moderne og elegant uttrykk, mens store vindusflater slipper inn rikelig med dagslys og skaper en lys og luftig atmosfære. Alva er designet med fokus på både privatliv og …</p>
       <a class="fb-lenke" href="../alva/">Se boligen på nettsiden →</a>
-      <span class="fb-sidenr fb-sidenr--h">5</span>
+      <span class="fb-sidenr fb-sidenr--h">9</span>
     </div><div class="fals fals--v"></div></div>
-<div class="side"><div class="fb-duo"><figure><img src="../wp-content/uploads/2025/04/Kjokken.webp" alt="Kjøkken"><figcaption>Kjøkken</figcaption></figure><figure><img src="../wp-content/uploads/2025/04/Stue.webp" alt="Stue"><figcaption>Stue</figcaption></figure><span class="fb-sidenr fb-sidenr--v">6</span></div><div class="fals fals--h"></div></div>
+<div class="side"><div class="fb-duo"><figure><img src="../wp-content/uploads/2025/04/Kjokken.webp" alt="Kjøkken"><figcaption>Kjøkken</figcaption></figure><figure><img src="../wp-content/uploads/2025/04/Stue.webp" alt="Stue"><figcaption>Stue</figcaption></figure><span class="fb-sidenr fb-sidenr--v">10</span></div><div class="fals fals--h"></div></div>
 <div class="side"><div class="fb-info">
       <p class="fb-kicker">Alva</p>
       <h3>Plantegning</h3>
       <div class="fb-planer"><figure class="fb-planfig"><img src="planer/alva-1etasje.svg" alt="1. etasje — Alva"><figcaption>1. etasje</figcaption></figure><figure class="fb-planfig"><img src="planer/alva-2etasje.svg" alt="2. etasje — Alva"><figcaption>2. etasje</figcaption></figure></div>
       <p class="fb-tekst fb-tekst--kort">Husets pulttak gir det et moderne og elegant uttrykk, mens store vindusflater slipper inn rikelig med dagslys og skaper en lys og luftig atmosfære. Alva er designet med fokus på både privatliv og sosiale soner, slik at alle kan finne sin plass i hjemmet. På hovedplanet møtes du av en romslig dagligstue , der store vinduer …</p>
-      <span class="fb-sidenr fb-sidenr--h">7</span>
+      <span class="fb-sidenr fb-sidenr--h">11</span>
     </div><div class="fals fals--v"></div></div>
-<div class="side"><div class="fb-foto"><img src="../wp-content/uploads/2025/04/3-post-prod-1024x576.webp" alt="Edvard"><p>Edvard</p><span class="fb-sidenr fb-sidenr--v">8</span></div><div class="fals fals--h"></div></div>
+<div class="side"><div class="fb-foto"><img src="../wp-content/uploads/2025/04/3-post-prod-1024x576.webp" alt="Edvard"><p>Edvard</p><span class="fb-sidenr fb-sidenr--v">12</span></div><div class="fals fals--h"></div></div>
 <div class="side"><div class="fb-info">
       <p class="fb-kicker">Enebolig · Klassisk</p>
       <h3>Edvard</h3>
       <p class="fb-tagline">Klassisk eleganse med dobbel garasje</p>
       <div class="fb-specs"><div class="fb-spec"><span>BRA</span><b>168 m²</b></div><div class="fb-spec"><span>Soverom</span><b>5</b></div><div class="fb-spec"><span>Bad</span><b>2</b></div><div class="fb-spec"><span>Garasje</span><b>Dobbel</b></div></div>
-      <p class="fb-tekst">Klassiske boliger kombinerer tidløs eleganse med moderne løsninger, og denne boligen er et glimrende eksempel på hvordan tradisjonell arkitektur kan møte dagens krav til funksjonalitet og estetikk. Med symmetriske fasader, elegante søyler og …</p>
+      <ul class="fb-hl"><li>Dobbel garasje med takterrasse over</li><li>Fem soverom fordelt på to etasjer</li><li>Klassisk uttrykk med moderne planløsning</li></ul>
+      <p class="fb-tekst">Klassiske boliger kombinerer tidløs eleganse med moderne løsninger, og denne boligen er et glimrende eksempel på hvordan tradisjonell arkitektur kan møte dagens krav til funksjonalitet og estetikk. Med symmetriske fasader, elegante søyler og gjennomtenkte detaljer oser boligen av sjel og varme. Samtidig sørger store vindusflater og smarte planløsninger for rikelig med lys og en luftig, åpen atmosfære. Boligen er tilpasset en …</p>
       <a class="fb-lenke" href="../edvard/">Se boligen på nettsiden →</a>
-      <span class="fb-sidenr fb-sidenr--h">9</span>
+      <span class="fb-sidenr fb-sidenr--h">13</span>
     </div><div class="fals fals--v"></div></div>
-<div class="side"><div class="fb-duo"><figure><img src="../wp-content/uploads/2024/11/Kjokken.png" alt="Kjøkken"><figcaption>Kjøkken</figcaption></figure><figure><img src="../wp-content/uploads/2024/11/Stue-ny-dag.png" alt="Stue"><figcaption>Stue</figcaption></figure><span class="fb-sidenr fb-sidenr--v">10</span></div><div class="fals fals--h"></div></div>
+<div class="side"><div class="fb-duo"><figure><img src="../wp-content/uploads/2024/11/Kjokken.png" alt="Kjøkken"><figcaption>Kjøkken</figcaption></figure><figure><img src="../wp-content/uploads/2024/11/Stue-ny-dag.png" alt="Stue"><figcaption>Stue</figcaption></figure><span class="fb-sidenr fb-sidenr--v">14</span></div><div class="fals fals--h"></div></div>
 <div class="side"><div class="fb-info">
       <p class="fb-kicker">Edvard</p>
       <h3>Plantegning</h3>
       <div class="fb-planer"><figure class="fb-planfig"><img src="planer/edvard-1etasje.svg" alt="1. etasje — Edvard"><figcaption>1. etasje</figcaption></figure><figure class="fb-planfig"><img src="planer/edvard-2etasje.svg" alt="2. etasje — Edvard"><figcaption>2. etasje</figcaption></figure></div>
       <p class="fb-tekst fb-tekst--kort">Boligen er tilpasset en moderne livsstil og tilbyr ekstra komfort med en dobbel garasje. Med fokus på kvalitet i både materialer og design er denne boligen mer enn bare et sted å bo – det er en investering i stil, tradisjon og funksjonalitet. Idebolig gjør det enkelt å realisere drømmen om en klassisk bolig som er skreddersydd …</p>
-      <span class="fb-sidenr fb-sidenr--h">11</span>
+      <span class="fb-sidenr fb-sidenr--h">15</span>
     </div><div class="fals fals--v"></div></div>
-<div class="side"><div class="fb-foto"><img src="../wp-content/uploads/2025/03/Fasade-fremside-1024x576.png" alt="Edvard Prakt"><p>Edvard Prakt</p><span class="fb-sidenr fb-sidenr--v">12</span></div><div class="fals fals--h"></div></div>
+<div class="side"><div class="fb-foto"><img src="../wp-content/uploads/2025/03/Fasade-fremside-1024x576.png" alt="Edvard Prakt"><p>Edvard Prakt</p><span class="fb-sidenr fb-sidenr--v">16</span></div><div class="fals fals--h"></div></div>
 <div class="side"><div class="fb-info">
       <p class="fb-kicker">Enebolig · Klassisk</p>
       <h3>Edvard Prakt</h3>
       <p class="fb-tagline">En oppgradert versjon av tidløs eleganse</p>
       <div class="fb-specs"><div class="fb-spec"><span>BRA</span><b>337 m²</b></div><div class="fb-spec"><span>Soverom</span><b>5</b></div><div class="fb-spec"><span>Bad</span><b>4</b></div><div class="fb-spec"><span>Garasje</span><b>Dobbel</b></div><div class="fb-spec"><span>Utleiedel</span><b>30 m²</b></div></div>
-      <p class="fb-tekst">Edvard Prakt er en videreutvikling av den populære boligen Edvard, og tar klassisk arkitektur til et nytt nivå. Med tre etasjer, en generøs planløsning og gjennomførte detaljer er denne boligen skapt for å romme en stor familie med stil og komfort.</p>
+      <ul class="fb-hl"><li>Utleiedel på 47 m² i sokkeletasjen</li><li>Takterrasse på 42,7 m² over dobbelgarasjen</li><li>Kjellerstue og rikelig med bodplass</li></ul>
+      <p class="fb-tekst">Edvard Prakt er en videreutvikling av den populære boligen Edvard, og tar klassisk arkitektur til et nytt nivå. Med tre etasjer, en generøs planløsning og gjennomførte detaljer er denne boligen skapt for å romme en stor familie med stil og komfort. De symmetriske fasadene, elegante søylene og det majestetiske uttrykket gir boligen et tidløst preg, mens store vindusflater og åpne løsninger sørger for rikelig med naturlig lys …</p>
       <a class="fb-lenke" href="../edvard-prakt/">Se boligen på nettsiden →</a>
-      <span class="fb-sidenr fb-sidenr--h">13</span>
+      <span class="fb-sidenr fb-sidenr--h">17</span>
     </div><div class="fals fals--v"></div></div>
 <div class="side"><div class="fb-info">
       <p class="fb-kicker">Edvard Prakt</p>
       <h3>Plantegninger</h3>
       <div class="fb-planer"><figure class="fb-planfig"><img src="planer/edvard-prakt-uetasje.svg" alt="U. etasje — utleiedel 47 m² + kjeller — Edvard Prakt"><figcaption>U. etasje — utleiedel 47 m² + kjeller</figcaption></figure><figure class="fb-planfig"><img src="planer/edvard-prakt-1etasje.svg" alt="1. etasje — Edvard Prakt"><figcaption>1. etasje</figcaption></figure></div>
-      <span class="fb-sidenr fb-sidenr--h fb-sidenr--vs">14</span>
+      <span class="fb-sidenr fb-sidenr--h fb-sidenr--vs">18</span>
     </div><div class="fals fals--h"></div></div>
 <div class="side"><div class="fb-info">
       <p class="fb-kicker">Edvard Prakt</p>
       <h3>&nbsp;</h3>
       <div class="fb-planer"><figure class="fb-planfig"><img src="planer/edvard-prakt-2etasje.svg" alt="2. etasje — Edvard Prakt"><figcaption>2. etasje</figcaption></figure></div>
       <p class="fb-tekst fb-tekst--kort">De symmetriske fasadene, elegante søylene og det majestetiske uttrykket gir boligen et tidløst preg, mens store vindusflater og åpne løsninger sørger for rikelig med naturlig lys og en luftig atmosfære. Edvard Prakt kombinerer det beste fra tradisjonell design med smarte, moderne løsninger. Boligen …</p>
-      <span class="fb-sidenr fb-sidenr--h">15</span>
+      <span class="fb-sidenr fb-sidenr--h">19</span>
     </div><div class="fals fals--v"></div></div>
-<div class="side"><div class="fb-foto"><img src="../wp-content/uploads/2025/04/Fasade-bakside-1024x576.webp" alt="Embla"><p>Embla</p><span class="fb-sidenr fb-sidenr--v">16</span></div><div class="fals fals--h"></div></div>
+<div class="side"><div class="fb-foto"><img src="../wp-content/uploads/2025/04/Fasade-bakside-1024x576.webp" alt="Embla"><p>Embla</p><span class="fb-sidenr fb-sidenr--v">20</span></div><div class="fals fals--h"></div></div>
 <div class="side"><div class="fb-info">
       <p class="fb-kicker">4-mannsbolig · Klassisk</p>
       <h3>Embla</h3>
       <p class="fb-tagline">Klassisk 4-mannsbolig med moderne komfort</p>
       <div class="fb-specs"><div class="fb-spec"><span>BRA</span><b>84 m² pr enhet</b></div><div class="fb-spec"><span>Soverom</span><b>2</b></div><div class="fb-spec"><span>Bad</span><b>2</b></div></div>
-      <p class="fb-tekst">Velkommen til Embla – en tidløs og gjennomført 4-mannsbolig som kombinerer klassisk arkitektur med moderne løsninger. Her bor du i et rolig og trivelig nabolag, med alt du trenger for en enkel og behagelig hverdag.</p>
+      <ul class="fb-hl"><li>Fire leiligheter på 84 m² hver</li><li>Felles inngang med trapp og heis</li><li>Egen terrasse eller balkong til hver leilighet</li></ul>
+      <p class="fb-tekst">Velkommen til Embla – en tidløs og gjennomført 4-mannsbolig som kombinerer klassisk arkitektur med moderne løsninger. Her bor du i et rolig og trivelig nabolag, med alt du trenger for en enkel og behagelig hverdag. Hver leilighet i Embla har en funksjonell og arealeffektiv planløsning med to lyse og romslige soverom , et åpent kjøkken- og stueområde som innbyr til både hverdagsliv og sosiale stunder, samt et romslig bad på …</p>
       <a class="fb-lenke" href="../embla/">Se boligen på nettsiden →</a>
-      <span class="fb-sidenr fb-sidenr--h">17</span>
+      <span class="fb-sidenr fb-sidenr--h">21</span>
     </div><div class="fals fals--v"></div></div>
-<div class="side"><div class="fb-duo"><figure><img src="../wp-content/uploads/2025/04/Fasade-bakside-1-1024x576.webp" alt="Fasade, bakside"><figcaption>Fasade, bakside</figcaption></figure><figure><img src="../wp-content/uploads/2025/04/Fasade-fremside.webp" alt="Fasade, framside"><figcaption>Fasade, framside</figcaption></figure><span class="fb-sidenr fb-sidenr--v">18</span></div><div class="fals fals--h"></div></div>
+<div class="side"><div class="fb-duo"><figure><img src="../wp-content/uploads/2025/04/Fasade-bakside-1-1024x576.webp" alt="Fasade, bakside"><figcaption>Fasade, bakside</figcaption></figure><figure><img src="../wp-content/uploads/2025/04/Fasade-fremside.webp" alt="Fasade, framside"><figcaption>Fasade, framside</figcaption></figure><span class="fb-sidenr fb-sidenr--v">22</span></div><div class="fals fals--h"></div></div>
 <div class="side"><div class="fb-info">
       <p class="fb-kicker">Embla</p>
       <h3>Plantegning</h3>
       <div class="fb-planer"><figure class="fb-planfig"><img src="planer/embla-1etasje.svg" alt="1. etasje — to leiligheter — Embla"><figcaption>1. etasje — to leiligheter</figcaption></figure><figure class="fb-planfig"><img src="planer/embla-2etasje.svg" alt="2. etasje — to leiligheter — Embla"><figcaption>2. etasje — to leiligheter</figcaption></figure></div>
       <p class="fb-tekst fb-tekst--kort">Hver leilighet i Embla har en funksjonell og arealeffektiv planløsning med to lyse og romslige soverom , et åpent kjøkken- og stueområde som innbyr til både hverdagsliv og sosiale stunder, samt et romslig bad på hele 7 m² – perfekt for deg som verdsetter god plass og komfort. Vaskemaskin og tørketrommel kan plasseres i eget …</p>
-      <span class="fb-sidenr fb-sidenr--h">19</span>
+      <span class="fb-sidenr fb-sidenr--h">23</span>
     </div><div class="fals fals--v"></div></div>
-<div class="side"><div class="fb-foto"><img src="../wp-content/uploads/2024/11/Fasade-Nora-1024x576.png" alt="Nora"><p>Nora</p><span class="fb-sidenr fb-sidenr--v">20</span></div><div class="fals fals--h"></div></div>
+<div class="side"><div class="fb-foto"><img src="../wp-content/uploads/2024/11/Fasade-Nora-1024x576.png" alt="Nora"><p>Nora</p><span class="fb-sidenr fb-sidenr--v">24</span></div><div class="fals fals--h"></div></div>
 <div class="side"><div class="fb-info">
       <p class="fb-kicker">Enebolig · Klassisk</p>
       <h3>Nora</h3>
       <p class="fb-tagline">Drømmehjemmet for den moderne familien</p>
       <div class="fb-specs"><div class="fb-spec"><span>BRA</span><b>310 m²</b></div><div class="fb-spec"><span>Soverom</span><b>4</b></div><div class="fb-spec"><span>Bad</span><b>2</b></div></div>
-      <p class="fb-tekst">Nora er en eksklusiv bolig som kombinerer tidløs klassisk eleganse med moderne design og funksjonalitet – perfekt for den store familien som verdsetter både stil og romslighet.</p>
+      <ul class="fb-hl"><li>310 m² med plass til hele familien</li><li>Fire soverom og to bad</li><li>Klassisk arkitektur med gjennomtenkte detaljer</li></ul>
+      <p class="fb-tekst">Nora er en eksklusiv bolig som kombinerer tidløs klassisk eleganse med moderne design og funksjonalitet – perfekt for den store familien som verdsetter både stil og romslighet. Denne storboligen er gjennomført med rene linjer og kvalitetsmaterialer som gir et moderne uttrykk, samtidig som den har et klassisk preg som skaper en varm og innbydende atmosfære. Store vindusflater sørger for rikelig med naturlig lys og åpner opp …</p>
       <a class="fb-lenke" href="../nora/">Se boligen på nettsiden →</a>
-      <span class="fb-sidenr fb-sidenr--h">21</span>
+      <span class="fb-sidenr fb-sidenr--h">25</span>
     </div><div class="fals fals--v"></div></div>
-<div class="side"><div class="fb-duo"><figure><img src="../wp-content/uploads/2024/11/Spisestue-post-prod.png" alt="Spisestue"><figcaption>Spisestue</figcaption></figure><figure><img src="../wp-content/uploads/2024/11/Fasade-bakside-Nora.png" alt="Fasade, bakside"><figcaption>Fasade, bakside</figcaption></figure><span class="fb-sidenr fb-sidenr--v">22</span></div><div class="fals fals--h"></div></div>
+<div class="side"><div class="fb-duo"><figure><img src="../wp-content/uploads/2024/11/Spisestue-post-prod.png" alt="Spisestue"><figcaption>Spisestue</figcaption></figure><figure><img src="../wp-content/uploads/2024/11/Fasade-bakside-Nora.png" alt="Fasade, bakside"><figcaption>Fasade, bakside</figcaption></figure><span class="fb-sidenr fb-sidenr--v">26</span></div><div class="fals fals--h"></div></div>
 <div class="side"><div class="fb-info">
       <p class="fb-kicker">Nora</p>
       <h3>Plantegning</h3>
@@ -432,19 +555,20 @@ class="hfeed site" id="page">
       <p>Legges inn senere, f.eks. 1. og 2. etasje.</p>
     </div>
       <p class="fb-tekst fb-tekst--kort">Denne storboligen er gjennomført med rene linjer og kvalitetsmaterialer som gir et moderne uttrykk, samtidig som den har et klassisk preg som skaper en varm og innbydende atmosfære. Store vindusflater sørger for rikelig med naturlig lys og åpner opp hjemmet mot omgivelsene, mens de luftige rommene gir familien frihet til både …</p>
-      <span class="fb-sidenr fb-sidenr--h">23</span>
+      <span class="fb-sidenr fb-sidenr--h">27</span>
     </div><div class="fals fals--v"></div></div>
-<div class="side"><div class="fb-foto"><img src="../wp-content/uploads/2024/11/Fasade-fremside-post-prod-1024x576.png" alt="Odin"><p>Odin</p><span class="fb-sidenr fb-sidenr--v">24</span></div><div class="fals fals--h"></div></div>
+<div class="side"><div class="fb-foto"><img src="../wp-content/uploads/2024/11/Fasade-fremside-post-prod-1024x576.png" alt="Odin"><p>Odin</p><span class="fb-sidenr fb-sidenr--v">28</span></div><div class="fals fals--h"></div></div>
 <div class="side"><div class="fb-info">
       <p class="fb-kicker">Enebolig · Klassisk</p>
       <h3>Odin</h3>
       <p class="fb-tagline">Sjarmerende og kompakt med smart plassutnyttelse</p>
       <div class="fb-specs"><div class="fb-spec"><span>BRA</span><b>222 m²</b></div><div class="fb-spec"><span>Soverom</span><b>4</b></div><div class="fb-spec"><span>Bad</span><b>2</b></div></div>
-      <p class="fb-tekst">Dette sjarmerende huset kombinerer klassisk arkitektur med smart plassutnyttelse og en varm, innbydende atmosfære. Med et innredet loft og en veloverveid rominndeling, har dette huset alt du trenger – hver eneste kvadratmeter er nøye gjennomtenkt.</p>
+      <ul class="fb-hl"><li>Kompakt og arealeffektiv planløsning</li><li>Fire soverom og to praktiske boder</li><li>Sjarmerende og lettstelt hjem</li></ul>
+      <p class="fb-tekst">Dette sjarmerende huset kombinerer klassisk arkitektur med smart plassutnyttelse og en varm, innbydende atmosfære. Med et innredet loft og en veloverveid rominndeling, har dette huset alt du trenger – hver eneste kvadratmeter er nøye gjennomtenkt. Hovedetasje: En åpen og lys stue med god takhøyde knyttet til et funksjonelt kjøkken. Her er det plass til både familiehygge og gjester. Et av husets fire soverom ligger også i …</p>
       <a class="fb-lenke" href="../odin/">Se boligen på nettsiden →</a>
-      <span class="fb-sidenr fb-sidenr--h">25</span>
+      <span class="fb-sidenr fb-sidenr--h">29</span>
     </div><div class="fals fals--v"></div></div>
-<div class="side"><div class="fb-duo"><figure><img src="../wp-content/uploads/2024/11/Fasade-fremside-post-prod-1.png" alt="Fasade"><figcaption>Fasade</figcaption></figure><figure><img src="../wp-content/uploads/2024/11/Fasade-bakside-post-prod.png" alt="Fasade, bakside"><figcaption>Fasade, bakside</figcaption></figure><span class="fb-sidenr fb-sidenr--v">26</span></div><div class="fals fals--h"></div></div>
+<div class="side"><div class="fb-duo"><figure><img src="../wp-content/uploads/2024/11/Fasade-fremside-post-prod-1.png" alt="Fasade"><figcaption>Fasade</figcaption></figure><figure><img src="../wp-content/uploads/2024/11/Fasade-bakside-post-prod.png" alt="Fasade, bakside"><figcaption>Fasade, bakside</figcaption></figure><span class="fb-sidenr fb-sidenr--v">30</span></div><div class="fals fals--h"></div></div>
 <div class="side"><div class="fb-info">
       <p class="fb-kicker">Odin</p>
       <h3>Plantegning</h3>
@@ -454,19 +578,20 @@ class="hfeed site" id="page">
       <p>Legges inn senere, f.eks. 1. og 2. etasje.</p>
     </div>
       <p class="fb-tekst fb-tekst--kort">Hovedetasje: En åpen og lys stue med god takhøyde knyttet til et funksjonelt kjøkken. Her er det plass til både familiehygge og gjester. Et av husets fire soverom ligger også i denne etasjen – perfekt som gjesterom, kontor eller et lett tilgjengelig soverom. Bad og vaskerom er praktisk plassert for enkel tilgang. Loftet: Loftet …</p>
-      <span class="fb-sidenr fb-sidenr--h">27</span>
+      <span class="fb-sidenr fb-sidenr--h">31</span>
     </div><div class="fals fals--v"></div></div>
-<div class="side"><div class="fb-foto"><img src="../wp-content/uploads/2025/06/Fasade-fremside-1024x576.webp" alt="Tiril"><p>Tiril</p><span class="fb-sidenr fb-sidenr--v">28</span></div><div class="fals fals--h"></div></div>
+<div class="side"><div class="fb-foto"><img src="../wp-content/uploads/2025/06/Fasade-fremside-1024x576.webp" alt="Tiril"><p>Tiril</p><span class="fb-sidenr fb-sidenr--v">32</span></div><div class="fals fals--h"></div></div>
 <div class="side"><div class="fb-info">
       <p class="fb-kicker">Tomannsbolig · Moderne</p>
       <h3>Tiril</h3>
       <p class="fb-tagline">Romslig og moderne tomannsbolig over to etasjer</p>
       <div class="fb-specs"><div class="fb-spec"><span>BRA</span><b>176 m² pr enhet</b></div><div class="fb-spec"><span>Soverom</span><b>4</b></div><div class="fb-spec"><span>Bad</span><b>2</b></div><div class="fb-spec"><span>Garasje</span><b>Ja</b></div></div>
-      <p class="fb-tekst">Tiril er en moderne og familievennlig tomannsbolig over to etasjer, med et bruksareal (BRA) på 175,6 m², hvorav 18 m² utgjør en integrert garasje med direkte inngang til boligen. Dette er et hjem for deg som ønsker både stil og funksjonalitet, med …</p>
+      <ul class="fb-hl"><li>To romslige enheter på 176 m² hver</li><li>Garasje til hver enhet</li><li>Moderne uttrykk over to etasjer</li></ul>
+      <p class="fb-tekst">Tiril er en moderne og familievennlig tomannsbolig over to etasjer, med et bruksareal (BRA) på 175,6 m², hvorav 18 m² utgjør en integrert garasje med direkte inngang til boligen. Dette er et hjem for deg som ønsker både stil og funksjonalitet, med god plass til å leve og vokse. Boligen har en tydelig og effektiv planløsning som gir en naturlig inndeling mellom sosiale soner og private rom. Med fire romslige soverom, to bad og …</p>
       <a class="fb-lenke" href="../tiril/">Se boligen på nettsiden →</a>
-      <span class="fb-sidenr fb-sidenr--h">29</span>
+      <span class="fb-sidenr fb-sidenr--h">33</span>
     </div><div class="fals fals--v"></div></div>
-<div class="side"><div class="fb-duo"><figure><img src="../wp-content/uploads/2025/06/Kjokken.webp" alt="Kjøkken"><figcaption>Kjøkken</figcaption></figure><figure><img src="../wp-content/uploads/2025/06/Stue.webp" alt="Stue"><figcaption>Stue</figcaption></figure><span class="fb-sidenr fb-sidenr--v">30</span></div><div class="fals fals--h"></div></div>
+<div class="side"><div class="fb-duo"><figure><img src="../wp-content/uploads/2025/06/Kjokken.webp" alt="Kjøkken"><figcaption>Kjøkken</figcaption></figure><figure><img src="../wp-content/uploads/2025/06/Stue.webp" alt="Stue"><figcaption>Stue</figcaption></figure><span class="fb-sidenr fb-sidenr--v">34</span></div><div class="fals fals--h"></div></div>
 <div class="side"><div class="fb-info">
       <p class="fb-kicker">Tiril</p>
       <h3>Plantegning</h3>
@@ -476,25 +601,54 @@ class="hfeed site" id="page">
       <p>Legges inn senere, f.eks. 1. og 2. etasje.</p>
     </div>
       <p class="fb-tekst fb-tekst--kort">Boligen har en tydelig og effektiv planløsning som gir en naturlig inndeling mellom sosiale soner og private rom. Med fire romslige soverom, to bad og en åpen stue- og kjøkkenløsning, er Tiril godt tilrettelagt for den moderne familien. Her får alle i husstanden sin egen plass – samtidig som hjemmet inviterer til felleskap og …</p>
-      <span class="fb-sidenr fb-sidenr--h">31</span>
+      <span class="fb-sidenr fb-sidenr--h">35</span>
     </div><div class="fals fals--v"></div></div>
-<div class="side"><div class="fb-foto"><img src="../wp-content/uploads/2025/05/Fasade-Vilde-1024x576.webp" alt="Vilde"><p>Vilde</p><span class="fb-sidenr fb-sidenr--v">32</span></div><div class="fals fals--h"></div></div>
+<div class="side"><div class="fb-foto"><img src="../wp-content/uploads/2025/05/Fasade-Vilde-1024x576.webp" alt="Vilde"><p>Vilde</p><span class="fb-sidenr fb-sidenr--v">36</span></div><div class="fals fals--h"></div></div>
 <div class="side"><div class="fb-info">
       <p class="fb-kicker">Enebolig · Funkis</p>
       <h3>Vilde</h3>
       <p class="fb-tagline">Hypermoderne funkishus — et moderne mesterverk</p>
       <div class="fb-specs"><div class="fb-spec"><span>BRA</span><b>288 m²</b></div><div class="fb-spec"><span>Soverom</span><b>5</b></div><div class="fb-spec"><span>Bad</span><b>2</b></div><div class="fb-spec"><span>Garasje</span><b>Dobbel</b></div></div>
-      <p class="fb-tekst">Vilde er ikke bare et hjem – det er en livsstil. Med sine 288 m² BRA fremstår denne boligen som et hypermoderne funkishus der funksjon, estetikk og kvalitet smelter sammen til en harmonisk helhet. Her er det tenkt på hver minste detalj – både ute og …</p>
+      <ul class="fb-hl"><li>Hypermoderne funkisuttrykk</li><li>Fem soverom og dobbel garasje</li><li>Store vindusflater og lyse rom</li></ul>
+      <p class="fb-tekst">Vilde er ikke bare et hjem – det er en livsstil. Med sine 288 m² BRA fremstår denne boligen som et hypermoderne funkishus der funksjon, estetikk og kvalitet smelter sammen til en harmonisk helhet. Her er det tenkt på hver minste detalj – både ute og inne. Fasaden kjennetegnes av rene linjer og spiledetaljer som myker opp uttrykket og gir huset en varm og naturlig karakter. Dette arkitektoniske grepet tas med videre inn i …</p>
       <a class="fb-lenke" href="../vilde/">Se boligen på nettsiden →</a>
-      <span class="fb-sidenr fb-sidenr--h">33</span>
+      <span class="fb-sidenr fb-sidenr--h">37</span>
     </div><div class="fals fals--v"></div></div>
-<div class="side"><div class="fb-duo"><figure><img src="../wp-content/uploads/2025/05/Stue-Vilde-scaled.webp" alt="Stue"><figcaption>Stue</figcaption></figure><figure><img src="../wp-content/uploads/2025/05/Soverom-Vilde.webp" alt="Soverom"><figcaption>Soverom</figcaption></figure><span class="fb-sidenr fb-sidenr--v">34</span></div><div class="fals fals--h"></div></div>
+<div class="side"><div class="fb-duo"><figure><img src="../wp-content/uploads/2025/05/Stue-Vilde-scaled.webp" alt="Stue"><figcaption>Stue</figcaption></figure><figure><img src="../wp-content/uploads/2025/05/Soverom-Vilde.webp" alt="Soverom"><figcaption>Soverom</figcaption></figure><span class="fb-sidenr fb-sidenr--v">38</span></div><div class="fals fals--h"></div></div>
 <div class="side"><div class="fb-info">
       <p class="fb-kicker">Vilde</p>
       <h3>Plantegning</h3>
       <div class="fb-planer"><figure class="fb-planfig"><img src="../wp-content/uploads/2025/05/Vilde-3d-plan-1024x576.webp" alt="3D-plantegning — Vilde"><figcaption>3D-plantegning</figcaption></figure><figure class="fb-planfig"><img src="../wp-content/uploads/2025/05/Vilde-3d-plan-hus-2-1024x576.webp" alt="3D-plantegning, alternativ — Vilde"><figcaption>3D-plantegning, alternativ</figcaption></figure></div>
       <p class="fb-tekst fb-tekst--kort">Fasaden kjennetegnes av rene linjer og spiledetaljer som myker opp uttrykket og gir huset en varm og naturlig karakter. Dette arkitektoniske grepet tas med videre inn i interiøret, hvor spilevegger og -elementer skaper sammenheng, dybde og taktil kvalitet i rommene. Boligen er fordelt på to etasjer og inneholder hele 5 soverom …</p>
-      <span class="fb-sidenr fb-sidenr--h">35</span>
+      <span class="fb-sidenr fb-sidenr--h">39</span>
+    </div><div class="fals fals--v"></div></div>
+<div class="side"><div class="fb-info">
+      <p class="fb-kicker">Byggeprosessen</p>
+      <h3>Fra idé til innflytting</h3>
+      <p class="fb-brod fb-brod--liten">Slik jobber vi — steg for steg, med
+        faste holdepunkter og én partner hele veien.</p>
+      <ol class="fb-steg"><li><b>1. Første møte og tomtebefaring</b><p>Vi blir kjent med ønskene deres og vurderer tomtens muligheter — utsikt, solforhold og grunnforhold.</p></li><li><b>2. Tegninger og tilpasning</b><p>Boligmodellen tilpasses tomten og behovene deres — eller vi tegner helt nytt sammen med dere.</p></li><li><b>3. Pristilbud og avtale</b><p>Dere får et skriftlig pristilbud, og vi avtaler leveranseomfang og fremdrift før noe settes i gang.</p></li><li><b>4. Byggesøknad</b><p>Vi håndterer byggesøknad, nabovarsel og dialogen med kommunen, og holder dere oppdatert underveis.</p></li><li><b>5. Prosjektering</b><p>Arbeidstegninger og tekniske planer utarbeides, slik at alle fag vet nøyaktig hva som skal bygges.</p></li></ol>
+      <span class="fb-sidenr fb-sidenr--h fb-sidenr--vs">40</span>
+    </div><div class="fals fals--h"></div></div>
+<div class="side"><div class="fb-info">
+      <p class="fb-kicker">Byggeprosessen</p><h3>&nbsp;</h3>
+      <ol class="fb-steg"><li><b>6. Grunnarbeid</b><p>Vi utfører graving, grunnarbeid og betongfundamentering — fra byggegrop til ferdig støpt fundament.</p></li><li><b>7. Byggeperioden</b><p>Montasje og utførelse med faste kontrollpunkter, fra tett bygg til ferdige overflater.</p></li><li><b>8. Ferdigbefaring</b><p>Boligen gjennomgås grundig sammen med dere. Eventuelle avvik protokollføres og utbedres.</p></li><li><b>9. Overtakelse</b><p>Formell overtakelse med dokumentasjon av boligen — og nøklene til deres nye hjem.</p></li><li><b>10. Oppfølging</b><p>Vi følger opp etter innflytting, slik at dere er trygge på boligen også etter at dere har flyttet inn.</p></li></ol>
+      <span class="fb-sidenr fb-sidenr--h">41</span>
+    </div><div class="fals fals--v"></div></div>
+<div class="side"><div class="fb-info">
+      <p class="fb-kicker">Guide</p>
+      <h3>Slik velger du riktig boligmodell</h3>
+      <p class="fb-brod fb-brod--liten">Seks ting det lønner seg å tenke
+        gjennom før du bestemmer deg.</p>
+      <ol class="fb-steg fb-steg--guide"><li><b>Budsjett</b><p>Avklar rammene tidlig. Ulike modeller har ulik pris, og tilpasninger påvirker totalen. Et tydelig budsjett gjør alle valg enklere.</p></li><li><b>Tomt og beliggenhet</b><p>Tomtens form, helning og solforhold påvirker hvilken modell som passer. En smal tomt kan peke mot to etasjer; en flat og romslig tomt gir flere muligheter.</p></li><li><b>Livssituasjon og behov</b><p>Tenk fem–ti år frem: Trenger dere flere soverom, hjemmekontor eller utleiedel? Velg en bolig som vokser med dere.</p></li></ol>
+      
+      <span class="fb-sidenr fb-sidenr--h fb-sidenr--vs">42</span>
+    </div><div class="fals fals--h"></div></div>
+<div class="side"><div class="fb-info">
+      <p class="fb-kicker">Guide</p><h3>&nbsp;</h3>
+      <ol class="fb-steg fb-steg--guide"><li><b>Stil og uttrykk</b><p>Klassisk eller funkis? Boligen bør både speile smaken deres og passe inn i omgivelsene. Flere av modellene finnes i ulike uttrykk.</p></li><li><b>Energi og drift</b><p>Kompakte boliger er enklere å varme opp. Tenk også på muligheten for solceller og andre energiløsninger når dere velger.</p></li><li><b>Verdi over tid</b><p>En gjennomarbeidet bolig med fleksibel planløsning holder seg attraktiv — også den dagen dere eventuelt skal selge.</p></li></ol>
+      <p class="fb-brod fb-brod--liten">Usikker? Vi hjelper deg å veie alternativene mot hverandre — helt uforpliktende.</p>
+      <span class="fb-sidenr fb-sidenr--h">43</span>
     </div><div class="fals fals--v"></div></div>
 <div class="side"><div class="fb-info">
       <p class="fb-kicker">Tjenester</p>
@@ -502,7 +656,7 @@ class="hfeed site" id="page">
       <p class="fb-brod">Vi bistår gjennom hele byggeprosessen:</p>
       <ul class="fb-tjenester"><li>Byggteknisk rådgivning</li><li>Byggesøknad</li><li>Arkitekttjenester</li><li>Prosjektering</li><li>Utførelse og montasje</li><li>Graving, grunnarbeid og betongfundamentering</li></ul>
       <a class="fb-lenke" href="../tjenester/">Les mer om tjenestene →</a>
-      <span class="fb-sidenr fb-sidenr--h fb-sidenr--vs">36</span>
+      <span class="fb-sidenr fb-sidenr--h fb-sidenr--vs">44</span>
     </div><div class="fals fals--h"></div></div>
 <div class="side"><div class="fb-info">
       <p class="fb-kicker">Egen side</p>
@@ -512,7 +666,31 @@ class="hfeed site" id="page">
       <b>Fritt innhold</b>
       <p>Denne siden kan fylles med det dere ønsker — leveransebeskrivelse, priser, omtaler eller en hilsen.</p>
     </div>
-      <span class="fb-sidenr fb-sidenr--h">37</span>
+      <span class="fb-sidenr fb-sidenr--h">45</span>
+    </div><div class="fals fals--v"></div></div>
+<div class="side"><div class="fb-info">
+      <p class="fb-kicker">Kontakt</p>
+      <h3>Klar for neste steg?</h3>
+      <p class="fb-brod">Ta kontakt for en uforpliktende prat om tomten din,
+        boligmodellene eller prisoverslag. Vi svarer gjerne — og du binder
+        deg ikke til noe.</p>
+      <div class="fb-kontaktinfo">
+        <p><b>Idébolig AS</b></p>
+        <p>Jølstadbakken 14, 2318 Hamar</p>
+        <p>91 92 66 66</p>
+        <p>post@idebolig.no</p>
+      </div>
+      <a class="fb-lenke" href="../kontakt/">Send oss en melding →</a>
+      <span class="fb-sidenr fb-sidenr--h fb-sidenr--vs">46</span>
+    </div><div class="fals fals--h"></div></div>
+<div class="side"><div class="fb-info fb-info--midt">
+      <p class="fb-kicker">idebolig.no</p>
+      <h3>Se mer på nettsiden</h3>
+      <p class="fb-brod fb-brod--liten">Skann koden for flere bilder, alle
+        boligmodellene og guidene våre.</p>
+      <svg class="fb-qr" viewBox="-2 -2 29 29" width="340" height="340" xmlns="http://www.w3.org/2000/svg"><rect x="-2" y="-2" width="29" height="29" fill="#FDFBF7" rx="2"/><path d="M0 0h1v1h-1zM1 0h1v1h-1zM2 0h1v1h-1zM3 0h1v1h-1zM4 0h1v1h-1zM5 0h1v1h-1zM6 0h1v1h-1zM8 0h1v1h-1zM9 0h1v1h-1zM10 0h1v1h-1zM11 0h1v1h-1zM12 0h1v1h-1zM14 0h1v1h-1zM18 0h1v1h-1zM19 0h1v1h-1zM20 0h1v1h-1zM21 0h1v1h-1zM22 0h1v1h-1zM23 0h1v1h-1zM24 0h1v1h-1zM0 1h1v1h-1zM6 1h1v1h-1zM8 1h1v1h-1zM13 1h1v1h-1zM14 1h1v1h-1zM18 1h1v1h-1zM24 1h1v1h-1zM0 2h1v1h-1zM2 2h1v1h-1zM3 2h1v1h-1zM4 2h1v1h-1zM6 2h1v1h-1zM12 2h1v1h-1zM16 2h1v1h-1zM18 2h1v1h-1zM20 2h1v1h-1zM21 2h1v1h-1zM22 2h1v1h-1zM24 2h1v1h-1zM0 3h1v1h-1zM2 3h1v1h-1zM3 3h1v1h-1zM4 3h1v1h-1zM6 3h1v1h-1zM10 3h1v1h-1zM12 3h1v1h-1zM13 3h1v1h-1zM15 3h1v1h-1zM16 3h1v1h-1zM18 3h1v1h-1zM20 3h1v1h-1zM21 3h1v1h-1zM22 3h1v1h-1zM24 3h1v1h-1zM0 4h1v1h-1zM2 4h1v1h-1zM3 4h1v1h-1zM4 4h1v1h-1zM6 4h1v1h-1zM9 4h1v1h-1zM10 4h1v1h-1zM12 4h1v1h-1zM13 4h1v1h-1zM18 4h1v1h-1zM20 4h1v1h-1zM21 4h1v1h-1zM22 4h1v1h-1zM24 4h1v1h-1zM0 5h1v1h-1zM6 5h1v1h-1zM9 5h1v1h-1zM11 5h1v1h-1zM13 5h1v1h-1zM14 5h1v1h-1zM16 5h1v1h-1zM18 5h1v1h-1zM24 5h1v1h-1zM0 6h1v1h-1zM1 6h1v1h-1zM2 6h1v1h-1zM3 6h1v1h-1zM4 6h1v1h-1zM5 6h1v1h-1zM6 6h1v1h-1zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h1v1h-1zM14 6h1v1h-1zM16 6h1v1h-1zM18 6h1v1h-1zM19 6h1v1h-1zM20 6h1v1h-1zM21 6h1v1h-1zM22 6h1v1h-1zM23 6h1v1h-1zM24 6h1v1h-1zM9 7h1v1h-1zM12 7h1v1h-1zM14 7h1v1h-1zM15 7h1v1h-1zM16 7h1v1h-1zM1 8h1v1h-1zM6 8h1v1h-1zM7 8h1v1h-1zM8 8h1v1h-1zM10 8h1v1h-1zM12 8h1v1h-1zM13 8h1v1h-1zM15 8h1v1h-1zM17 8h1v1h-1zM23 8h1v1h-1zM24 8h1v1h-1zM0 9h1v1h-1zM1 9h1v1h-1zM5 9h1v1h-1zM7 9h1v1h-1zM8 9h1v1h-1zM10 9h1v1h-1zM12 9h1v1h-1zM13 9h1v1h-1zM14 9h1v1h-1zM15 9h1v1h-1zM19 9h1v1h-1zM20 9h1v1h-1zM21 9h1v1h-1zM22 9h1v1h-1zM23 9h1v1h-1zM0 10h1v1h-1zM1 10h1v1h-1zM2 10h1v1h-1zM6 10h1v1h-1zM9 10h1v1h-1zM13 10h1v1h-1zM14 10h1v1h-1zM15 10h1v1h-1zM16 10h1v1h-1zM17 10h1v1h-1zM18 10h1v1h-1zM19 10h1v1h-1zM21 10h1v1h-1zM23 10h1v1h-1zM24 10h1v1h-1zM0 11h1v1h-1zM1 11h1v1h-1zM3 11h1v1h-1zM4 11h1v1h-1zM8 11h1v1h-1zM11 11h1v1h-1zM12 11h1v1h-1zM14 11h1v1h-1zM18 11h1v1h-1zM20 11h1v1h-1zM21 11h1v1h-1zM24 11h1v1h-1zM1 12h1v1h-1zM4 12h1v1h-1zM6 12h1v1h-1zM12 12h1v1h-1zM13 12h1v1h-1zM14 12h1v1h-1zM16 12h1v1h-1zM18 12h1v1h-1zM19 12h1v1h-1zM24 12h1v1h-1zM0 13h1v1h-1zM2 13h1v1h-1zM3 13h1v1h-1zM5 13h1v1h-1zM8 13h1v1h-1zM12 13h1v1h-1zM15 13h1v1h-1zM16 13h1v1h-1zM19 13h1v1h-1zM23 13h1v1h-1zM0 14h1v1h-1zM3 14h1v1h-1zM5 14h1v1h-1zM6 14h1v1h-1zM7 14h1v1h-1zM15 14h1v1h-1zM17 14h1v1h-1zM18 14h1v1h-1zM19 14h1v1h-1zM20 14h1v1h-1zM21 14h1v1h-1zM23 14h1v1h-1zM24 14h1v1h-1zM0 15h1v1h-1zM4 15h1v1h-1zM10 15h1v1h-1zM11 15h1v1h-1zM17 15h1v1h-1zM18 15h1v1h-1zM19 15h1v1h-1zM21 15h1v1h-1zM22 15h1v1h-1zM24 15h1v1h-1zM0 16h1v1h-1zM2 16h1v1h-1zM4 16h1v1h-1zM5 16h1v1h-1zM6 16h1v1h-1zM9 16h1v1h-1zM10 16h1v1h-1zM12 16h1v1h-1zM13 16h1v1h-1zM16 16h1v1h-1zM17 16h1v1h-1zM18 16h1v1h-1zM19 16h1v1h-1zM20 16h1v1h-1zM22 16h1v1h-1zM8 17h1v1h-1zM11 17h1v1h-1zM13 17h1v1h-1zM14 17h1v1h-1zM16 17h1v1h-1zM20 17h1v1h-1zM0 18h1v1h-1zM1 18h1v1h-1zM2 18h1v1h-1zM3 18h1v1h-1zM4 18h1v1h-1zM5 18h1v1h-1zM6 18h1v1h-1zM8 18h1v1h-1zM10 18h1v1h-1zM13 18h1v1h-1zM14 18h1v1h-1zM16 18h1v1h-1zM18 18h1v1h-1zM20 18h1v1h-1zM24 18h1v1h-1zM0 19h1v1h-1zM6 19h1v1h-1zM9 19h1v1h-1zM10 19h1v1h-1zM11 19h1v1h-1zM13 19h1v1h-1zM15 19h1v1h-1zM16 19h1v1h-1zM20 19h1v1h-1zM24 19h1v1h-1zM0 20h1v1h-1zM2 20h1v1h-1zM3 20h1v1h-1zM4 20h1v1h-1zM6 20h1v1h-1zM9 20h1v1h-1zM10 20h1v1h-1zM12 20h1v1h-1zM13 20h1v1h-1zM15 20h1v1h-1zM16 20h1v1h-1zM17 20h1v1h-1zM18 20h1v1h-1zM19 20h1v1h-1zM20 20h1v1h-1zM22 20h1v1h-1zM23 20h1v1h-1zM24 20h1v1h-1zM0 21h1v1h-1zM2 21h1v1h-1zM3 21h1v1h-1zM4 21h1v1h-1zM6 21h1v1h-1zM12 21h1v1h-1zM13 21h1v1h-1zM14 21h1v1h-1zM15 21h1v1h-1zM17 21h1v1h-1zM18 21h1v1h-1zM23 21h1v1h-1zM24 21h1v1h-1zM0 22h1v1h-1zM2 22h1v1h-1zM3 22h1v1h-1zM4 22h1v1h-1zM6 22h1v1h-1zM10 22h1v1h-1zM11 22h1v1h-1zM12 22h1v1h-1zM14 22h1v1h-1zM16 22h1v1h-1zM21 22h1v1h-1zM22 22h1v1h-1zM24 22h1v1h-1zM0 23h1v1h-1zM6 23h1v1h-1zM8 23h1v1h-1zM9 23h1v1h-1zM10 23h1v1h-1zM11 23h1v1h-1zM12 23h1v1h-1zM13 23h1v1h-1zM16 23h1v1h-1zM18 23h1v1h-1zM19 23h1v1h-1zM20 23h1v1h-1zM24 23h1v1h-1zM0 24h1v1h-1zM1 24h1v1h-1zM2 24h1v1h-1zM3 24h1v1h-1zM4 24h1v1h-1zM5 24h1v1h-1zM6 24h1v1h-1zM9 24h1v1h-1zM10 24h1v1h-1zM13 24h1v1h-1zM14 24h1v1h-1zM16 24h1v1h-1zM17 24h1v1h-1zM21 24h1v1h-1zM24 24h1v1h-1z" fill="#33302C"/></svg>
+      <p class="fb-qrurl">idebolig.no</p>
+      <span class="fb-sidenr fb-sidenr--h">47</span>
     </div><div class="fals fals--v"></div></div>
 <div class="side side--perm" data-density="hard"><div class="fb-perm fb-perm--bak">
       <img src="../wp-content/uploads/2024/11/Hvit-logo-sidestilt.png" alt="Idébolig AS">
@@ -534,7 +712,7 @@ class="hfeed site" id="page">
 <script src="page-flip.browser.js"></script>
 <script>
 (function(){
- var ANTALL=38,OPPSLAG=18;
+ var ANTALL=48,OPPSLAG=23;
  var teller=document.getElementById('fb-teller'),
      knappF=document.getElementById('fb-forrige'),
      knappN=document.getElementById('fb-neste'),

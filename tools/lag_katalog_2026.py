@@ -21,7 +21,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from nytt_boligkatalog import BOLIGER, beste_bilde  # noqa: E402
+from nytt_boligkatalog import BOLIGER, beste_bilde, IKON  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 ARKIV = Path(__file__).resolve().parent / "original-main"
@@ -72,6 +72,109 @@ def bildesrc(stem: str) -> str:
     return stem if stem.startswith("planer/") else beste_bilde(stem)
 
 
+# Tre salgspunkter per modell — kun forhold som er dokumentert i
+# spesifikasjonene/tegningene (ingen dikting av fakta).
+HIGHLIGHTS = {
+    "alva": ["Terrasse og balkong langs hele hovedfasaden",
+             "Åpen stue- og kjøkkenløsning mot terrassen",
+             "Fem soverom og tre bad"],
+    "edvard": ["Dobbel garasje med takterrasse over",
+               "Fem soverom fordelt på to etasjer",
+               "Klassisk uttrykk med moderne planløsning"],
+    "edvard-prakt": ["Utleiedel på 47 m² i sokkeletasjen",
+                     "Takterrasse på 42,7 m² over dobbelgarasjen",
+                     "Kjellerstue og rikelig med bodplass"],
+    "embla": ["Fire leiligheter på 84 m² hver",
+              "Felles inngang med trapp og heis",
+              "Egen terrasse eller balkong til hver leilighet"],
+    "nora": ["310 m² med plass til hele familien",
+             "Fire soverom og to bad",
+             "Klassisk arkitektur med gjennomtenkte detaljer"],
+    "odin": ["Kompakt og arealeffektiv planløsning",
+             "Fire soverom og to praktiske boder",
+             "Sjarmerende og lettstelt hjem"],
+    "tiril": ["To romslige enheter på 176 m² hver",
+              "Garasje til hver enhet",
+              "Moderne uttrykk over to etasjer"],
+    "vilde": ["Hypermoderne funkisuttrykk",
+              "Fem soverom og dobbel garasje",
+              "Store vindusflater og lyse rom"],
+}
+
+PROSESS = [
+    ("Første møte og tomtebefaring",
+     "Vi blir kjent med ønskene deres og vurderer tomtens muligheter — "
+     "utsikt, solforhold og grunnforhold."),
+    ("Tegninger og tilpasning",
+     "Boligmodellen tilpasses tomten og behovene deres — eller vi tegner "
+     "helt nytt sammen med dere."),
+    ("Pristilbud og avtale",
+     "Dere får et skriftlig pristilbud, og vi avtaler leveranseomfang og "
+     "fremdrift før noe settes i gang."),
+    ("Byggesøknad",
+     "Vi håndterer byggesøknad, nabovarsel og dialogen med kommunen, og "
+     "holder dere oppdatert underveis."),
+    ("Prosjektering",
+     "Arbeidstegninger og tekniske planer utarbeides, slik at alle fag "
+     "vet nøyaktig hva som skal bygges."),
+    ("Grunnarbeid",
+     "Vi utfører graving, grunnarbeid og betongfundamentering — fra "
+     "byggegrop til ferdig støpt fundament."),
+    ("Byggeperioden",
+     "Montasje og utførelse med faste kontrollpunkter, fra tett bygg til "
+     "ferdige overflater."),
+    ("Ferdigbefaring",
+     "Boligen gjennomgås grundig sammen med dere. Eventuelle avvik "
+     "protokollføres og utbedres."),
+    ("Overtakelse",
+     "Formell overtakelse med dokumentasjon av boligen — og nøklene til "
+     "deres nye hjem."),
+    ("Oppfølging",
+     "Vi følger opp etter innflytting, slik at dere er trygge på boligen "
+     "også etter at dere har flyttet inn."),
+]
+
+GUIDE = [
+    ("Budsjett",
+     "Avklar rammene tidlig. Ulike modeller har ulik pris, og tilpasninger "
+     "påvirker totalen. Et tydelig budsjett gjør alle valg enklere."),
+    ("Tomt og beliggenhet",
+     "Tomtens form, helning og solforhold påvirker hvilken modell som "
+     "passer. En smal tomt kan peke mot to etasjer; en flat og romslig "
+     "tomt gir flere muligheter."),
+    ("Livssituasjon og behov",
+     "Tenk fem–ti år frem: Trenger dere flere soverom, hjemmekontor eller "
+     "utleiedel? Velg en bolig som vokser med dere."),
+    ("Stil og uttrykk",
+     "Klassisk eller funkis? Boligen bør både speile smaken deres og passe "
+     "inn i omgivelsene. Flere av modellene finnes i ulike uttrykk."),
+    ("Energi og drift",
+     "Kompakte boliger er enklere å varme opp. Tenk også på muligheten for "
+     "solceller og andre energiløsninger når dere velger."),
+    ("Verdi over tid",
+     "En gjennomarbeidet bolig med fleksibel planløsning holder seg "
+     "attraktiv — også den dagen dere eventuelt skal selge."),
+]
+
+
+def qr_svg(url: str = "https://idebolig.no/", storrelse: int = 340) -> str:
+    """QR-kode som inline-SVG (genereres med segno ved bygging)."""
+    import segno
+    qr = segno.make(url, error="m")
+    matrise = [[bool(m) for m in rad] for rad in qr.matrix]
+    n = len(matrise)
+    d = []
+    for y, rad in enumerate(matrise):
+        for x, mork in enumerate(rad):
+            if mork:
+                d.append(f"M{x} {y}h1v1h-1z")
+    return (f'<svg class="fb-qr" viewBox="-2 -2 {n + 4} {n + 4}" '
+            f'width="{storrelse}" height="{storrelse}" '
+            f'xmlns="http://www.w3.org/2000/svg">'
+            f'<rect x="-2" y="-2" width="{n + 4}" height="{n + 4}" fill="#FDFBF7" rx="2"/>'
+            f'<path d="{"".join(d)}" fill="#33302C"/></svg>')
+
+
 def avsnitt(slug: str) -> list[str]:
     """Alle innholdsavsnitt fra boligsidens originaltekst."""
     kilde = (ARKIV / f"{slug}.html").read_text(encoding="utf-8")
@@ -112,12 +215,15 @@ def infoside(b: dict, nr: int) -> str:
         specs.append(("Utleiedel", b["utleie"]))
     spec_html = "".join(f'<div class="fb-spec"><span>{k}</span><b>{v}</b></div>'
                         for k, v in specs)
-    tekst = kutt(avsnitt(b["slug"])[0], 250) if avsnitt(b["slug"]) else ""
+    avsn = avsnitt(b["slug"])
+    tekst = kutt(" ".join(avsn[:2]), 430) if avsn else ""
+    hl = "".join(f"<li>{p}</li>" for p in HIGHLIGHTS.get(b["slug"], []))
     return f"""<div class="fb-info">
       <p class="fb-kicker">{b['type']} · {b['stil']}</p>
       <h3>{b['navn']}</h3>
       <p class="fb-tagline">{b['tagline']}</p>
       <div class="fb-specs">{spec_html}</div>
+      <ul class="fb-hl">{hl}</ul>
       <p class="fb-tekst">{tekst}</p>
       <a class="fb-lenke" href="../{b['slug']}/">Se boligen på nettsiden →</a>
       <span class="fb-sidenr fb-sidenr--h">{nr}</span>
@@ -183,27 +289,149 @@ def plansider(b: dict, nr_v: int, nr_h: int) -> tuple[str, str]:
 def velkomstside(nr: int) -> str:
     return f"""<div class="fb-info">
       <p class="fb-kicker">Velkommen</p>
-      <h3>La oss gjøre din drømmebolig til virkelighet</h3>
-      <p class="fb-brod">I denne katalogen finner du våre åtte boligmodeller —
-        fra kompakte klassikere til moderne funkis. Hver modell kan tilpasses
-        din tomt og dine behov.</p>
-      <p class="fb-brod">Idébolig hjelper deg hele veien: tegninger,
-        byggesøknad, prosjektering og utførelse. Bla videre, og ta kontakt når
-        du finner en bolig du vil se nærmere på.</p>
+      <h3>Skap drømmeboligen sammen med Idébolig</h3>
+      <p class="fb-brod">Å bygge bolig er en av de største beslutningene du
+        tar. I denne katalogen finner du våre åtte boligmodeller — fra
+        kompakte klassikere til moderne funkis — sammen med det du trenger å
+        vite om veien fra idé til innflytting.</p>
+      <p class="fb-brod">Hver modell er tegnet med omtanke for norske forhold
+        og norsk byggeskikk, og kan tilpasses din tomt, dine behov og ditt
+        budsjett. Du får ett kontaktpunkt hele veien: tegninger, byggesøknad,
+        prosjektering, grunnarbeid og utførelse.</p>
+      <p class="fb-brod">Bla deg gjennom, la deg inspirere — og ta kontakt
+        når du finner boligen du vil se nærmere på.</p>
       <p class="fb-sign">Idébolig AS · Hamar</p>
       <span class="fb-sidenr fb-sidenr--h fb-sidenr--vs">{nr}</span>
     </div>"""
 
 
-def tocside(rader: list, nr: int) -> str:
-    li = "".join(
-        f'<li><b>{navn}</b><small>{und}</small>'
+def omossside(nr: int) -> str:
+    return f"""<div class="fb-info">
+      <p class="fb-kicker">Om Idébolig</p>
+      <h3>Unike hjem, bygget for å vare</h3>
+      <p class="fb-brod">Idébolig er en boligbygger med base på Hamar. Vi
+        kombinerer tidløs design med praktiske planløsninger, og legger vekt
+        på at hjemmene vi bygger skal være både vakre å se på og gode å leve
+        i — år etter år.</p>
+      <p class="fb-brod">Bak hver modell ligger et grundig arbeid med
+        arkitektur, arealbruk og materialvalg. Og fordi ingen tomter og ingen
+        familier er like, tilpasser vi gjerne: flytt en vegg, legg til en
+        garasje, eller la oss tegne noe helt eget for deg.</p>
+      <p class="fb-brod">Vi bistår hele veien — fra byggteknisk rådgivning og
+        byggesøknad til prosjektering, grunnarbeid og montasje. Det gir deg
+        én partner å forholde deg til, og full oversikt fra første strek til
+        ferdig bolig.</p>
+      <span class="fb-sidenr fb-sidenr--h fb-sidenr--vs">{nr}</span>
+    </div>"""
+
+
+def sitatfotoside(nr: int) -> str:
+    src = beste_bilde("wp-content/uploads/2024/11/Fasade-Nora")
+    return (f'<div class="fb-foto"><img src="{src}" alt="Nora — fasade">'
+            f'<p class="fb-sitat">«Hjemmene vi bygger skal være like gode å '
+            f'leve i som de er å se på.»</p>'
+            f'<span class="fb-sidenr fb-sidenr--v">{nr}</span></div>')
+
+
+def oversiktside(boliger: list, nr: int, forste: bool) -> str:
+    kort = []
+    for b in boliger:
+        bra = f'{b["bra"]} m²' + (" pr enhet" if b["braenhet"] else "")
+        kort.append(f"""<div class="fb-kort">
+          <img src="{beste_bilde(b['bilde'])}" alt="{b['navn']}">
+          <b>{b['navn']}</b>
+          <span class="fb-ki">{IKON['bra']}{bra}</span>
+          <span class="fb-ki">{IKON['sov']}{b['sov']} soverom</span>
+          <span class="fb-ki">{IKON['bad']}{b['bad']} bad</span>
+        </div>""")
+    topp = ("""<p class="fb-kicker">Boligmodellene</p>
+      <h3>Utforsk våre boliger</h3>""" if forste else
+            '<p class="fb-kicker">Boligmodellene</p><h3>&nbsp;</h3>')
+    return f"""<div class="fb-info">
+      {topp}
+      <div class="fb-kortgrid">{''.join(kort)}</div>
+      <span class="fb-sidenr {'fb-sidenr--h fb-sidenr--vs' if forste else 'fb-sidenr--h'}">{nr}</span>
+    </div>"""
+
+
+def prosesside(steg: list, start_nr: int, nr: int, forste: bool) -> str:
+    rader = "".join(
+        f'<li><b>{i}. {t}</b><p>{tekst}</p></li>'
+        for i, (t, tekst) in enumerate(steg, start=start_nr))
+    topp = ("""<p class="fb-kicker">Byggeprosessen</p>
+      <h3>Fra idé til innflytting</h3>
+      <p class="fb-brod fb-brod--liten">Slik jobber vi — steg for steg, med
+        faste holdepunkter og én partner hele veien.</p>""" if forste else
+            '<p class="fb-kicker">Byggeprosessen</p><h3>&nbsp;</h3>')
+    return f"""<div class="fb-info">
+      {topp}
+      <ol class="fb-steg">{rader}</ol>
+      <span class="fb-sidenr {'fb-sidenr--h fb-sidenr--vs' if forste else 'fb-sidenr--h'}">{nr}</span>
+    </div>"""
+
+
+def guideside(punkter: list, nr: int, forste: bool) -> str:
+    rader = "".join(f'<li><b>{t}</b><p>{tekst}</p></li>' for t, tekst in punkter)
+    topp = ("""<p class="fb-kicker">Guide</p>
+      <h3>Slik velger du riktig boligmodell</h3>
+      <p class="fb-brod fb-brod--liten">Seks ting det lønner seg å tenke
+        gjennom før du bestemmer deg.</p>""" if forste else
+            """<p class="fb-kicker">Guide</p><h3>&nbsp;</h3>""")
+    bunn = ("" if forste else
+            '<p class="fb-brod fb-brod--liten">Usikker? Vi hjelper deg å veie '
+            'alternativene mot hverandre — helt uforpliktende.</p>')
+    return f"""<div class="fb-info">
+      {topp}
+      <ol class="fb-steg fb-steg--guide">{rader}</ol>
+      {bunn}
+      <span class="fb-sidenr {'fb-sidenr--h fb-sidenr--vs' if forste else 'fb-sidenr--h'}">{nr}</span>
+    </div>"""
+
+
+def kontaktside(nr: int) -> str:
+    return f"""<div class="fb-info">
+      <p class="fb-kicker">Kontakt</p>
+      <h3>Klar for neste steg?</h3>
+      <p class="fb-brod">Ta kontakt for en uforpliktende prat om tomten din,
+        boligmodellene eller prisoverslag. Vi svarer gjerne — og du binder
+        deg ikke til noe.</p>
+      <div class="fb-kontaktinfo">
+        <p><b>Idébolig AS</b></p>
+        <p>Jølstadbakken 14, 2318 Hamar</p>
+        <p>91 92 66 66</p>
+        <p>post@idebolig.no</p>
+      </div>
+      <a class="fb-lenke" href="../kontakt/">Send oss en melding →</a>
+      <span class="fb-sidenr fb-sidenr--h fb-sidenr--vs">{nr}</span>
+    </div>"""
+
+
+def qrside(nr: int) -> str:
+    return f"""<div class="fb-info fb-info--midt">
+      <p class="fb-kicker">idebolig.no</p>
+      <h3>Se mer på nettsiden</h3>
+      <p class="fb-brod fb-brod--liten">Skann koden for flere bilder, alle
+        boligmodellene og guidene våre.</p>
+      {qr_svg()}
+      <p class="fb-qrurl">idebolig.no</p>
+      <span class="fb-sidenr fb-sidenr--h">{nr}</span>
+    </div>"""
+
+
+def tocside(seksjoner: list, modeller: list, nr: int) -> str:
+    sek = "".join(
+        f'<li class="fb-toc-sek"><b>{n} — {navn}</b>'
         f'<span class="prikker"></span><span class="nr">{side}</span></li>'
-        for navn, und, side in rader)
+        for n, navn, side in seksjoner)
+    mod = "".join(
+        f'<li class="fb-toc-mod"><small>{navn}</small>'
+        f'<span class="prikker"></span><span class="nr">{side}</span></li>'
+        for navn, side in modeller)
     return f"""<div class="fb-info">
       <p class="fb-kicker">Katalog 2026</p>
       <h3>Innhold</h3>
-      <ul class="fb-toc">{li}</ul>
+      <ul class="fb-toc">{sek[:len(sek)]}</ul>
+      <ul class="fb-toc fb-toc--modeller">{mod}</ul>
       <span class="fb-sidenr fb-sidenr--h">{nr}</span>
     </div>"""
 
@@ -253,12 +481,21 @@ def bygg() -> None:
 
     # Trykte sidetall: forsiden er unummerert, første innside er side 2, slik
     # at venstresider får partall som i en trykt katalog.
-    toc = [(b["navn"], f'{b["type"]} · {b["stil"]}', 4 + 4 * n)
-           for n, b in enumerate(BOLIGER)]
-    toc.append(("Tjenester", "Idébolig AS", 4 + 4 * len(BOLIGER)))
+    BOLIG_START = 8
+    base = BOLIG_START + 4 * len(BOLIGER)          # første side etter boligene
+    seksjoner = [(1, "Velkommen", 2),
+                 (2, "Om Idébolig", 4),
+                 (3, "Boligmodellene", 6),
+                 (4, "Byggeprosessen", base),
+                 (5, "Slik velger du boligmodell", base + 2),
+                 (6, "Tjenester og kontakt", base + 4)]
+    modeller = [(b["navn"], BOLIG_START + 4 * n) for n, b in enumerate(BOLIGER)]
 
-    innsider = [velkomstside(2), tocside(toc, 3)]
-    nr = 4
+    innsider = [velkomstside(2), tocside(seksjoner, modeller, 3),
+                omossside(4), sitatfotoside(5),
+                oversiktside(BOLIGER[:4], 6, True),
+                oversiktside(BOLIGER[4:], 7, False)]
+    nr = BOLIG_START
     for b in BOLIGER:
         innsider += [fotoside(b["bilde"], b["navn"], nr), infoside(b, nr + 1)]
         if len(PLANER.get(b["slug"], [])) > 2:
@@ -266,7 +503,12 @@ def bygg() -> None:
         else:
             innsider += [duoside(MEDIA[b["slug"]], nr + 2), planside(b, nr + 3)]
         nr += 4
-    innsider += [tjenesteside(nr), friside(nr + 1)]
+    innsider += [prosesside(PROSESS[:5], 1, nr, True),
+                 prosesside(PROSESS[5:], 6, nr + 1, False),
+                 guideside(GUIDE[:3], nr + 2, True),
+                 guideside(GUIDE[3:], nr + 3, False),
+                 tjenesteside(nr + 4), friside(nr + 5),
+                 kontaktside(nr + 6), qrside(nr + 7)]
 
     # Bokas fysiske sider: hard perm + myke ark + hard perm. Innsider med
     # oddetallsindeks ligger til venstre i oppslaget → fals (ryggskygge) på
@@ -372,6 +614,42 @@ def bygg() -> None:
   font:600 9.5px Inter,sans-serif;letter-spacing:.09em;text-transform:uppercase;
   color:var(--mork);background:rgba(253,251,247,.85);
   padding:4px 9px;border-radius:99px}}
+.fb-hl{{list-style:none;padding:0;margin:0 0 10px}}
+.fb-hl li{{position:relative;padding:1.1% 0 1.1% 20px;
+  font:500 clamp(10.5px,1.25vw,13.5px) Poppins,sans-serif}}
+.fb-hl li::before{{content:"";position:absolute;left:2px;top:50%;width:7px;height:7px;
+  border-radius:50%;background:var(--gull);translate:0 -50%}}
+.fb-kortgrid{{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;
+  grid-template-rows:1fr 1fr;gap:4% 6%;margin-top:8px}}
+.fb-kort{{display:flex;flex-direction:column;min-height:0}}
+.fb-kort img{{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:8px;
+  margin-bottom:6px;min-height:0}}
+.fb-kort b{{font-size:clamp(11px,1.5vw,15px);margin-bottom:3px}}
+.fb-ki{{display:flex;align-items:center;gap:6px;
+  font:500 clamp(8.5px,1.05vw,11px) Inter,sans-serif;color:var(--grå);
+  padding:1px 0}}
+.fb-ki svg{{width:1.1em;height:1.1em;color:var(--gull);flex:0 0 auto}}
+.fb-steg{{list-style:none;padding:0;margin:6px 0 0;flex:1;display:flex;
+  flex-direction:column;justify-content:space-evenly}}
+.fb-steg li b{{display:block;font-size:clamp(10.5px,1.3vw,13.5px);
+  color:var(--mork);margin-bottom:1px}}
+.fb-steg li p{{color:var(--grå);font-size:clamp(9.5px,1.12vw,12px);line-height:1.5}}
+.fb-steg--guide li b{{color:var(--gull)}}
+.fb-brod--liten{{font-size:clamp(10px,1.2vw,12.5px);margin-bottom:6px}}
+.fb-kontaktinfo{{background:var(--krem);border-radius:12px;padding:6% 8%;
+  margin:4% 0;flex:0 0 auto}}
+.fb-kontaktinfo p{{font-size:clamp(11px,1.35vw,14.5px);line-height:1.8;color:var(--mork)}}
+.fb-info--midt{{align-items:center;text-align:center}}
+.fb-qr{{width:52%;height:auto;max-width:300px;margin:5% 0 3%;
+  border-radius:10px;box-shadow:0 4px 18px rgba(51,48,44,.14)}}
+.fb-qrurl{{font:600 clamp(12px,1.5vw,16px) Poppins,sans-serif;color:var(--gull)}}
+.fb-sitat{{font-size:clamp(14px,1.9vw,22px)!important;font-weight:600!important;
+  line-height:1.45!important;padding:44px 9% 22px!important}}
+.fb-toc-sek b{{font-size:clamp(10.5px,1.3vw,13.5px);letter-spacing:.02em}}
+.fb-toc--modeller{{flex:0 1 auto;margin-top:2px}}
+.fb-toc--modeller li{{padding:1.1% 0 1.1% 16px}}
+.fb-toc--modeller small{{font:500 clamp(9px,1.1vw,11.5px) Inter,sans-serif;
+  letter-spacing:.05em;text-transform:none;color:var(--mork)}}
 .fb-perm{{position:absolute;inset:0;background:linear-gradient(150deg,#3A362F,#26231F);
   color:#D9D2C5;display:flex;flex-direction:column;align-items:center;
   justify-content:center;text-align:center;padding:10%}}
