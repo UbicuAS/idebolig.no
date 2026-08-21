@@ -15,9 +15,11 @@ BOLIGER = [
          tagline="En moderne familiebolig med rom for livet",
          bra=214, braenhet=False, sov=5, bad=3, garasje=None, utleie=None, bod=3,
          bilde="wp-content/uploads/2025/04/Fasade-4"),
+    # BRA rettet 21.08.2026: Edvard er Edvard Prakt uten sokkel (84+84 m²),
+    # og utleiedelen (i sokkelen) utgår — beskjed fra Marius.
     dict(slug="edvard", navn="Edvard", type="Enebolig", stil="Klassisk",
-         tagline="Klassisk eleganse med dobbel garasje og utleiedel",
-         bra=315, braenhet=False, sov=5, bad=2, garasje="Dobbel", utleie="47 m²", bod=1,
+         tagline="Klassisk eleganse med dobbel garasje",
+         bra=168, braenhet=False, sov=5, bad=2, garasje="Dobbel", utleie=None, bod=1,
          bilde="wp-content/uploads/2025/04/3-post-prod"),
     dict(slug="edvard-prakt", navn="Edvard Prakt", type="Enebolig", stil="Klassisk",
          tagline="En oppgradert versjon av tidløs eleganse",
