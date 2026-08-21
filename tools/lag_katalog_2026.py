@@ -50,10 +50,19 @@ MEDIA = {
 }
 
 # Ekte plantegninger der de finnes; alle andre får plassholder.
+# Stier som starter med "planer/" ligger i katalogmappa (egenproduserte
+# møblerte 2D-planer); andre er stammer i wp-content som løses av beste_bilde.
 PLANER = {
     "vilde": [("3D-plantegning", f"{UP}/2025/05/Vilde-3d-plan"),
               ("3D-plantegning, alternativ", f"{UP}/2025/05/Vilde-3d-plan-hus-2")],
+    "edvard-prakt": [("U. etasje — utleiedel 47 m² + kjeller", "planer/edvard-prakt-uetasje.svg"),
+                     ("1. etasje", "planer/edvard-prakt-1etasje.svg"),
+                     ("2. etasje", "planer/edvard-prakt-2etasje.svg")],
 }
+
+
+def bildesrc(stem: str) -> str:
+    return stem if stem.startswith("planer/") else beste_bilde(stem)
 
 
 def avsnitt(slug: str) -> list[str]:
@@ -118,15 +127,19 @@ def duoside(par: list, nr: int) -> str:
             f'<span class="fb-sidenr fb-sidenr--v">{nr}</span></div>')
 
 
+def planfigurer(planer: list, navn: str) -> str:
+    figs = "".join(
+        f'<figure class="fb-planfig"><img src="{bildesrc(stem)}" alt="{tittel} — {navn}">'
+        f'<figcaption>{tittel}</figcaption></figure>'
+        for tittel, stem in planer)
+    return f'<div class="fb-planer">{figs}</div>'
+
+
 def planside(b: dict, nr: int) -> str:
     avsn = avsnitt(b["slug"])
     mer = kutt(" ".join(avsn[1:3]), 330) if len(avsn) > 1 else ""
     if b["slug"] in PLANER:
-        indre = "".join(
-            f'<figure class="fb-planfig"><img src="{beste_bilde(stem)}" alt="{navn} — {b["navn"]}">'
-            f'<figcaption>{navn}</figcaption></figure>'
-            for navn, stem in PLANER[b["slug"]])
-        indre = f'<div class="fb-planer">{indre}</div>'
+        indre = planfigurer(PLANER[b["slug"]], b["navn"])
     else:
         indre = plassholder(f"Plantegninger — {b['navn']}",
                             "Legges inn senere, f.eks. 1. og 2. etasje.")
@@ -137,6 +150,27 @@ def planside(b: dict, nr: int) -> str:
       <p class="fb-tekst fb-tekst--kort">{mer}</p>
       <span class="fb-sidenr fb-sidenr--h">{nr}</span>
     </div>"""
+
+
+def plansider(b: dict, nr_v: int, nr_h: int) -> tuple[str, str]:
+    """Boliger med 3+ plantegninger får et helt planoppslag (begge sider)."""
+    planer = PLANER[b["slug"]]
+    venstre = f"""<div class="fb-info">
+      <p class="fb-kicker">{b['navn']}</p>
+      <h3>Plantegninger</h3>
+      {planfigurer(planer[:2], b['navn'])}
+      <span class="fb-sidenr fb-sidenr--h fb-sidenr--vs">{nr_v}</span>
+    </div>"""
+    avsn = avsnitt(b["slug"])
+    mer = kutt(" ".join(avsn[1:3]), 300) if len(avsn) > 1 else ""
+    høyre = f"""<div class="fb-info">
+      <p class="fb-kicker">{b['navn']}</p>
+      <h3>&nbsp;</h3>
+      {planfigurer(planer[2:], b['navn'])}
+      <p class="fb-tekst fb-tekst--kort">{mer}</p>
+      <span class="fb-sidenr fb-sidenr--h">{nr_h}</span>
+    </div>"""
+    return venstre, høyre
 
 
 def velkomstside(nr: int) -> str:
@@ -220,7 +254,10 @@ def bygg() -> None:
     nr = 4
     for b in BOLIGER:
         innsider += [fotoside(b["bilde"], b["navn"], nr), infoside(b, nr + 1)]
-        innsider += [duoside(MEDIA[b["slug"]], nr + 2), planside(b, nr + 3)]
+        if len(PLANER.get(b["slug"], [])) > 2:
+            innsider += list(plansider(b, nr + 2, nr + 3))
+        else:
+            innsider += [duoside(MEDIA[b["slug"]], nr + 2), planside(b, nr + 3)]
         nr += 4
     innsider += [tjenesteside(nr), friside(nr + 1)]
 
