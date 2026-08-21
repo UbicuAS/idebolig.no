@@ -135,18 +135,18 @@ def etg1():
     vask(8300, 4750, 160)
     toalett(8350, 6100, "s")
     # SOVEROM (utbygget) + garderobenisje
-    seng(7200, 7300, 1600, 2000)
+    seng(7200, 7300, 1600, 2000); nattbord(6700, 7330)
     garderobe(9100, 4600, 550, 2100)
     garderobe(9800, 4600, 550, 2100)
     nattbord(9100, 7150)
     # romnavn
-    romnavn(2250, 3000, "Stue", 41.8)
+    romnavn(1800, 5400, "Stue", 41.8)
     romnavn(8700, 2400, "Kjøkken", 17.1)
-    tekst(3850, 5600, "Bod", 200, MORK, 600); tekst(3850, 5840, "2,6 m²", 160, GRAA, 400)
+    tekst(4000, 5100, "Bod", 190, MORK, 600); tekst(4000, 5320, "2,6 m²", 152, GRAA, 400)
     romnavn(1500, 8100, "Bod/Tek.", 7.2, s1=270, s2=210)
     romnavn(5500, 6300, "Gang", 8.2, s1=260, s2=200)
     romnavn(7500, 5900, "Bad", 6.9, s1=260, s2=200)
-    romnavn(8600, 8300, "Soverom", 10, s1=260, s2=200)
+    romnavn(7900, 9600, "Soverom", 10, s1=240, s2=185)
     tekst(2400, -950, "Terrasse 16,9 m²", 250, GRAA, 600)
     tekst(9000, -950, "Terrasse", 250, GRAA, 600)
     tekst(5600, -2150, "Inngang", 200, GRAA, 500)
@@ -220,10 +220,13 @@ def etg2():
     trapp(3100, 6400, 1500, 2200, opp="s", trinn=9, tekst_under=False)
     tekst(3850, 6200, "NED", 170, GRAA, 500)
     # møblering
-    seng(500, 700, 1600, 2000); garderobe(2750, 300, 700, 550)            # sov A
-    seng(9000, 700, 1600, 2000); garderobe(7650, 300, 700, 550)           # sov B
-    seng(600, 6300, 1600, 2000); garderobe(2200, 9000, 700, 550)          # sov C
-    seng(9300, 5700, 1600, 2000)                                          # sov D
+    seng(500, 700, 1600, 2000); nattbord(2200, 720)                       # sov A
+    garderobe(2750, 1500, 700, 550)
+    seng(9000, 700, 1600, 2000); nattbord(8420, 720)                      # sov B
+    garderobe(7650, 1500, 700, 550)
+    seng(600, 6300, 1600, 2000); nattbord(2300, 6320)                     # sov C
+    garderobe(2200, 8900, 700, 550)
+    seng(9300, 5700, 1600, 2000); nattbord(8800, 5720)                    # sov D
     sofa(4100, 2200, 2600, 950)                                           # loftstue
     bord(4800, 1150, 1100, 620, rx=150)
     # gang + bod
@@ -244,17 +247,16 @@ def etg2():
     bord(1600, -830, 700, 600, rx=120); stol(900, -800); stol(2450, -800)
     stol(9800, 8500); bord(10450, 8400, 700, 700, rx=350)
     # romnavn
-    romnavn(1800, 2700, "Soverom", 12.4, s1=280, s2=210)
-    tekst(5550, 1750, "Stue", 300, MORK, 600); tekst(5550, 2080, "12,4 m²", 220, GRAA, 400)
-    romnavn(9300, 2700, "Soverom", 12.4, s1=280, s2=210)
+    romnavn(2600, 3050, "Soverom", 12.4, s1=250, s2=195)
+    tekst(5550, 780, "Stue", 285, MORK, 600); tekst(5550, 1080, "12,4 m²", 210, GRAA, 400)
+    romnavn(8400, 3050, "Soverom", 12.4, s1=250, s2=195)
     tekst(1150, 4600, "Bod 3,5 m²", 200, GRAA, 500)
     tekst(4500, 4850, "Gang 8,6 m²", 240, MORK, 600)
-    romnavn(1500, 8600, "Soverom", 12.4, s1=280, s2=210)
-    romnavn(9700, 7300, "Soverom", 12.4, s1=250, s2=190)
+    romnavn(1350, 8750, "Soverom", 12.4, s1=235, s2=180)
+    romnavn(8650, 7250, "Soverom", 12.4, s1=205, s2=160)
     tekst(10050, 4900, "Bad 6,1 m²", 220, MORK, 600)
     tekst(5900, 6900, "WC/Bad", 230, MORK, 600); tekst(5900, 7160, "6,7 m²", 180, GRAA, 400)
     tekst(3300, -650, "Balkong 11 m²", 240, GRAA, 600)
-    tekst(9000, 9300, "Balkong", 220, "#FDFBF7", 600)
     tekst(9000, 10250, "Balkong 9,9 m²", 220, GRAA, 600)
     sone(1500, -1600, "2. ETASJE")
     skriv("2. etasje", "-700 -2300 13000 13900", (-500, 11000))

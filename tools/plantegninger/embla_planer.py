@@ -107,8 +107,10 @@ def leilighet(L: Leil, etg: int):
     L.r(1900, 5100, 1600, IV, "url(#parkett)")                 # åpning gang -> stue
     # --- møblering
     seng(L.X(500, 1700), 550, 1700, 2050)           # sov 12,7
+    nattbord(L.X(2300, 420), 570)
     garderobe(L.X(2900, 700), 300, 700, 550)
     seng(L.X(4100, 1500), 550, 1500, 2000)          # sov 8,9
+    nattbord(L.X(5700, 420), 570)
     teppe(L.X(6600, 900), 350, 900, 900)            # vf-matte
     hylle(L.X(7350, 450), 1800, 450, 1450)          # bodhylle
     vaskemaskin(L.X(6450, 600), 1800, 600)
@@ -127,13 +129,13 @@ def leilighet(L: Leil, etg: int):
     stol(L.X(6650, 420), 8730); stol(L.X(7400, 420), 8730)
     stol(L.X(6650, 420), 10170); stol(L.X(7400, 420), 10170)
     # --- romnavn
-    L.romnavn(1850, 1800, "Soverom", 12.7, s1=270, s2=210)
-    L.romnavn(5000, 1800, "Soverom", 8.9, s1=270, s2=210)
+    L.romnavn(2550, 2900, "Soverom", 12.7, s1=240, s2=190)
+    L.romnavn(5100, 2900, "Soverom", 8.9, s1=240, s2=190)
     L.tekst(7100, 1250, "VF", 200, MORK, 600); L.tekst(7100, 1480, "4,1 m²", 160, GRAA, 400)
     L.tekst(7080, 2950, "Bod", 200, MORK, 600); L.tekst(7080, 3180, "5,1 m²", 160, GRAA, 400)
     L.tekst(4000, 4500, "Gang 6,1 m²", 220, MORK, 600)
     L.tekst(7550, 6300, "Bad", 240, MORK, 600); L.tekst(7550, 6570, "6,7 m²", 190, GRAA, 400)
-    L.romnavn(2400, 9800, "Stue", stue_areal)
+    L.romnavn(2100, 7900, "Stue", stue_areal)
     L.romnavn(5300, 10300, "Kjøkken", kjk_areal, s1=270, s2=210)
 
 

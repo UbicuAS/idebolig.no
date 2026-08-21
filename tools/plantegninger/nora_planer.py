@@ -120,12 +120,12 @@ def etg2():
     teppe(6000, 4200, 2600, 900)                                    # gangsone
     # romnavn
     tekst(6500, 1500, "Stue", 300, MORK, 600)
-    romnavn(2100, 4400, "Soverom", 16.7, s1=270, s2=210)
+    romnavn(3100, 4400, "Soverom", 16.7, s1=250, s2=195)
     tekst(1900, 6900, "Kontor", 210, MORK, 600); tekst(1900, 7130, "6,4 m²", 165, GRAA, 400)
-    romnavn(2100, 8600, "Soverom", 14.6, s1=270, s2=210)
-    romnavn(11300, 4400, "Soverom", 14.1, s1=270, s2=210)
+    romnavn(2900, 8900, "Soverom", 14.6, s1=250, s2=195)
+    romnavn(10100, 4400, "Soverom", 14.1, s1=250, s2=195)
     tekst(11800, 6900, "Bad", 230, MORK, 600); tekst(12500, 6900, "6,5 m²", 180, GRAA, 400) if False else tekst(11800, 7120, "6,5 m²", 180, GRAA, 400)
-    romnavn(11300, 8700, "Soverom", 15.4, s1=270, s2=210)
+    romnavn(10100, 8900, "Soverom", 15.4, s1=250, s2=195)
     tekst(6800, 5600, "Gang", 230, GRAA, 500)
     sone(1500, 2100, "2. ETASJE")
     skriv("2. etasje", "-700 -900 15200 13800", (-500, 12100))
@@ -245,10 +245,10 @@ def etg1():
     # romnavn
     romnavn(2300, 4900, "Kjøkken", 46.2)
     romnavn(6700, 5300, "Spisestue", 33.3, s1=280, s2=210)
-    romnavn(11300, 5600, "Stue", 18.4, s1=280, s2=210)
+    romnavn(11000, 6300, "Stue", 18.4, s1=260, s2=200)
     romnavn(7000, 9000, "Entré", 24.2, s1=260, s2=200)
     tekst(11700, 7550, "Bad", 240, MORK, 600); tekst(11700, 7820, "12,6 m²", 190, GRAA, 400)
-    romnavn(11300, 9500, "Vaskerom", 14, s1=250, s2=200)
+    romnavn(11400, 8300, "Vaskerom", 14, s1=240, s2=190)
     sone(-2600, 1600, "1. ETASJE")
     skriv("1. etasje", "-3900 -900 18400 13800", (-3700, 12100))
 

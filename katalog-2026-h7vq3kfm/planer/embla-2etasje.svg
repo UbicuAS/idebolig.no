@@ -159,6 +159,7 @@
 <rect x="1390.0" y="770" width="730.0" height="340" fill="#F3EDE2" stroke="#8C8378" stroke-width="18" rx="70" opacity="1"/>
 <rect x="560" y="1230" width="1580" height="1290" fill="#F6F1E7" stroke="#8C8378" stroke-width="18" rx="50" opacity="1"/>
 <line x1="560" y1="1370" x2="2140" y2="1370" stroke="#8C8378" stroke-width="14"/>
+<rect x="2300" y="570" width="420" height="420" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="40" opacity="1"/>
 <rect x="2900" y="300" width="700" height="550" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="20" opacity="1"/>
 <line x1="2960" y1="575.0" x2="3540" y2="575.0" stroke="#8C8378" stroke-width="16" stroke-dasharray="180 90"/>
 <line x1="3250.0" y1="300" x2="3250.0" y2="850" stroke="#8C8378" stroke-width="16"/>
@@ -168,6 +169,7 @@
 <rect x="4890.0" y="770" width="630.0" height="340" fill="#F3EDE2" stroke="#8C8378" stroke-width="18" rx="70" opacity="1"/>
 <rect x="4160" y="1230" width="1380" height="1240" fill="#F6F1E7" stroke="#8C8378" stroke-width="18" rx="50" opacity="1"/>
 <line x1="4160" y1="1370" x2="5540" y2="1370" stroke="#8C8378" stroke-width="14"/>
+<rect x="5700" y="570" width="420" height="420" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="40" opacity="1"/>
 <rect x="6600" y="350" width="900" height="900" fill="#E4D2AE" stroke="#CDB588" stroke-width="22" rx="120" opacity="0.85"/>
 <rect x="7350" y="1800" width="450" height="1450" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="20" opacity="1"/>
 <line x1="7575.0" y1="1840" x2="7575.0" y2="3210" stroke="#8C8378" stroke-width="14"/>
@@ -205,10 +207,10 @@
 <rect x="7400" y="8730" width="420" height="420" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="110" opacity="1"/>
 <rect x="6650" y="10170" width="420" height="420" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="110" opacity="1"/>
 <rect x="7400" y="10170" width="420" height="420" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="110" opacity="1"/>
-<text x="1850" y="1800" font-size="270" fill="#33302C" font-weight="600" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">Soverom</text>
-<text x="1850" y="2110" font-size="210" fill="#6b6257" font-weight="400" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">12.7 m²</text>
-<text x="5000" y="1800" font-size="270" fill="#33302C" font-weight="600" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">Soverom</text>
-<text x="5000" y="2110" font-size="210" fill="#6b6257" font-weight="400" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">8.9 m²</text>
+<text x="2550" y="2900" font-size="240" fill="#33302C" font-weight="600" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">Soverom</text>
+<text x="2550" y="3180" font-size="190" fill="#6b6257" font-weight="400" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">12.7 m²</text>
+<text x="5100" y="2900" font-size="240" fill="#33302C" font-weight="600" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">Soverom</text>
+<text x="5100" y="3180" font-size="190" fill="#6b6257" font-weight="400" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">8.9 m²</text>
 <text x="7100" y="1250" font-size="200" fill="#33302C" font-weight="600" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">VF</text>
 <text x="7100" y="1480" font-size="160" fill="#6b6257" font-weight="400" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">4,1 m²</text>
 <text x="7080" y="2950" font-size="200" fill="#33302C" font-weight="600" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">Bod</text>
@@ -216,8 +218,8 @@
 <text x="4000" y="4500" font-size="220" fill="#33302C" font-weight="600" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">Gang 6,1 m²</text>
 <text x="7550" y="6300" font-size="240" fill="#33302C" font-weight="600" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">Bad</text>
 <text x="7550" y="6570" font-size="190" fill="#6b6257" font-weight="400" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">6,7 m²</text>
-<text x="2400" y="9800" font-size="320" fill="#33302C" font-weight="600" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">Stue</text>
-<text x="2400" y="10160" font-size="240" fill="#6b6257" font-weight="400" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">22.1 m²</text>
+<text x="2100" y="7900" font-size="320" fill="#33302C" font-weight="600" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">Stue</text>
+<text x="2100" y="8260" font-size="240" fill="#6b6257" font-weight="400" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">22.1 m²</text>
 <text x="5300" y="10300" font-size="270" fill="#33302C" font-weight="600" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">Kjøkken</text>
 <text x="5300" y="10610" font-size="210" fill="#6b6257" font-weight="400" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">13.7 m²</text>
 <rect x="8800" y="5100" width="2500" height="2300" fill="url(#flis)" stroke="none" stroke-width="0" rx="0" opacity="1"/>
@@ -289,6 +291,7 @@
 <rect x="16290.0" y="770" width="730.0" height="340" fill="#F3EDE2" stroke="#8C8378" stroke-width="18" rx="70" opacity="1"/>
 <rect x="15460" y="1230" width="1580" height="1290" fill="#F6F1E7" stroke="#8C8378" stroke-width="18" rx="50" opacity="1"/>
 <line x1="15460" y1="1370" x2="17040" y2="1370" stroke="#8C8378" stroke-width="14"/>
+<rect x="14880" y="570" width="420" height="420" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="40" opacity="1"/>
 <rect x="14000" y="300" width="700" height="550" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="20" opacity="1"/>
 <line x1="14060" y1="575.0" x2="14640" y2="575.0" stroke="#8C8378" stroke-width="16" stroke-dasharray="180 90"/>
 <line x1="14350.0" y1="300" x2="14350.0" y2="850" stroke="#8C8378" stroke-width="16"/>
@@ -298,6 +301,7 @@
 <rect x="12790.0" y="770" width="630.0" height="340" fill="#F3EDE2" stroke="#8C8378" stroke-width="18" rx="70" opacity="1"/>
 <rect x="12060" y="1230" width="1380" height="1240" fill="#F6F1E7" stroke="#8C8378" stroke-width="18" rx="50" opacity="1"/>
 <line x1="12060" y1="1370" x2="13440" y2="1370" stroke="#8C8378" stroke-width="14"/>
+<rect x="11480" y="570" width="420" height="420" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="40" opacity="1"/>
 <rect x="10100" y="350" width="900" height="900" fill="#E4D2AE" stroke="#CDB588" stroke-width="22" rx="120" opacity="0.85"/>
 <rect x="9800" y="1800" width="450" height="1450" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="20" opacity="1"/>
 <line x1="10025.0" y1="1840" x2="10025.0" y2="3210" stroke="#8C8378" stroke-width="14"/>
@@ -335,10 +339,10 @@
 <rect x="9780" y="8730" width="420" height="420" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="110" opacity="1"/>
 <rect x="10530" y="10170" width="420" height="420" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="110" opacity="1"/>
 <rect x="9780" y="10170" width="420" height="420" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="110" opacity="1"/>
-<text x="15750" y="1800" font-size="270" fill="#33302C" font-weight="600" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">Soverom</text>
-<text x="15750" y="2110" font-size="210" fill="#6b6257" font-weight="400" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">12.7 m²</text>
-<text x="12600" y="1800" font-size="270" fill="#33302C" font-weight="600" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">Soverom</text>
-<text x="12600" y="2110" font-size="210" fill="#6b6257" font-weight="400" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">8.9 m²</text>
+<text x="15050" y="2900" font-size="240" fill="#33302C" font-weight="600" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">Soverom</text>
+<text x="15050" y="3180" font-size="190" fill="#6b6257" font-weight="400" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">12.7 m²</text>
+<text x="12500" y="2900" font-size="240" fill="#33302C" font-weight="600" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">Soverom</text>
+<text x="12500" y="3180" font-size="190" fill="#6b6257" font-weight="400" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">8.9 m²</text>
 <text x="10500" y="1250" font-size="200" fill="#33302C" font-weight="600" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">VF</text>
 <text x="10500" y="1480" font-size="160" fill="#6b6257" font-weight="400" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">4,1 m²</text>
 <text x="10520" y="2950" font-size="200" fill="#33302C" font-weight="600" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">Bod</text>
@@ -346,8 +350,8 @@
 <text x="13600" y="4500" font-size="220" fill="#33302C" font-weight="600" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">Gang 6,1 m²</text>
 <text x="10050" y="6300" font-size="240" fill="#33302C" font-weight="600" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">Bad</text>
 <text x="10050" y="6570" font-size="190" fill="#6b6257" font-weight="400" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">6,7 m²</text>
-<text x="15200" y="9800" font-size="320" fill="#33302C" font-weight="600" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">Stue</text>
-<text x="15200" y="10160" font-size="240" fill="#6b6257" font-weight="400" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">22.1 m²</text>
+<text x="15500" y="7900" font-size="320" fill="#33302C" font-weight="600" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">Stue</text>
+<text x="15500" y="8260" font-size="240" fill="#6b6257" font-weight="400" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">22.1 m²</text>
 <text x="12300" y="10300" font-size="270" fill="#33302C" font-weight="600" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">Kjøkken</text>
 <text x="12300" y="10610" font-size="210" fill="#6b6257" font-weight="400" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">13.7 m²</text>
 <rect x="8700" y="0" width="200" height="11000" fill="#33302C" stroke="none" stroke-width="0" rx="0" opacity="1"/>

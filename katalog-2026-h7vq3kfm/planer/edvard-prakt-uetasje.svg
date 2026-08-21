@@ -147,7 +147,7 @@
 <rect x="1640.0" y="920" width="780.0" height="340" fill="#F3EDE2" stroke="#8C8378" stroke-width="18" rx="70" opacity="1"/>
 <rect x="760" y="1380" width="1680" height="1340" fill="#F6F1E7" stroke="#8C8378" stroke-width="18" rx="50" opacity="1"/>
 <line x1="760" y1="1520" x2="2440" y2="1520" stroke="#8C8378" stroke-width="14"/>
-<rect x="300" y="730" width="420" height="420" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="40" opacity="1"/>
+<rect x="200" y="730" width="420" height="420" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="40" opacity="1"/>
 <rect x="2550" y="730" width="420" height="420" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="40" opacity="1"/>
 <rect x="400" y="2900" width="1900" height="550" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="20" opacity="1"/>
 <line x1="460" y1="3175.0" x2="2240" y2="3175.0" stroke="#8C8378" stroke-width="16" stroke-dasharray="180 90"/>
@@ -199,19 +199,19 @@
 <line x1="11440" y1="5910.0" x2="12960" y2="5910.0" stroke="#8C8378" stroke-width="14"/>
 <rect x="14000" y="6700" width="500" height="1400" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="20" opacity="1"/>
 <line x1="14250.0" y1="6740" x2="14250.0" y2="8060" stroke="#8C8378" stroke-width="14"/>
-<text x="1650" y="1900" font-size="320" fill="#33302C" font-weight="600" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">Sov</text>
-<text x="1650" y="2260" font-size="240" fill="#6b6257" font-weight="400" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">12 m²</text>
-<text x="4200" y="1800" font-size="320" fill="#33302C" font-weight="600" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">Bad</text>
-<text x="4200" y="2160" font-size="240" fill="#6b6257" font-weight="400" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">6.3 m²</text>
-<text x="7600" y="2350" font-size="320" fill="#33302C" font-weight="600" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">Stue</text>
-<text x="7600" y="2710" font-size="240" fill="#6b6257" font-weight="400" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">16.6 m²</text>
+<text x="1500" y="3050" font-size="320" fill="#33302C" font-weight="600" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">Sov</text>
+<text x="1500" y="3410" font-size="240" fill="#6b6257" font-weight="400" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">12 m²</text>
+<text x="4250" y="2350" font-size="260" fill="#33302C" font-weight="600" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">Bad</text>
+<text x="4250" y="2650" font-size="200" fill="#6b6257" font-weight="400" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">6.3 m²</text>
+<text x="7500" y="3100" font-size="320" fill="#33302C" font-weight="600" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">Stue</text>
+<text x="7500" y="3460" font-size="240" fill="#6b6257" font-weight="400" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">16.6 m²</text>
 <text x="10150" y="1900" font-size="210" fill="#33302C" font-weight="600" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">Bod</text>
 <text x="10150" y="2150" font-size="170" fill="#6b6257" font-weight="400" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">3,3 m²</text>
 <text x="2300" y="4100" font-size="210" fill="#6b6257" font-weight="500" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">Gang 6 m²</text>
 <text x="1500" y="6300" font-size="270" fill="#33302C" font-weight="600" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">Teknisk/Vask</text>
 <text x="1500" y="6610" font-size="210" fill="#6b6257" font-weight="400" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">10.8 m²</text>
-<text x="8650" y="5300" font-size="210" fill="#33302C" font-weight="600" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">Bod</text>
-<text x="8650" y="5550" font-size="170" fill="#6b6257" font-weight="400" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">3,8 m²</text>
+<text x="8900" y="5750" font-size="195" fill="#33302C" font-weight="600" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">Bod</text>
+<text x="8900" y="5970" font-size="158" fill="#6b6257" font-weight="400" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">3,8 m²</text>
 <text x="14300" y="4900" font-size="320" fill="#33302C" font-weight="600" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">Kjellerstue</text>
 <text x="14300" y="5260" font-size="240" fill="#6b6257" font-weight="400" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">24.5 m²</text>
 <text x="15300" y="7300" font-size="270" fill="#33302C" font-weight="600" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">Disp.</text>

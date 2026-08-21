@@ -327,7 +327,7 @@ def uetg():
 
     # møblering — utleiedel
     seng(700, 700, 1800, 2100)
-    nattbord(300, 730); nattbord(2550, 730)
+    nattbord(200, 730); nattbord(2550, 730)
     garderobe(400, 2900, 1900, 550)
     dusj(3450, 250, 850)
     vask(4700, 700, 160)
@@ -351,13 +351,13 @@ def uetg():
     hylle(14000, 6700, 500, 1400)                          # disp-hylle
 
     # romnavn
-    romnavn(1650, 1900, "Sov", 12)
-    romnavn(4200, 1800, "Bad", 6.3)
-    romnavn(7600, 2350, "Stue", 16.6)
+    romnavn(1500, 3050, "Sov", 12)
+    romnavn(4250, 2350, "Bad", 6.3, s1=260, s2=200)
+    romnavn(7500, 3100, "Stue", 16.6)
     tekst(10150, 1900, "Bod", 210, MORK, 600); tekst(10150, 2150, "3,3 m²", 170, GRAA, 400)
     romnavn(2600, 4150, "Gang", 6, s1=250, s2=190) if False else tekst(2300, 4100, "Gang 6 m²", 210, GRAA, 500)
     romnavn(1500, 6300, "Teknisk/Vask", 10.8, s1=270, s2=210)
-    tekst(8650, 5300, "Bod", 210, MORK, 600); tekst(8650, 5550, "3,8 m²", 170, GRAA, 400)
+    tekst(8900, 5750, "Bod", 195, MORK, 600); tekst(8900, 5970, "3,8 m²", 158, GRAA, 400)
     romnavn(14300, 4900, "Kjellerstue", 24.5)
     romnavn(15300, 7300, "Disp.", 6.7, s1=270, s2=210)
     sone(1900, -350, "UTLEIEDEL · BRA 47 M²")
@@ -455,7 +455,7 @@ def etg1():
     tekst(5000, 9250, "Bislag", 220, GRAA, 500)
     # romnavn
     romnavn(3800, 3600, "Stue/Kjøkken")
-    romnavn(2000, 6900, "Sov")
+    romnavn(1500, 8600, "Sov")
     romnavn(7800, 7900, "VF", 12.2, s1=280, s2=210)
     tekst(10000, 6200, "WC", 240, MORK, 600); tekst(10000, 6470, "4,3 m²", 190, GRAA, 400)
     sone(1600, -350, "1. ETASJE · BRA 84 M²")
@@ -542,12 +542,12 @@ def etg2():
     bord(14500, 5200, 1000, 1000, rx=500)
     stol(14000, 4700); stol(15600, 5450)
     # romnavn
-    romnavn(1800, 2700, "Sov", 11.2)
-    romnavn(5300, 2700, "Sov", 9.9)
-    romnavn(8000, 2700, "Sov", 6.9)
+    romnavn(2600, 3000, "Sov", 11.2)
+    romnavn(5600, 3000, "Sov", 9.9)
+    romnavn(8300, 2950, "Sov", 6.9, s1=260, s2=200)
     tekst(1300, 4550, "Gard. 5 m²", 210, GRAA, 500)
     romnavn(4900, 4550, "Gang", 14.9, s1=270, s2=0) if False else tekst(4900, 4400, "Gang 14,9 m²", 250, MORK, 600)
-    romnavn(1800, 7950, "Sov", 12.8)
+    romnavn(2400, 9400, "Sov", 12.8)
     tekst(5300, 6600, "Bad", 260, MORK, 600); tekst(5300, 6890, "5,7 m²", 200, GRAA, 400)
     tekst(9800, 6900, "Bad", 260, MORK, 600); tekst(9800, 7190, "7,8 m²", 200, GRAA, 400)
     romnavn(14000, 3900, "Takterrasse", 42.7)

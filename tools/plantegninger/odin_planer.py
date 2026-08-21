@@ -138,8 +138,8 @@ def etg1():
     garderobe(5800, 4000, 550, 1500)
     mobel_rect(7300, 4000, 550, 1200)                       # skohylle
     # romnavn
-    romnavn(1900, 3600, "Stue", 28.8)
-    romnavn(5300, 1600, "Soverom", 13.1, s1=270, s2=210)
+    romnavn(2100, 3200, "Stue", 28.8)
+    romnavn(5600, 3000, "Soverom", 13.1, s1=250, s2=195)
     tekst(8500, 1900, "Bad", 240, MORK, 600); tekst(8500, 2170, "8,7 m²", 190, GRAA, 400)
     romnavn(12000, 1500, "Vaskerom", 11, s1=250, s2=200)
     romnavn(12300, 4400, "Kjøkken", 20, s1=270, s2=210)
@@ -199,8 +199,10 @@ def etg2():
     trapp(8300, 4900, 1500, 1700, opp="s", trinn=8, tekst_under=False)
     tekst(9050, 4700, "NED", 170, GRAA, 500)
     # møblering
-    seng(1400, 500, 1600, 2000); garderobe(3400, 300, 700, 550)    # sov A
-    seng(1400, 3900, 1600, 2000); garderobe(3450, 5800, 700, 550)  # sov B
+    seng(1400, 500, 1600, 2000); nattbord(3120, 520)               # sov A
+    garderobe(3400, 1700, 700, 550)
+    seng(1400, 3900, 1600, 2000); nattbord(3120, 3920)             # sov B
+    garderobe(3450, 5900, 700, 550)
     seng(10200, 500, 1700, 2050); nattbord(9500, 530)              # sov C
     garderobe(12300, 2900, 700, 550)
     hylle(4450, 350, 450, 1300)                                    # kott-hylle
@@ -209,11 +211,11 @@ def etg2():
     toalett(7300, 2450, "s")
     teppe(4900, 4300, 2800, 700)                                   # gangteppe
     # romnavn
-    romnavn(2500, 2200, "Soverom", 10.5, s1=270, s2=210)
-    romnavn(2500, 5300, "Soverom", 10.5, s1=270, s2=210)
-    tekst(4900, 1400, "Kott", 190, MORK, 600); tekst(4900, 1620, "2,3 m²", 150, GRAA, 400)
+    romnavn(2450, 2900, "Soverom", 10.5, s1=250, s2=195)
+    romnavn(2450, 6250, "Soverom", 10.5, s1=250, s2=195)
+    tekst(5150, 2750, "Kott", 180, MORK, 600); tekst(5150, 2960, "2,3 m²", 145, GRAA, 400)
     tekst(6650, 2000, "Bad", 240, MORK, 600); tekst(6650, 2270, "7,1 m²", 190, GRAA, 400)
-    romnavn(10800, 2400, "Soverom", 15.2, s1=270, s2=210)
+    romnavn(9600, 3050, "Soverom", 15.2, s1=250, s2=195)
     tekst(6100, 5500, "Gang 22,3 m²", 250, MORK, 600)
     sone(2500, -700, "2. ETASJE")
     skriv("2. etasje", "-1000 -1400 16000 11500", (-800, 9700))
