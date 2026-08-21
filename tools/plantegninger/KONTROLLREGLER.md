@@ -78,7 +78,14 @@ tegningen. Sjekk hvert møbel mot dette:
 
 - **Senger:** hodegjerdet skal ligge **inntil vegg**. Aldri midt på gulvet,
   aldri med hodet mot en dør eller et vindu. Ha fri passasje langs minst én
-  langside. Nattbord bare der det faktisk er plass ved hodeenden.
+  langside.
+- **Nattbord hører til ved hodeenden** — inntil samme vegg som hodegjerdet,
+  på den ene eller begge sider av sengen. Aldri ved fotenden, og aldri der
+  det havner i en døråpning. Ta det bort hvis det ikke er plass.
+- **Møbler skal stå inntil vegg, ikke inni den og ikke svevende.** Regn ut
+  koordinaten fra veggens innside (`x = veggens_x - møbelbredde`), ikke på
+  slump — et skap som ligger 150 mm fra veggen ser like galt ut som et som
+  ligger 150 mm inni den. Husk veggtykkelsen i regnestykket.
 - **Dørslag:** ingen møbler i sirkelsektoren en dør slår gjennom. Gå gjennom
   hver eneste dør.
 - **Vegger:** ingen møbler som krysser en vegg eller stikker ut av rommet.
@@ -108,6 +115,8 @@ Gå gjennom punkt for punkt. Alle skal krysses av.
 - [ ] Ingen møbler i dørslag
 - [ ] Ingen møbler som krysser vegg eller stikker utenfor rommet
 - [ ] Alle senger har hodegjerdet inntil vegg, klar av dør og vindu
+- [ ] Nattbord står ved hodeenden, ikke ved fotenden eller i en dør
+- [ ] Alle møbler står helt inntil vegg — verken inni veggen eller svevende
 - [ ] Møbelretning er speilet riktig i speilvendte enheter
 - [ ] Ingen tekst ligger oppå møbler, vegger eller annen tekst
 - [ ] Kryssjekket mot fasadebildene (hakk, balkonger, takform stemmer)

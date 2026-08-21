@@ -247,8 +247,10 @@ def etg1(e: E, terr_for, kjokkenstue, d_midt):
 
 # ================================================================ 2. ETASJE
 def etg2(e: E, bal_bak, bal_for, sov14, master, walkin, gang):
-    hx = 3196 if not e.s else 4201        # hakket: gir 9,80 / 7,80 m² (= PDF)
-    front_uterom(e, hx, HD2, 419, 1592, f"Balkong {bal_for} m²", 900, False)
+    # Balkongdekket gaar HELT UT TIL GAVLEN (smalt der soverommet staar
+    # framme, bredt i det inntrukne partiet) — ikke avskaaret ved hakket.
+    hx = 3196 if not e.s else 4201
+    front_uterom(e, hx, HD2, 419, 1592, f"Balkong {bal_for} m²", 600, True)
     # --- gulv
     e.r(0, A, M, D, "url(#parkett)")
     e.r(4400, 5150, M - 4400, 3850, "url(#flis)")           # bad
@@ -294,8 +296,9 @@ def etg2(e: E, bal_bak, bal_for, sov14, master, walkin, gang):
 
     # --- møblering (hodegjerde alltid inntil vegg, klar av dør og vindu)
     # MASTER: hodegjerdet mot nordveggen, nattbord på begge sider
-    e.seng(5450, 500, 1800, 2100, "n")
-    nattbord(e.X(4900, 420), 520); nattbord(e.X(7300, 420), 520)
+    e.seng(5150, 500, 1800, 2100, "n")
+    nattbord(e.X(4700, 420), 520)                          # ved hodeenden
+    nattbord(e.X(6980, 420), 520)                          # ved hodeenden
     # WALK-IN: skap langs begge langvegger
     garderobe(e.X(250, 550), AB + 400, 550, 1700)
     garderobe(e.X(1500, 600), AB + 250, 600, 550)
@@ -309,10 +312,10 @@ def etg2(e: E, bal_bak, bal_for, sov14, master, walkin, gang):
     teppe(e.X(3100, 2100), 8900, 2100, 1400)                # gang
     # SOVEROM v/gavlen: hodegjerdet mot gavlveggen (vest), fri passasje til døra
     e.seng(YV + 80, 11900, 1600, 2000, "v")
-    garderobe(e.X(hx - 700, 550), 11900, 550, 1600)
+    garderobe(e.X(hx - 550, 550), 11900, 550, 1600)        # inntil skilleveggen
     # SOVEROM 13,1: hodegjerdet mot midtveggen (øst), klar av balkongdøra
-    e.seng(M - YV - 2100, 11400, 1800, 2100, "h")
-    nattbord(e.X(M - YV - 2560, 420), 11430)
+    e.seng(M - YV - 2100, 11500, 1800, 2100, "h")
+    nattbord(e.X(M - YV - 420, 420), 10950)                # ved hodeenden
     # --- romnavn
     e.romnavn(6000, 3300, "Master soverom", master, s1=220, s2=175)
     e.tekst(1150, 3900, "Walk in closet", 180, MORK, 600)
