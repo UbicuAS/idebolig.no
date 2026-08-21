@@ -65,6 +65,10 @@ PLANER = {
              ("2. etasje", "planer/alva-2etasje.svg")],
     "embla": [("1. etasje — to leiligheter", "planer/embla-1etasje.svg"),
               ("2. etasje — to leiligheter", "planer/embla-2etasje.svg")],
+    "odin": [("1. etasje", "planer/odin-1etasje.svg"),
+             ("2. etasje", "planer/odin-2etasje.svg")],
+    # "nora": 2. etasje er tegnet (planer/nora-2etasje.svg) — legges inn når
+    # 1. etasje-tegningen foreligger fra Marius.
 }
 
 
