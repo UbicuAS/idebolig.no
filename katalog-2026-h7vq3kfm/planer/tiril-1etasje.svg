@@ -35,8 +35,8 @@
 </defs>
 <path d="M 0 0 H 15100 V 14550 H 0 Z" fill="#FDFBF7" filter="url(#skygge)"/>
 <path d="M 0 14550 L 3400 14550 L 3400 13300 L 7550 13300 L 7550 18192 L 0 16050 Z" fill="url(#dekke)"/>
-<path d="M 0 16050 L 7550 18192" fill="none" stroke="#33302C" stroke-width="70"/>
-<text x="2450" y="15700" font-size="200" fill="#6b6257" font-weight="600" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">Terrasse 24.6 m²</text>
+<path d="M 3400 17014.60927152318 L 7550 18192" fill="none" stroke="#33302C" stroke-width="70"/>
+<text x="5150" y="15700" font-size="200" fill="#6b6257" font-weight="600" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">Terrasse 24.6 m²</text>
 <rect x="5100" y="16050" width="1700" height="950" fill="#F3EAD9" stroke="#8C8378" stroke-width="22" rx="120" opacity="1"/>
 <rect x="5300" y="15550" width="420" height="420" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="110" opacity="1"/>
 <rect x="5300" y="17100" width="420" height="420" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="110" opacity="1"/>
@@ -168,8 +168,8 @@
 <text x="3600" y="11400" font-size="285" fill="#33302C" font-weight="600" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">Kjøkken/stue</text>
 <text x="3600" y="11725" font-size="215" fill="#6b6257" font-weight="400" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">42.3 m²</text>
 <path d="M 15100 14550 L 11700 14550 L 11700 13300 L 7550 13300 L 7550 18166 L 15100 16050 Z" fill="url(#dekke)"/>
-<path d="M 15100 16050 L 7550 18166" fill="none" stroke="#33302C" stroke-width="70"/>
-<text x="12650" y="15700" font-size="200" fill="#6b6257" font-weight="600" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">Terrasse 24.5 m²</text>
+<path d="M 11700 17002.900662251657 L 7550 18166" fill="none" stroke="#33302C" stroke-width="70"/>
+<text x="9950" y="15700" font-size="200" fill="#6b6257" font-weight="600" text-anchor="middle" font-family="Poppins, Segoe UI, sans-serif">Terrasse 24.5 m²</text>
 <rect x="8300" y="16050" width="1700" height="950" fill="#F3EAD9" stroke="#8C8378" stroke-width="22" rx="120" opacity="1"/>
 <rect x="9400" y="15550" width="420" height="420" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="110" opacity="1"/>
 <rect x="9400" y="17100" width="420" height="420" fill="#FBF8F2" stroke="#8C8378" stroke-width="22" rx="110" opacity="1"/>
