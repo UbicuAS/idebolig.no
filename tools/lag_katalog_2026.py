@@ -498,16 +498,22 @@ def tilpasningside(nr: int) -> str:
 
 
 def bygg() -> None:
-    forside = """<div class="fb-perm">
-      <img src="../wp-content/uploads/2024/11/Hvit-logo-sidestilt.png" alt="Idébolig AS">
-      <div class="fb-permlinje"></div>
-      <h2>Boligkatalog</h2>
-      <p class="fb-aar">2026</p>
-      <p>Åtte boligmodeller — fra klassisk til funkis</p>
-      <span class="fb-permhint">Dra i hjørnet, sveip eller bruk pilene for å bla</span>
+    # Permbildet er ferdig beskåret til 3:4 av tools/lag_permbilde.py — se den
+    # for hvorfor motivet er Edvard Prakt og hvorfor bildet ikke lastes fra
+    # wp-content direkte (3,1 MB PNG mot 114 KB WebP).
+    forside = """<div class="fb-perm fb-perm--foto">
+      <img class="fb-permfoto" src="permforside.webp" alt="" aria-hidden="true">
+      <div class="fb-perminnhold">
+        <img class="fb-permlogo" src="../wp-content/uploads/2024/11/Hvit-logo-sidestilt.png" alt="Idébolig AS">
+        <div class="fb-permlinje"></div>
+        <h2>Boligkatalog</h2>
+        <p class="fb-aar">2026</p>
+        <p>Åtte boligmodeller — fra klassisk til funkis</p>
+        <span class="fb-permhint">Dra i hjørnet, sveip eller bruk pilene for å bla</span>
+      </div>
     </div>"""
     bakside = """<div class="fb-perm fb-perm--bak">
-      <img src="../wp-content/uploads/2024/11/Hvit-logo-sidestilt.png" alt="Idébolig AS">
+      <img class="fb-permlogo" src="../wp-content/uploads/2024/11/Hvit-logo-sidestilt.png" alt="Idébolig AS">
       <div class="fb-permlinje"></div>
       <p>Idébolig AS · Jølstadbakken 14, 2318 Hamar</p>
       <p>91 92 66 66 · post@idebolig.no</p>
@@ -688,7 +694,17 @@ def bygg() -> None:
 .fb-perm{{position:absolute;inset:0;background:linear-gradient(150deg,#3A362F,#26231F);
   color:#D9D2C5;display:flex;flex-direction:column;align-items:center;
   justify-content:center;text-align:center;padding:10%}}
-.fb-perm img{{width:46%;max-width:230px;margin-bottom:22px}}
+.fb-permlogo{{width:46%;max-width:230px;margin-bottom:22px}}
+.fb-permfoto{{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  display:block}}
+/* Graderingen ligger over bildet og under teksten. Verdiene er valgt etter
+   kontrastmåling mot motivet, ikke på øyemål — se tools/kontrast_perm.py. */
+.fb-perm--foto::after{{content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(22,20,17,.90) 0%,rgba(22,20,17,.72) 30%,
+    rgba(22,20,17,.75) 60%,rgba(22,20,17,.95) 100%)}}
+.fb-perminnhold{{position:relative;z-index:2;display:flex;flex-direction:column;
+  align-items:center;text-align:center;
+  text-shadow:0 1px 14px rgba(12,11,9,.55)}}
 .fb-permlinje{{width:52px;height:2px;background:var(--gull);margin-bottom:22px}}
 .fb-perm h2{{font-size:clamp(24px,3.4vw,38px);font-weight:700;color:#fff;
   letter-spacing:.04em;margin-bottom:4px}}
